@@ -1,21 +1,47 @@
 # API 1º Semestre ADS
 
-<p align="center">
   <h2 align="center"> Pigeon Code </h2>
+<p align="center">
+  | <a href ="#desafio"> Desafio</a>  |
+  <a href ="#solucao"> Solução</a>  |   
+  <a href ="#backlog-produto"> Backlog do Produto</a>  |
+  <a href ="#backlog-sprint"> Backlog da Sprint</a>  |
+  <a href ="#tecnologias">Tecnologias</a> |
+  <a href ="#colaboradores"> Colaboradores</a> |
 </p>
+<br>
+<br>
 
-## Desafio
+## 🎯 Desafio <a id="desafio"></a>
 
 O desafio consiste em criar uma aplicação WEB que descreva a metodologia SCRUM para orientação de times de uma organização e disponibilizar métodos de acompanhamento dos processos pelo gestor responsável
 
-## Solução
+## 🎖️ Solução <a id="solucao"></a>
 
 O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, e permitira que os membros das equipes relatem suas atividades, que serão transpostos para relatórios disponíveis para leitura pelo gestor responsável
 
----
+<br><br>
+
+
+## 📋 Backlog do Produto <a id="backlog-produto"></a>
+
+| Rank | Prioridade | User Story                                                                                                                                                                                                                                                              |  Estimativa  | Sprint |
+| :--: | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :----: |
+|   1  |    Média   | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                                                                                                         |      8       |    1   |
+|   2  |    Alta    | Como administrador, quero que os DEVs em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                                                                                                        |      13      |    1   |
+|   3  |    Média   | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos dos formulários.                                                                                                           |      20      |    1   |
+|   4  |    Média   | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                                                                                                               |      13      |    2   |
+|   5  |    Alta    | Como administrador, desejo que os DEVs em treinamento completem os formulários avaliativos com facilidade para agilizar o processo de preenchimento.                                                                                                                    |      13      |    2   |
+|   6  |    Média   | Como administrador, pretendo que os DEVs em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas.                                                                                      |      8       |    2   |
+|   7  |    Baixa   | Como administrador, quero que os DEVs em treinamento adicionem uma descrição aos formulários para um entendimento mais completo a respeito da qualidade do evento avaliado.                                                                                             |      5       |    2   |
+|   8  |    Baixa   | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                                                                                                                  |      8       |    3   |
+
+<br> <br>
+
+## 📋 Backlog da Sprint <a id="backlog-sprint"></a>
 
 | Rank | Prioridade | Funcionalidade                                                                    | Descrição                                                                                                                                                     |  Estimativa  |   Sprint   |
-|:----:|:----------:|:---------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------:|:----------:|
+|:----:|:----------:|---------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------:|:----------:|
 |   1  |    Alta    | Protótipo navegável com as principais telas do sistema.                           | Projeto no Figma contendo as telas da área de treinamento, formulários e acesso restrito do administrador, para validação do design.                          |       8      |      1     |
 |   2  |    Alta    | Coleta das informações sobre o SCRUM para organização do conteúdo do treinamento. | Pesquisa e consolidação dos principais conceitos SCRUM, servindo de base para criação do material de treinamento.                                             |       8      |      1     |
 |   3  |    Média   | Elaborar exemplos práticos para auxiliar a compreensão dos DEVs em treinamento.   | Reunir exemplos explicativos com base em referências reais ou situações fictícias para fortalecer os ensinamentos do site                                     |       5      |      1     |
@@ -25,22 +51,9 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 |   7  |    Baixa   | Pesquisar SQLite e Flask                                                          | Aprender a gerenciar banco de dados SQLite com Flask para implementar nas áreas do site.                                                                      |      13      |      1     |
 |   8  |    Baixa   | Acesso de administrador.                                                          | Desenvolver a área de acesso restrito ao administrador. Deve pedir por nome de usuário e senha para autorizar a sua entrada.                                  |      20      |      1     |
 
----
+<br><br>
 
-## Backlog do Produto <a id="backlog"></a>
-
-| Rank | Prioridade | User Story                                                                                                                                                                                                                                                              |  Estimativa  | Sprint |
-| :--: | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :----: |
-|   1  |    Média   | Como administrador, desejo visualizar um protótipo do projeto para poder aprovar o seu visual escolhido.                                                                                                                                                                |      13      |    1   |
-|   2  |    Alta    | Como administrador, pretendo que os DEVS em treinamento possam entender por completo a metodologia SCRUM e possam tirar suas dúvidas sempre que necessário com o auxílio de um design intuitivo e não poluído.                                                          |      8       |    1   |
-|   3  |    Alta    | Como administrador, desejo ter uma área restrita ao meu acesso para as funcionalidades necessárias para um administrador.                                                                                                                                               |      13      |    1   |
-|   4  |    Alta    | Como administrador, os DEV em treinamento devem preencher facilmente os formulários avaliativos, podendo especificar o processo a que tal evento pertence e adicionar uma descrição escrita sobre o mesmo, para que não precise gastar muito tempo em cada formulário.  |      20      |    1   |
-|   5  |    Média   | Como administrador, desejo poder criar processos diferentes para ter uma visualização mais organizada das respostas obtidas nos formulários.                                                                                                                            |      8       |    1   |
-|   6  |    Alta    | Como administrador, quero ter acesso a gráficos referentes aos formulários para que possa visualizar rapidamente a qualidade entregue naquele evento em específico.                                                                                                     |      5       |    1   |
-
----
-
-## Tecnologias <a id="tecnologias"></a>
+## 💻 Tecnologias <a id="tecnologias"></a>
 
 <h4 align="center">
  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
@@ -48,8 +61,9 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
 </h4>
 
+<br>
 
-## Equipe <a id="equipe"></a>
+## 🎓 Colaboradores <a id="colaboradores"></a>
 
 <div align="center">
   <table>
@@ -60,7 +74,7 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
       <th>Linkedin</th>
     </tr>
     <tr>
-      <td>Manuela Oliveira</td>
+      <td>Manuela Santos</td>
       <td>Scrum Master</td>
       <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
