@@ -119,7 +119,7 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
       <td>Vitor Bomfim </td>
       <td>Desenvolvedor</td>
       <td><a href="https://github.com/VitorBomfim-12"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="www.linkedin.com/in/vitor-bomfim-122339289"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/vitor-bomfim-122339289/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
   </table>
