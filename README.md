@@ -1,11 +1,17 @@
 # API 1º Semestre ADS
 
-  <h2 align="center"> Pigeon Code </h2>
+<p align="center">
+      <img src="docs/img/logo-PigeonCode.png" alt="logo da equipe Pigeon Code" width="200">
+      <h2 align="center"> Pigeon Code </h2>
+</p>
+
 <p align="center">
   | <a href ="#desafio"> Desafio</a>  |
   <a href ="#solucao"> Solução</a>  |   
   <a href ="#backlog-produto"> Backlog do Produto</a>  |
-  <a href ="#backlog-sprint"> Backlog da Sprint</a>  |
+  <a href ="#dor"> DoR</a>  |
+  <a href ="#dod"> DoD</a>  |
+  <a href ="#sprints"> Cronograma de Sprints</a>  |
   <a href ="#tecnologias">Tecnologias</a> |
   <a href ="#colaboradores"> Colaboradores</a> |
 </p>
@@ -22,40 +28,52 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 <br><br>
 
-
 ## 📋 Backlog do Produto <a id="backlog-produto"></a>
 
-| Rank | Prioridade | User Story                                                                                                                                                                                                                                                              |  Estimativa  | Sprint |
-| :--: | :--------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------: | :----: |
-|   1  |    Média   | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                                                                                                         |      8       |    1   |
-|   2  |    Alta    | Como administrador, quero que os DEVs em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                                                                                                        |      13      |    1   |
-|   3  |    Média   | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos dos formulários.                                                                                                           |      20      |    1   |
-|   4  |    Média   | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                                                                                                               |      13      |    2   |
-|   5  |    Alta    | Como administrador, desejo que os DEVs em treinamento completem os formulários avaliativos com facilidade para agilizar o processo de preenchimento.                                                                                                                    |      13      |    2   |
-|   6  |    Média   | Como administrador, pretendo que os DEVs em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas.                                                                                      |      8       |    2   |
-|   7  |    Baixa   | Como administrador, quero que os DEVs em treinamento adicionem uma descrição aos formulários para um entendimento mais completo a respeito da qualidade do evento avaliado.                                                                                             |      5       |    2   |
-|   8  |    Baixa   | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                                                                                                                  |      8       |    3   |
+| Rank | Prioridade | User Story                                                                                                                                                                         | Estimativa | Sprint |
+| :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: |
+|  1   |   Média    | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                    |     8      |   1    |
+|  2   |    Alta    | Como administrador, quero que os DEVs em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                   |     13     |   1    |
+|  3   |   Média    | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos dos formulários.                      |     20     |   1    |
+|  4   |   Média    | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                          |     13     |   2    |
+|  5   |    Alta    | Como administrador, desejo que os DEVs em treinamento completem os formulários avaliativos com facilidade para agilizar o processo de preenchimento.                               |     13     |   2    |
+|  6   |   Média    | Como administrador, pretendo que os DEVs em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas. |     8      |   2    |
+|  7   |   Baixa    | Como administrador, quero que os DEVs em treinamento adicionem uma descrição aos formulários para um entendimento mais completo a respeito da qualidade do evento avaliado.        |     5      |   2    |
+|  8   |   Baixa    | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                             |     8      |   3    |
 
-<br> <br>
+---
 
-## 📋 Backlog da Sprint <a id="backlog-sprint"></a>
+## 📝‍ DoR - Definition of Ready <a id="dor"></a>
 
-| Rank | Prioridade | Funcionalidade                                                                    | Descrição                                                                                                                                                     |  Estimativa  |   Sprint   |
-|:----:|:----------:|---------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------:|:----------:|
-|   1  |    Alta    | Protótipo navegável com as principais telas do sistema.                           | Projeto no Figma contendo as telas da área de treinamento, formulários e acesso restrito do administrador, para validação do design.                          |       8      |      1     |
-|   2  |    Alta    | Coleta das informações sobre o SCRUM para organização do conteúdo do treinamento. | Pesquisa e consolidação dos principais conceitos SCRUM, servindo de base para criação do material de treinamento.                                             |       8      |      1     |
-|   3  |    Média   | Elaborar exemplos práticos para auxiliar a compreensão dos DEVs em treinamento.   | Reunir exemplos explicativos com base em referências reais ou situações fictícias para fortalecer os ensinamentos do site                                     |       5      |      1     |
-|   4  |    Média   | Páginas informativas.                                                             | Criar páginas que detalhem os itens do SCRUM para garantir a compreensão dos DEVs em treinamento. Apresentar seção de navegação, título e explicação do item. |      13      |      1     |
-|   5  |    Média   | Planejamento intuitivo.                                                           | Fazer diagrama das funcionalidades totais do Site, em conjunto com a pesquisa e utilização aprofundada do Astah.                                              |      13      |      1     |
-|   6  |    Baixa   | Estudar Bootstrap                                                                 | Reunir conhecimentos suficientes para incluir componentes Bootstrap no site.                                                                                  |       8      |      1     |
-|   7  |    Baixa   | Pesquisar SQLite e Flask                                                          | Aprender a gerenciar banco de dados SQLite com Flask para implementar nas áreas do site.                                                                      |      13      |      1     |
-|   8  |    Baixa   | Acesso de administrador.                                                          | Desenvolver a área de acesso restrito ao administrador. Deve pedir por nome de usuário e senha para autorizar a sua entrada.                                  |      20      |      1     |
+- User Stories escritas no formato "Como [persona], quero [ação] para que [objetivo]"
+- As US contem critérios de aceitação definidos
+- Subtarefas divididas a partir das US
+- Priorização atribuída (Alta, Média, Baixa)
+- Estimativas atribuídas
 
-<br><br>
+## 🏆 DoD - Definition of Done <a id="dod"></a>
+
+- Documentação da API
+- Código do projeto concluído
+- Vídeos demonstrativos de cada incremento por etapa entregues
+
+---
+
+## 🗓️ Cronograma das Sprints <a id="sprints"></a>
+
+| Sprint   | Período       | Documentação                                       |
+| -------- | ------------- | -------------------------------------------------- |
+| SPRINT 1 | 08/09 - 28/09 | [Sprint 1 Docs](./docs/sprints/sprint-1/README.md) |
+| SPRINT 2 | 06/10 - 26/10 | [Sprint 2 Docs](./docs/sprints/sprint-2/README.md) |
+| SPRINT 3 | 03/11 - 23/11 | [Sprint 3 Docs](./docs/sprints/sprint-3/README.md) |
+
+<br>
 
 ## 💻 Tecnologias <a id="tecnologias"></a>
 
 <h4 align="center">
+ <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" >
+ <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
  <a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></a>
  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
