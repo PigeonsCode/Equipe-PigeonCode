@@ -3,7 +3,7 @@
 # Documentação - Sprint 3
 
 <p align="center">
-      <img src="docs/img/logo-PigeonCode.png" alt="logo da equipe Pigeon Code" width="200">
+      <img src="../../img/logo-PigeonCode.png" alt="logo da equipe Pigeon Code" width="200">
       <h2 align="center"> Pigeon Code </h2>
 </p>
 
