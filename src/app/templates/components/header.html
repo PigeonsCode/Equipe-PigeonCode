@@ -1,0 +1,23 @@
+<header class="navbar fixed-top bg-white navbar-expand-md shadow-sm">
+  <div class="container">
+    <img src="../static/images/logo-devloop.svg" alt="logo" />
+    <ul class="navbar navbar-nav">
+      <li class="nav-item">
+        <a
+          href="{{ url_for('homepage') }}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/'%}active{% endif %}"
+          aria-current="page"
+          ><i class="bx bx-book"></i> Treinamentos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('loginADM') }}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}"
+          aria-current="page"
+          ><i class="bx bx-user"></i> Acesso ao ADM</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>
