@@ -9,10 +9,7 @@ export class TMenuLink extends HTMLElement {
         : "border-tertiary"
     }">
       <a href='${linkFunc}' class="custom-nav-link nav-link ${
-      window.location.pathname === "/" + linkUrl ||
-      window.location.pathname == linkUrl
-        ? "active"
-        : "text-secondary"
+      window.location.pathname === "/" + linkUrl ? "active" : ""
     } " aria-current="page">
         ${title}
       </a>

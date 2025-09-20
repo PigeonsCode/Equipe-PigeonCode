@@ -12,6 +12,10 @@ def loginADM():
 
 # Páginas de conteúdo
 
+@app.route("/scrum")
+def scrum():
+    return render_template("scrum.html", page_url="scrum")
+
 @app.route("/sprints")
 def sprints():
     return render_template("placeholder.html", page_url="sprints")

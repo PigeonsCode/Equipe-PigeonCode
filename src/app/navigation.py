@@ -4,11 +4,11 @@ navigation_items = [
     "subtopic": [
       {
         "name": "Scrum",
-        "endpoint": "homepage",
+        "endpoint": "scrum",
         "sub_navigation": [
           "Definição",
           "Importância",
-          "Manifesto para Desenvolvimento Ágil de Software",
+          "Manifesto",
           "Princípios Ágeis",
         ],
       },
@@ -39,4 +39,5 @@ navigation_items = [
       },
     ],
   },
+  
 ]

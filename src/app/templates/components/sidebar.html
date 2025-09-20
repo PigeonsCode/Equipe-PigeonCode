@@ -3,14 +3,14 @@
   <t-accordion
     title="{{nav_item.topic.name}}"
     accordionParent="accordionsSidebar"
-    initialState="{{ 'true' if nav_item.initialState else 'false' }}"
+    initialState="{% if nav_item.nav_open %}true{% else %}false{% endif %}"
   >
     {% for sub_nav_item in nav_item.subtopic %}
     <ul class="navbar-nav">
       <t-menu-link
         title="{{sub_nav_item.name}}"
         linkFunc="{{url_for(sub_nav_item.endpoint)}}"
-        linkUrl="{{ '/' if sub_nav_item.endpoint == 'homepage' else sub_nav_item.endpoint|kebabify }}"
+        linkUrl="{{ sub_nav_item.endpoint|kebabify }}"
       ></t-menu-link>
     </ul>
     {% endfor %}
@@ -20,4 +20,5 @@
   </div>
 
   {% endif %} {% endfor %}
+ 
 </div>

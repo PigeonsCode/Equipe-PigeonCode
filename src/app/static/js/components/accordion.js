@@ -16,7 +16,9 @@ export class TAccordion extends HTMLElement {
     if (isSolo) {
       item.innerHTML = ` <h2 class="accordion-header">
         <a
-          class="accordion-button sidebar-custom-button"
+          class="accordion-button sidebar-custom-button ${
+            window.location.pathname == soloLink ? "" : "collapsed"
+          }"
           type="button"
           href="${soloLink}"
         >
