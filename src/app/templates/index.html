@@ -35,7 +35,7 @@
     <main class="content p-4 mt-5 row gx-5">
       <aside class="col">{% include "components/sidebar.html" %}</aside>
       <div class="col-md-7">
-        <nav class="d-flex gap-5 mb-5">
+        <nav class="d-flex mb-5 custom-navbar">
           <a
             class="nav-link fw-bold text-roboto text-uppercase nav__links {% if request.path != '/formulario'%}active{% endif %}"
             href="{{url_for(page_url)}}"

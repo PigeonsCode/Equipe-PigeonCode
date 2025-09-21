@@ -3,7 +3,7 @@ navigation_items = [
     "topic": { "name": "Primeiros Passos", "solo_item": False },
     "subtopic": [
       {
-        "name": "Scrum",
+        "name": "Metodologia Scrum",
         "endpoint": "scrum",
         "sub_navigation": [
           "Definição",
