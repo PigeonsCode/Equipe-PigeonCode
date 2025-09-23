@@ -61,11 +61,11 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 ## 🗓️ Cronograma das Sprints <a id="sprints"></a>
 
-| Sprint   | Período       | Documentação                                       |
-| -------- | ------------- | -------------------------------------------------- |
-| SPRINT 1 | 08/09 - 28/09 | [Sprint 1 Docs](./docs/sprints/sprint-1/README.md) |
-| SPRINT 2 | 06/10 - 26/10 | [Sprint 2 Docs](./docs/sprints/sprint-2/README.md) |
-| SPRINT 3 | 03/11 - 23/11 | [Sprint 3 Docs](./docs/sprints/sprint-3/README.md) |
+| Sprint   | Período       | Documentação                                       | Histórico                             |
+| -------- | ------------- | -------------------------------------------------- |---------------------------------------|
+| SPRINT 1 | 08/09 - 28/09 | [Sprint 1 Docs](./docs/sprints/sprint-1/README.md) | [MVP](./docs/sprints/sprint-1/sp1.md) |
+| SPRINT 2 | 06/10 - 26/10 | [Sprint 2 Docs](./docs/sprints/sprint-2/README.md) | [MVP](./docs/sprints/sprint-2/sp2.md) |
+| SPRINT 3 | 03/11 - 23/11 | [Sprint 3 Docs](./docs/sprints/sprint-3/README.md) | [MVP](./docs/sprints/sprint-3/sp3.md) |
 
 <br>
 
