@@ -25,10 +25,20 @@ def is_nav_open(nav_item, request_path):
             return True
     return False
 
+def show_aside(nav_item, request_path):
+    for sub in nav_item['subtopic']:
+        if 'endpoint' in sub and request_path == url_for(sub['endpoint']):
+            if sub.get('sub_navigation') is None:
+                return False
+            else:
+                return True
+    return False
+
+
 @app.context_processor
 def inject_navigation():
     nav_copy = []
     for nav in navigation_items:
-        nav_copy.append({**nav, 'nav_open': is_nav_open(nav, request.path)})
+        nav_copy.append({**nav, 'nav_open': is_nav_open(nav, request.path), 'show_aside': show_aside(nav, request.path)})
     return dict(navigation=nav_copy)
 

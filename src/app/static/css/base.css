@@ -1,0 +1,20 @@
+body {
+  min-height: 100vh;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  background-color: var(--body-background);
+  font-family: "Nunito Sans";
+}
+
+.content {
+  width: 98%;
+  height: 500vh; /* O conteúdo tem q ser maior do que o tamanho que a sidebar ocupa, valor para teste apenas */
+}
+
+::selection {
+  background-color: #5266ec47;
+}

@@ -1,0 +1,43 @@
+:root {
+  --bs-primary: #5266ec;
+  --bs-primary-rgb: 82, 102, 236;
+  --bs-secondary-rgb: 162, 159, 174;
+  --dark-gray: #212529;
+  --dark-gray-2: #334155;
+  --secondary-color: #a29fae;
+  --secondary-color-darker: #7f7e81;
+  --border-color: #dee2e6;
+
+  --body-background: #f9fafb;
+  --roboto: "Roboto", sans-serif;
+}
+
+/* Redefinindo estilo padrão do botão do bootstrap */
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #394bbd;
+  --bs-btn-hover-border-color: #394bbd;
+  --bs-btn-active-bg: #2c3ca7;
+  --bs-btn-active-border-color: #2c3ca7;
+}
+
+/* Redefinindo o estilo padrão de links da navbar no bootstrap */
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: var(--bs-primary);
+}
+
+/* Sobreescrevendo accordion do bootstrap */
+
+.accordion-item,
+.accordion-button {
+  font-size: 14px;
+}
+
+.accordion-button {
+  font-weight: 600;
+  font-family: "Noto Sans Display";
+}

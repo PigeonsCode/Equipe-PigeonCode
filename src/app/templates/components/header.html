@@ -6,8 +6,8 @@
     <ul class="navbar navbar-nav">
       <li class="nav-item">
         <a
-          href="{{ url_for('homepage') }}"
-          class="nav-link d-flex align-items-center custom-heading justify-content-center gap-1 {% if request.path != '/login-adm'%}active{% endif %}"
+          href="{{ url_for('scrum') }}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm'%}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-book"></i> Treinamentos</a
         >
@@ -15,7 +15,7 @@
       <li class="nav-item">
         <a
           href="{{ url_for('loginADM') }}"
-          class="nav-link d-flex align-items-center custom-heading justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-user"></i> Acesso ao ADM</a
         >
