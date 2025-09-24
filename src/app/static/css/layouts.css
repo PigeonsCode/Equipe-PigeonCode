@@ -1,0 +1,82 @@
+.homepage-body {
+  background: linear-gradient(
+    180deg,
+    #fdfeff 11.16%,
+    #d3e6ff 88.84%
+  ) !important;
+}
+
+.section-cta,
+.section-docs,
+.section-forms {
+  width: 80%;
+  margin: 0 auto;
+  height: 70vh;
+}
+
+.section-cta img {
+  height: 12rem;
+  width: auto;
+}
+
+.slogan-container {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-gray-2);
+}
+
+.slogan-container i {
+  font-size: 3rem;
+  color: var(--bs-primary);
+}
+
+.section-cta p {
+  width: 60%;
+  text-align: center;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Section Docs */
+
+.section-docs {
+  height: 60vh;
+}
+
+.section-docs .info-container {
+  text-align: center;
+}
+
+/* Section Forms */
+
+.section-forms {
+  width: 70%;
+  margin-bottom: 10rem;
+  padding-top: 5rem;
+}
+
+.section-forms img {
+  height: 80%;
+}
+
+.info-container {
+  width: 60%;
+}
+
+.info-container span {
+  font-style: italic;
+  color: #99a4b9;
+  font-weight: 600;
+}
+
+.info-container h3 {
+  margin-bottom: 2.5rem;
+  color: var(--dark-gray-2);
+}
+
+.info-container p {
+  width: 100%;
+  font-size: 18px;
+  color: #6b7280;
+  font-weight: 600;
+}

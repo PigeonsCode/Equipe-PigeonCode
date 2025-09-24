@@ -30,6 +30,7 @@
       href="{{ url_for('static', filename='css/main.css')}}"
     />
   </head>
+  {% block body %}
   <body>
     {% include "components/header.html" %} {% block fullpage %}
     <main class="content p-4 mt-5 row gx-5">
@@ -61,4 +62,5 @@
     </main>
     {% endblock %} {% include "components/footer.html" %}
   </body>
+  {% endblock %}
 </html>
