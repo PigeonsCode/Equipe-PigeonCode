@@ -1,4 +1,9 @@
 {% extends "page-template.html" %} {% block body %}
+<link
+  rel="shortcut icon"
+  href="{{ url_for('static', filename='images/loop-icon.ico') }}"
+  type="image/x-icon"
+/>
 <body class="homepage-body">
   {% include "components/header.html" %}
   <main class="mt-5">
