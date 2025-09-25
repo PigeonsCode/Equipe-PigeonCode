@@ -98,3 +98,8 @@ def burnDownChart():
 @app.route("/burn-up-chart")
 def burnUpChart():
     return render_template("/paginas-treinamento/burnup.html", page_url="burnUpChart")
+
+# Rota de visualização de template
+@app.route("/template")
+def template():
+    return render_template("/paginas-treinamento/1-TEMPLATE.html", page_url="template")

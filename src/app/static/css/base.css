@@ -12,9 +12,20 @@ body {
 
 .content {
   width: 98%;
-  height: 500vh; /* O conteúdo tem q ser maior do que o tamanho que a sidebar ocupa, valor para teste apenas */
 }
 
 ::selection {
   background-color: #5266ec47;
+}
+
+.text-darkest-gray {
+  color: var(--dark-gray);
+}
+
+.text-dark-gray {
+  color: var(--dark-gray-2);
+}
+
+.text-light-gray {
+  color: var(--light-gray);
 }

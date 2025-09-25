@@ -1,4 +1,8 @@
 navigation_items = [
+    {
+    "topic": { "name": "Template de Conteúdo", "solo_item": True },
+    "subtopic": [{"endpoint": "template", "sub_navigation": ["Texto simples", "Conteúdo Listado - ex1", "Conteúdo Listado - ex2", "Conteúdo Listado - ex3", "Imagens"]}],
+  },
   {
     "topic": { "name": "Visão Geral", "solo_item": False },
     "subtopic": [

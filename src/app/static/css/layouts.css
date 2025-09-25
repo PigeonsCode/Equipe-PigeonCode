@@ -33,7 +33,7 @@
 .section-cta p {
   width: 60%;
   text-align: center;
-  color: #6b7280;
+  color: var(--light-gray);
   font-weight: 600;
 }
 
@@ -77,6 +77,21 @@
 .info-container p {
   width: 100%;
   font-size: 18px;
-  color: #6b7280;
+  color: var(--light-gray);
   font-weight: 600;
+}
+
+/* Section Conteúdo do Site */
+.divider {
+  position: relative;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.divider::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  background-color: red;
 }

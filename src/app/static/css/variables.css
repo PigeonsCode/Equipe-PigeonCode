@@ -4,6 +4,7 @@
   --bs-secondary-rgb: 162, 159, 174;
   --dark-gray: #212529;
   --dark-gray-2: #334155;
+  --light-gray: #6b7280;
   --secondary-color: #a29fae;
   --secondary-color-darker: #7f7e81;
   --border-color: #dee2e6;
@@ -40,4 +41,14 @@
 .accordion-button {
   font-weight: 600;
   font-family: "Noto Sans Display";
+}
+
+.custom-list li {
+  background-color: var(--body-background) !important;
+}
+
+.list-group-bullet li::before {
+  content: "•";
+  padding-right: 0.5rem;
+  color: var(--dark-gray);
 }
