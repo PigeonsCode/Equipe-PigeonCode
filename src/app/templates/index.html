@@ -1,11 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API 1º Semestre</title>
-</head>
-<body>
-    <p>Teste</p>
+{% extends "page-template.html" %} {% block body %}
+<body class="homepage-body">
+  {% include "components/header.html" %}
+  <main class="mt-5">
+    <section
+      class="section-cta d-flex flex-column align-items-center justify-content-center"
+    >
+      <img
+        src="{{ url_for('static', filename='images/logo-devloop.svg') }}"
+        alt="Logo do DevLoop"
+      />
+      <div
+        class="slogan-container d-flex align-items-center justify-content-center gap-2 mb-3"
+      >
+        <span>Aprender</span>
+        <i class="bx bx-chevrons-right"></i>
+        <span>Avaliar</span>
+        <i class="bx bx-chevrons-right"></i>
+        <span>Revisar</span>
+      </div>
+      <p>
+        Expondo de forma didática o funcionamento da metodologia SCRUM,
+        formulários que permitem os membros de equipe DEV a relatar suas
+        atividades, e relatórios para o gerenciamento e administração pelo
+        responsável da equipe.
+      </p>
+      <div class="buttons-container d-flex gap-5 mt-5">
+        <a href="{{url_for('scrum')}}" class="btn btn-primary"
+          >Começar a aprender</a
+        >
+        <a href="{{url_for('loginADM')}}" class="btn btn-outline-secondary"
+          >Gerenciar Formulários</a
+        >
+      </div>
+    </section>
+    <section
+      class="section-docs d-flex flex-column align-items-center justify-content-center"
+    >
+      <div class="info-container">
+        <span>Treinamento de Funcionários</span>
+        <h3 class="fw-bold">Documentação e Aprendizado</h3>
+        <p>
+          Consistindo em Explicações e Exemplos, a documentação apresenta
+          ensinamentos dos princípios da Metodologia SCRUM. Dando seu inicio do
+          básico para o entendimento geral de todos os leitores, independente do
+          seu nível de conhecimento anterior.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="section-forms d-flex align-items-center justify-content-center gap-5"
+    >
+      <div class="info-container d-flex flex-column">
+        <span>Gestão de Processos</span>
+        <h3 class="fw-bold">Formulários e Relatórios</h3>
+        <p class="p-homepage">
+          Consistindo em Explicações e Exemplos, a documentação apresenta
+          ensinamentos dos princípios da Metodologia SCRUM. Dando seu inicio do
+          básico para o entendimento geral de todos os leitores, independente do
+          seu nível de conhecimento anterior.
+        </p>
+      </div>
+      <img
+        src="{{url_for('static', filename='images/forms-example.png')}}"
+        alt=""
+      />
+    </section>
+  </main>
 </body>
-</html>
+{% include "components/footer.html" %} {% endblock %}

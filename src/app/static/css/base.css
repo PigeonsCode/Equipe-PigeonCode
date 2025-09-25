@@ -1,0 +1,31 @@
+body {
+  min-height: 100vh;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  background-color: var(--body-background);
+  font-family: "Nunito Sans";
+}
+
+.content {
+  width: 98%;
+}
+
+::selection {
+  background-color: #5266ec47;
+}
+
+.text-darkest-gray {
+  color: var(--dark-gray);
+}
+
+.text-dark-gray {
+  color: var(--dark-gray-2);
+}
+
+.text-light-gray {
+  color: var(--light-gray);
+}

@@ -1,0 +1,14 @@
+<h6 class="scrollspy-header mb-3 text-secondary text-uppercase d-flex align-items-center justify-content-start gap-1"><i class='bx  bx-align-left'  ></i>  Nesta Página</h6>
+
+<ul class="navbar-nav" id="side-scrollspy">
+  {% for nav_item in navigation %} {% for sub_nav_item in nav_item.subtopic %}
+  {% if (sub_nav_item.endpoint == 'homepage' and request.path == '/') 
+            or (sub_nav_item.endpoint != 'homepage' and request.path == '/' + sub_nav_item.endpoint|kebabify) %} {% for page_nav
+  in sub_nav_item.sub_navigation %}
+  <t-scrollspy-link
+    title="{{page_nav}}"
+    id="#scrollspy-item-{{loop.index}}"
+  ></t-scrollspy-link>
+  {%endfor%} {% endif %} {% endfor %} {% endfor %}
+  </div>
+</ul>

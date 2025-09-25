@@ -1,0 +1,213 @@
+{% extends "page-template.html" %} {%block content %}
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <!-- Esse h1 é o título que está no subtópico da sidebar. Ex: Product Owner, Scrum Master, Dailly Scrum -->
+  <h1 class="h2 text-darkest-gray mb-5">Template de Conteúdo</h1>
+  <!-- Aviso: as classes text-darkest-gray, text-dark, divider e custom-list não são do bootstrap, eu que criei para o projeto -->
+
+  <section class="section-content" id="scrollspy-item-1">
+    <h2 class="text-darkest-gray h3 mb-4">Texto simples</h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo animi
+        tempora veritatis repellendus ipsam similique dolor recusandae, omnis,
+        repellat doloremque cupiditate ratione natus sapiente minus eius
+        aspernatur hic neque nostrum molestias facilis. Odit corrupti deleniti
+        repudiandae exercitationem voluptate facere vel ducimus eum, atque odio!
+        Excepturi, facere! Veritatis, nemo quidem! Hic.
+      </p>
+      <p class="text-dark-gray">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio iure
+        repellat, aut non ipsam saepe, veritatis minima incidunt fugiat vitae
+        officiis! Praesentium, accusantium perferendis nostrum necessitatibus
+        atque voluptate repellendus rem?
+      </p>
+      <!-- Caso tenham palavras no texto que devem levar p outra página -->
+      <p class="text-dark-gray">
+        Lorem ipsum dolor sit amet
+        <a href="{{url_for('productOwner')}}">Porduct Owner</a> adipisicing
+        elit. Vero recusandae optio officiis a sapiente, architecto nesciunt
+        dignissimos ullam inventore fugiat eligendi dolores aut, quae tenetur?
+        Beatae, ipsa repellat. Provident, ducimus.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="scrollspy-item-2">
+    <h2 class="text-darkest-gray h3 mb-4">Conteúdo Listado - Exemplo 1</h2>
+    <p class="text-dark-gray">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni dolore sed
+      vel aperiam. Nisi doloribus in corporis temporibus perferendis nihil?
+    </p>
+
+    <ol class="list-group list-group-numbered list-group-flush custom-list">
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">O primeiro item</b> é importante pois: Lorem,
+        ipsum dolor sit amet consectetur adipisicing elit. Ipsa, assumenda amet
+        doloribus error qui non!
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">O segundo item</b> da lista é importante,
+        pois: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Cupiditate tempore corrupti consequuntur pariatur.
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">O terceiro item da lista</b> é importante
+        pois: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
+        eos corporis maxime. Veniam, optio nesciunt!
+      </li>
+    </ol>
+  </section>
+
+  <hr class="divider" />
+
+  <section>
+    <h2 class="text-darkest-gray h3 mb-4" id="scrollspy-item-3">
+      Conteúdo Listado - Exemplo 2
+    </h2>
+    <p class="text-dark-gray">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni dolore sed
+      vel aperiam. Nisi doloribus in corporis temporibus perferendis nihil?
+    </p>
+
+    <ul class="list-group list-group-flush custom-list">
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Primeiro item:</b> é importante pois: Lorem,
+        ipsum dolor sit amet consectetur adipisicing elit. Ipsa, assumenda amet
+        doloribus error qui non!
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Segundo item:</b> da lista é importante, pois:
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+        tempore corrupti consequuntur pariatur.
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Terceiro item:</b> é importante pois: Lorem,
+        ipsum dolor sit amet consectetur adipisicing elit. Commodi eos corporis
+        maxime. Veniam, optio nesciunt!
+      </li>
+    </ul>
+
+    <!-- Criei o outro exemplo aqui dentro dessa section mesmo p mostrar q vcs n precisam colocar o id especificamente na section (caso tenha alguns subtitulos dentro da section, como nessa, da p colocar o id nos titulos)  -->
+    <h5 class="text-dark-gray mt-4 mb-4" id="scrollspy-item-4">
+      Conteúdo Listado - Exemplo 3
+    </h5>
+
+    <ul class="list-group list-group-flush list-group-bullet custom-list">
+      <li class="list-group-item text-muted pt-3 pb-3">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio rem
+        nesciunt facilis nemo, alias cumque ex, dicta error officia quod eaque
+        vitae commodi ut consequatur.
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+        perferendis fugiat eius ullam, ratione est! Illum eveniet esse
+        consequuntur officiis!
+      </li>
+      <!-- Se quiser dar enfase em algum item, é só usar a tag b juntamente com a classe especidifacada -->
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Item: </b>Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Fugiat qui laboriosam hic! Voluptas,
+        recusandae sapiente animi similique dolor quae ab voluptates ad ipsum
+        praesentium non.
+      </li>
+    </ul>
+
+    <div class="container border rounded p-3 mt-5">
+      <small>
+        <b>Importante saber:</b>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt optio
+        voluptas facere, tempore, nisi veniam dignissimos blanditiis, rem id
+        pariatur cumque numquam culpa. Dignissimos ab voluptates iure, unde
+        laboriosam praesentium?
+      </small>
+    </div>
+
+    <!-- Podem colocar basicamente qualquer coisa dentro desse "card" (a div com class container) pra poder explicar alguma coisa ou dar alguma dica referente algum assunto -->
+
+    <div class="container border rounded p-3 mt-5">
+      <div class="d-flex flex-column gap-2">
+        <small class="fw-bold">O que é importante saber sobre esse item?</small>
+        <small
+          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
+          magni non sed veniam. Quas, quod. Ullam quam voluptate modi
+          consequuntur.</small
+        >
+
+        <ul class="list-group list-group-flush list-group-bullet custom-list">
+          <li class="list-group-item text-muted pt-3 pb-3 small">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
+            rem nesciunt facilis nemo, alias cumque ex, dicta error officia quod
+            eaque vitae commodi ut consequatur.
+          </li>
+          <li class="list-group-item text-muted pt-3 pb-3 small">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+            perferendis fugiat eius ullam, ratione est! Illum eveniet esse
+            consequuntur officiis!
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="scrollspy-item-5">
+    <h2 class="text-darkest-gray h3 mb-4">Estilo para imagens</h2>
+
+    <figure class="mb-5">
+      <img
+        src="{{url_for('static', filename='images/imagem-exemplo.jpg')}}"
+        class="img-fluid rounded"
+        alt="imagem de exemplo"
+      />
+      <!-- Caso seja necessário colocar fontes para imagens: -->
+      <figcaption class="text-center small mt-3">
+        Fonte: Foto de
+        <a
+          href="https://unsplash.com/pt-br/@m15ky?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+          >Mike Tinnion</a
+        >
+        na
+        <a
+          href="https://unsplash.com/pt-br/fotografias/caneta-retratil-preta-e-prateada-no-livro-em-branco-3ym6i13Y9LU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+          >Unsplash</a
+        >
+      </figcaption>
+      <!-- É importante q vcs sempre preencham esse "alt" dentro da tag de imagem -->
+    </figure>
+
+    <!-- A classe w-50 é para definir o tamanho, sendo q o w é abreviação para width, as classes mx-auto e d-block são para alinhar ela ao centro -->
+
+    <figure class="w-50 mx-auto d-block mb-5">
+      <img
+        src="{{url_for('static', filename='images/imagem-exemplo.jpg')}}"
+        class="img-fluid rounded"
+        alt="imagem de exemplo"
+      />
+    </figure>
+
+    <!-- float-end é outra classe para mexer no alinhamento da imagem -->
+
+    <figure class="w-25 float-end mb-5">
+      <img
+        src="{{url_for('static', filename='images/imagem-exemplo.jpg')}}"
+        class="img-fluid rounded"
+        alt="imagem de exemplo"
+      />
+    </figure>
+  </section>
+
+  <!-- Se tiverem ideias para adicionar conteúdos de outra forma, me avisem, que ai eu posso auxiliar em como chegar no resultado final de suas ideias -->
+  <!-- Sugestão: nos tópicos product backlog e sprint backlog aonde tem tabelas, procurar por "tables" no bootstrap e fazer uma tabela por marcação no html ao invés de importar imagem. Se algm for fazer isso, só me mandar mensagem que eu auxilio -->
+</div>
+
+{% endblock %}

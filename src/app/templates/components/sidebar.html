@@ -1,0 +1,24 @@
+<div class="accordion sidebar" id="accordionsSidebar">
+  {% for nav_item in navigation %} {% if not nav_item.topic.solo_item %}
+  <t-accordion
+    title="{{nav_item.topic.name}}"
+    accordionParent="accordionsSidebar"
+    initialState="{% if nav_item.nav_open %}true{% else %}false{% endif %}"
+  >
+    {% for sub_nav_item in nav_item.subtopic %}
+    <ul class="navbar-nav">
+      <t-menu-link
+        title="{{sub_nav_item.name}}"
+        linkFunc="{{url_for(sub_nav_item.endpoint)}}"
+        linkUrl="{{ sub_nav_item.endpoint|kebabify }}"
+      ></t-menu-link>
+    </ul>
+    {% endfor %}
+  </t-accordion>
+  {% else %}
+    <t-accordion accordionParent="accordionsSidebar" soloLink="{{url_for(nav_item.subtopic[0].endpoint)}}" title="{{nav_item.topic.name}}" isSolo={{nav_item.topic.solo_item}}></t-accordion>
+  </div>
+
+  {% endif %} {% endfor %}
+ 
+</div>
