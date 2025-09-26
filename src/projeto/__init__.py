@@ -3,15 +3,17 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy #importação do banco de dados
 from flask_login import LoginManager
 from flask import url_for, request
+from flask_bcrypt import Bcrypt
 
 
 app=Flask(__name__)
+
+app.secret_key="f136993e7607606083988b249a75fa2f"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
 app.config["SECRET_KEY"] = "ba7783e47efacd4b8c6b40475222bbac"
 database = SQLAlchemy(app)
 
-
-
+bcrypt = Bcrypt(app)
 
 from projeto.navigation import navigation_items
 
