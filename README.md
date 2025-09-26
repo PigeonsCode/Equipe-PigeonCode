@@ -73,10 +73,15 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 <h4 align="center">
  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" >
- <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+ <img src="https://img.shields.io/badge/CSS3-blue?style=for-the-badge&logo=css&logoColor=white&labelColor=%23663399&color=%23663399" alt-"CSS3" >
+ <a href="https://flask.palletsprojects.com/en/stable"><img src="https://img.shields.io/badge/FLASK-FLASK?style=for-the-badge&logo=flask&logoColor=white&labelColor=%233BABC3&color=%233BABC3"/></a>
+ <a href="https://www.atlassian.com/software/jira"><img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white"/></a>
  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
+ <a href="https://astah.net"><img src="https://img.shields.io/badge/ASTAH-%23004088?style=for-the-badge&logoColor=white"/></a>
  <a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></a>
  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
+ <a href="https://sqlite.org/"><img src="https://img.shields.io/badge/SQLITE-blue?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=%23003B57&color=%23003B57"/></a>
+ <a href="https://getbootstrap.com"><img src="https://img.shields.io/badge/BOOTSTRAP-blue?style=for-the-badge&logo=bootstrap&logoColor=white&labelColor=%237952B3&color=%237952B3"/></a>
 </h4>
 
 <br>
