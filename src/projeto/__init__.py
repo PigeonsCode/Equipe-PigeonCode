@@ -1,11 +1,19 @@
 import re
 from flask import Flask
-app=Flask(__name__)
-
-
-from app import routes
+from flask_sqlalchemy import SQLAlchemy #importação do banco de dados
+from flask_login import LoginManager
 from flask import url_for, request
-from app.navigation import navigation_items
+
+
+app=Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
+app.config["SECRET_KEY"] = "ba7783e47efacd4b8c6b40475222bbac"
+database = SQLAlchemy(app)
+
+
+
+
+from projeto.navigation import navigation_items
 
 #filters
 def kebab_case(value):
@@ -42,3 +50,6 @@ def inject_navigation():
         nav_copy.append({**nav, 'nav_open': is_nav_open(nav, request.path), 'show_aside': show_aside(nav, request.path)})
     return dict(navigation=nav_copy)
 
+
+
+from projeto import routes, models

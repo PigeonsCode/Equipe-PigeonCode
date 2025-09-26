@@ -1,14 +1,24 @@
-from flask import render_template,url_for
-from app.navigation import navigation_items
-from app import app
+from flask import Flask,render_template,url_for,redirect
+from flask_login import login_required,login_user,logout_user,current_user
+from projeto.navigation import navigation_items
+from projeto import app
+from projeto.forms import FormLoginAdm
+from projeto.models import Adm_User
 
 @app.route("/")
 def homepage():
     return render_template("index.html", navigation=navigation_items, page_url="homepage")
 
-@app.route("/login-adm")
+@app.route("/login-adm", methods = ["GET", "POST"])
 def loginADM():
-    return render_template("login-adm.html")
+    form_login_adm = FormLoginAdm()
+    if form_login_adm.validate_on_submit():
+         user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
+         user_login_password_attempt = Adm_User.query.filter_by(password_db = form_login_adm.password_adm.data).first()
+         if  user_login_attempt and user_login_password_attempt:
+            return redirect (url_for("homepage")) #criar pagin de acesso restrito com o nome AcessoADM, usar @login_required
+
+    return render_template("login-adm.html", form = form_login_adm)
 
 @app.route("/formularios")
 def forms():

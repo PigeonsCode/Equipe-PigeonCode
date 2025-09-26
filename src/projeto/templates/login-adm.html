@@ -1,0 +1,19 @@
+{% extends "page-template.html" %} {% block fullpage %}
+<main class="d-flex align-items-center justify-content-center mt-5">
+  Login de Administrador
+  <div class="container">
+    <form method="POST">
+      {{form.csrf_token}}
+      
+    {{form.username_adm.label()}}
+    {{form.username_adm()}}
+
+    {{form.password_adm.label()}}
+    {{form.password_adm()}}
+
+    {{form.submit_button()}}
+
+    </form>
+  </div>
+</main>
+{% endblock %}
