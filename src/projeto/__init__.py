@@ -11,9 +11,11 @@ app=Flask(__name__)
 app.secret_key="f136993e7607606083988b249a75fa2f"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
 app.config["SECRET_KEY"] = "ba7783e47efacd4b8c6b40475222bbac"
-database = SQLAlchemy(app)
 
+database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+Login_manager= LoginManager(app)
+Login_manager.login_view="loginADM"
 
 from projeto.navigation import navigation_items
 

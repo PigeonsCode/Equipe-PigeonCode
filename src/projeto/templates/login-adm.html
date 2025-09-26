@@ -3,8 +3,9 @@
   Login de Administrador
   <div class="container">
     <form method="POST">
-      {{form.csrf_token}}
-      
+    {{form.csrf_token}}
+    {{form.hidden_tag() }}
+
     {{form.username_adm.label()}}
     {{form.username_adm()}}
 

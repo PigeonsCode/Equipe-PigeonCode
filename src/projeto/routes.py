@@ -2,7 +2,7 @@ import bcrypt
 from projeto import database,app,bcrypt
 from projeto.models import Adm_User
 from flask import Flask,render_template,url_for,redirect
-from flask_login import login_required,login_user,logout_user,current_user
+from flask_login import login_required,login_user,logout_user,current_user,login_manager
 from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm
@@ -18,7 +18,8 @@ def loginADM():
     if form_login_adm.validate_on_submit():
          user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
          if  user_login_attempt and bcrypt.check_password_hash(user_login_attempt.password_db , form_login_adm.password_adm.data) :
-            return redirect (url_for("homepage")) #criar pagin de acesso restrito com o nome AcessoADM, usar @login_required
+            login_user(user_login_attempt,remember=True)
+            return redirect (url_for("area_restrita")) #criar pagin de acesso restrito com o nome AcessoADM, usar @login_required
 
     return render_template("login-adm.html", form = form_login_adm)
 
@@ -29,6 +30,10 @@ def forms():
 # Páginas de conteúdo
 
 #Visão Geral e papéis
+@app.route("/area-restrita")
+@login_required
+def area_restrita():
+    return render_template("/area-restrita.html")
 
 @app.route("/scrum")
 def scrum():
