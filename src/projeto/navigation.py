@@ -24,7 +24,7 @@ navigation_items = [
         "endpoint": "principiosAgeis",
         "sub_navigation": None,
       },
-      
+     
     ],
     "initialState": "true"
   },
@@ -126,6 +126,6 @@ navigation_items = [
       },
     ],
   },
-  
+
   
 ]
