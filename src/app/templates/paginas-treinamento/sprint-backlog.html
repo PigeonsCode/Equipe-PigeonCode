@@ -1,3 +1,124 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>Sprint Backlog</h2>
+<h1 class="h2 text-darkest-gray mb-5">Sprint Backlog</h1>
+
+<section>
+  <div class="d-flex flex-column gap-1">
+    <p class="text-dark-gray">
+      Além de, juntamente com o Product Owner, selecionar os itens e definir uma
+      meta, o Time de Desenvolvimento também cria um plano de como o que foi
+      selecionado será desenvolvido. Esse plano é geralmente expresso por
+      tarefas a serem realizadas durante o Sprint. O conjunto de itens
+      selecionados e seu respectivo plano é chamado de Sprint Backlog e é
+      geralmente representado na forma de um Quadro de Tarefas.
+    </p>
+
+    <figure class="w-50 mx-auto d-block mb-5">
+      <img
+        src="{{url_for('static', filename='images/sprint-backlog.png')}}"
+        class="img-fluid rounded"
+        alt="imagem ilustrativa de um Sprint Backlog"
+      />
+    </figure>
+
+    <p class="text-dark-gray">
+      Segue abaixo uma demonstração de como montar uma tabela de Sprint Backlog:
+    </p>
+
+    <table class="table mt-3 mb-1 border border-1 mx-auto d-block">
+      <thead>
+        <tr>
+          <th scope="col text-darkest-gray">ID</th>
+          <th scope="col text-darkest-gray">User Story</th>
+          <th scope="col text-darkest-gray">Tarefas</th>
+          <th scope="col text-darkest-gray">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row text-darkest-gray">1</th>
+          <td class="text-dark-gray">
+            Como usuário, quero criar uma conta com e-mail e senha, para acessar
+            o app.
+          </td>
+          <td class="text-dark-gray">
+            <ul
+              class="list-group list-group-flush list-group-bullet custom-list sprint-backlog-list"
+            >
+              <li class="list-group-item text-dark-gray">
+                Criar tela de cadastro;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Implementar validação de email/senha;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Criar API de cadastro no backend;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Salvar dados no banco de dados.
+              </li>
+            </ul>
+          </td>
+          <td class="text-dark-gray">Feito</td>
+        </tr>
+        <tr>
+          <th scope="row text-darkest-gray">2</th>
+          <td class="text-dark-gray">
+            Como usuário, quero pesquisar livros por título ou autor, para
+            encontrar o que desejo.
+          </td>
+          <td class="text-dark-gray">
+            <ul
+              class="list-group list-group-flush list-group-bullet custom-list sprint-backlog-list"
+            >
+              <li class="list-group-item text-dark-gray">
+                Criar tela de busca;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Implementar barra de pesquisa;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Criar API de busca no backend;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Exibir resultados em lista.
+              </li>
+            </ul>
+          </td>
+          <td class="text-dark-gray">Fazendo</td>
+        </tr>
+        <tr>
+          <th scope="row text-darkest-gray">3</th>
+          <td class="text-dark-gray">
+            Como administrador, quero cadastrar novos livros no sistema, para
+            manter o acervo atualizado.
+          </td>
+          <td class="text-dark-gray">
+            <ul
+              class="list-group list-group-flush list-group-bullet custom-list sprint-backlog-list"
+            >
+              <li class="list-group-item text-dark-gray">
+                Criar tela de cadastro de livro;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Implementar formulário (título, autor, capa, gênero);
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Criar API de cadastro de livros;
+              </li>
+              <li class="list-group-item text-dark-gray">
+                Salvar informações no banco de dados.
+              </li>
+            </ul>
+          </td>
+          <td class="text-dark-gray">A fazer</td>
+        </tr>
+      </tbody>
+    </table>
+    <small class="text-center mb-5 text-light-gray"
+      >Exemplo de um Sprint Backlog para um aplicativo de Biblioteca
+      Online</small
+    >
+  </div>
+</section>
+
 {% endblock %}

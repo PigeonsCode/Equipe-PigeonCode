@@ -97,3 +97,13 @@ aside {
   font-size: 13px;
   color: var(--dark-gray-2) !important;
 }
+
+/* Sprint Backlog */
+.sprint-backlog-list li {
+  background-color: #fff !important;
+  border: none;
+}
+
+.sprint-backlog-table {
+  width: 90%;
+}
