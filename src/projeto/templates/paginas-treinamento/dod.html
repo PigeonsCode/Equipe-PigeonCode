@@ -1,3 +1,47 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>Definition of Done</h2>
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <!-- Esse h1 é o título que está no subtópico da sidebar. Ex: Product Owner, Scrum Master, Dailly Scrum -->
+  <h1 class="h2 text-darkest-gray mb-5">Definiton of Done</h1>
+  <!-- Aviso: as classes text-darkest-gray, text-dark, divider e custom-list não são do bootstrap, eu que criei para o projeto -->
+
+  
+
+
+  <section id="scrollspy-item-2">
+    <p class="text-dark-gray">
+    A Definição de Pronto é um acordo entre o <a href="{{url_for('productOwner')}}">Product Owner</a> e o <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> que estabelece os critérios mínimos para que um item do 
+backlog ou um incremento do produto seja considerado "pronto". Isso garante que 
+tudo o que foi desenvolvido durante o Sprint está em condições de ser entregue, 
+com qualidade e funcionalidade adequadas. Sem uma DoD clara, corre-se o risco 
+de entregar trabalho incompleto ou com defeitos.
+    </p>
+   
+
+
+    <figure class="w-50 mx-auto d-block">
+      <img
+        src="{{url_for('static', filename='images/DoD.jpg')}}"
+        class="img-fluid rounded"
+        alt="imagem de exemplo"
+      />
+      <!-- Caso seja necessário colocar fontes para imagens: -->
+     
+      <!-- É importante q vcs sempre preencham esse "alt" dentro da tag de imagem -->
+    </figure>
+
+    <!-- A classe w-50 é para definir o tamanho, sendo q o w é abreviação para width, as classes mx-auto e d-block são para alinhar ela ao centro -->
+
+    
+  </section>
+
+https://media.licdn.com/dms/image/v2/C4D12AQHsv5JD5VUhYA/article-inline_image-shrink_400_744/article-inline_image-shrink_400_744/0/1643124096638?e=2147483647&v=beta&t=lppAPH0aqNLulsAhdYnWO9CjFEOIJMXZ3C3mfck9zDo
+   
 {% endblock %}
+
