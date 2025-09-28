@@ -112,7 +112,11 @@ navigation_items = [
       {
         "name": "Story Point",
         "endpoint": "storyPoint",
-        "sub_navigation": None,
+        "sub_navigation":["Story Point",
+                          "Para que serve estimar?",
+                          "Velocidade",
+                          "Impedimento",
+                          ],
       },
       {
         "name": "BurnDown chart",

@@ -1,3 +1,35 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>BurnDow Chart</h1>
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+<section class="section-content">
+  <h2 class="h2 text-darkest-gray mb-5">Burndown Chart</h2>
+  <div class="d-flex flex-column gap-1">
+    <p class="text-darkest-gray">O Burndown é um gráfico mantido e utilizado pelo<a href="{{url_for('devTeam')}}"> Time de Desenvolvimento</a> para monitorar seu progresso no desenvolvimento em direção 
+    ao final de um <a href="{{url_for('sprints')}}">Sprint</a>. Ele mostra o trabalho restante estimado para um Sprint em 
+    cada dia de trabalho para o desenvolvimento do produto no Sprint. Embora não 
+    seja parte integrante do framework Scrum, o Gráfico de Sprint Burndown é a 
+    maneira mais rápida e prática de se visualizar o andamento do Sprint.
+    </p>
+    <p class="text-darkest-gray">
+     O eixo vertical do gráfico representa o trabalho restante, geralmente
+    Há também uma linha ideal, opcional, que serve como guia visual para o
+    comportamento do Gráfico de Burndown ao longo do Sprint. A figura mostra um
+    exemplo de gráfico Burndown ao final de um Sprint bem sucedido.
+    </p>
+    <figure class="text-center mb-5">
+      <img
+        src="{{url_for('static', filename='images/Burndown Chart Exemplo.png')}}"
+        class="img-fluid rounded"
+        alt="Burndown Chart Exemplo"
+      />
+    </figure>
+   </div>
+   </section>
+  
 {% endblock %}

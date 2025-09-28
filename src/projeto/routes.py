@@ -34,7 +34,7 @@ def forms():
 @login_required
 def area_restrita():
     return render_template("/area-restrita.html")
-  
+
 @app.route("/scrum")
 def scrum():
     return render_template("/paginas-treinamento/scrum.html", page_url="scrum", first_item = True)

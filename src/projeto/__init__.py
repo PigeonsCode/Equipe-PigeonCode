@@ -54,5 +54,4 @@ def inject_navigation():
         nav_copy.append({**nav, 'nav_open': is_nav_open(nav, request.path), 'show_aside': show_aside(nav, request.path)})
     return dict(navigation=nav_copy)
 
-
 from projeto import routes, models
