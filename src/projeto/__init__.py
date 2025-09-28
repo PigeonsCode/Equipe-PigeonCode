@@ -1,3 +1,5 @@
+import re
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy #importação do banco de dados
 from flask_login import LoginManager
 from flask import url_for, request
