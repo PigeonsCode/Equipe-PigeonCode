@@ -41,7 +41,7 @@
     <main class="content p-4 mt-5 row gx-5">
       <aside class="col-md-3">{% include "components/sidebar.html" %}</aside>
       <div
-        class="{% if navigation | selectattr('show_aside') | list %}col-md-7{% else %}col{% endif %}"
+        class="{% if navigation | selectattr('show_aside') | list %}col-md-7{% else %}col-md-8{% endif %}"
       >
         {% if not first_item %}
         <nav class="d-flex mb-5 custom-navbar">

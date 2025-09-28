@@ -55,5 +55,4 @@ def inject_navigation():
     return dict(navigation=nav_copy)
 
 
-
 from projeto import routes, models
