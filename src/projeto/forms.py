@@ -7,7 +7,7 @@ from projeto.models import Adm_User
 
 
 class FormLoginAdm(FlaskForm):
-    username_adm = StringField("Usuário",validators=[DataRequired()])
+    username_adm = StringField("Nome de Usuário",validators=[DataRequired()])
     password_adm= PasswordField("Senha", validators=[DataRequired()])
-    submit_button =  SubmitField("Fazer login")
+    submit_button =  SubmitField("Entrar")
 #validação dos dados inseridos pelo usuário

@@ -108,3 +108,7 @@ aside {
   width: 90%;
 }
 
+/* Login Container */
+.login-container {
+  width: 55vh;
+}
