@@ -3,26 +3,25 @@
 
 ## 🎯 Objetivo do MVP
 - Qual problema resolve?
-  O DevLOOP expõe de forma didática o funcionamento da metodologia SCRUM, formulários que permitem os membros de equipe DEV a relatar suas atividades, e relatórios para o gerenciamento e administração pelo responsável da equipe.
+    > O DevLOOP expõe de forma didática o funcionamento da metodologia SCRUM, formulários que permitem os membros de equipe DEV a relatar suas atividades, e relatórios para o gerenciamento e administração pelo responsável da equipe.
 
 - Qual hipótese será validada?
-  ?
+    > O produto em formato de site consiste em validar as implementações feitas em conjunto com suas funções.
 
 - Qual valor será entregue ao usuário final?
-  Será o acesso a documentação e exemplos para o treinamento da equipe DEV, em conjunto o acesso a area do Administrador disponivel.
+    > Será o acesso a documentação e exemplos para o treinamento da equipe DEV, em conjunto o acesso a area do Administrador disponivel.
 
 ---
 
 ## 📝 Descrição da Solução
-> Breve explicação do que será desenvolvido e entregue nesta etapa.
-- Funcionalidades principais incluídas
-  Suas Funcionalidades consiste em uma documentação extensiva sobre o uso e aplicação da metodologia SCRUM, com exemplos práticos para uma claridade ilustrativa auxiliar.
+- Funcionalidades principais incluídas:
+   > Suas Funcionalidades consiste em uma documentação extensiva sobre o uso e aplicação da metodologia SCRUM, com exemplos práticos para uma claridade ilustrativa auxiliar.
 
-- Limitações conhecidas  
-  ?
+- Limitações conhecidas:
+   > O Site se encontra atualmente estático, com seus dados sendo apenas inteiramente a leitura e acesso da documentação, exemplos práticos, e do acesso exclusivo do administrador.
 
-- Escopo reduzido (somente o essencial para validar a ideia)
-  O escopo se inclui apenas o acesso das areas de explicações, exemplos e area do Administrador estarão disponiveis nessa sprint, sem a inclusão de formulários e suas métricas respectivas para o Administrador
+- Escopo reduzido (somente o essencial para validar a ideia):
+   > O escopo se inclui apenas o acesso das areas de explicações, exemplos e area do Administrador estarão disponiveis nessa sprint, sem a inclusão de formulários e suas métricas respectivas para o Administrador
 
 ---
 
@@ -49,39 +48,12 @@
 
 ---
 
-## 📊 Critérios de Aceitação
-- O MVP deve permitir que o usuário [ação principal]  
-  O MVP deve permitir que o usuário acesse a landing page, documentação e explicações sobre a Metodologia SCRUM, e o acesso a Area do administrador.
-
-- O sistema deve registrar [evento importante]
-  O sistema deve registrar os inputs do login e logout do Administrador
-  
-- Métricas coletadas: [exemplo: tempo de resposta, taxa de uso]  
-
----
-
-## 📈 Métricas de Validação
-- Número de usuários que testaram o MVP  
-
-- Feedback qualitativo (positivo/negativo)  
-
-- Indicadores de negócio (exemplo: % de adesão, redução de custo, etc.)  
-
-
----
-
 ## 🚀 Próximos Passos
-- Melhorias planejadas após feedback  
-
-- Ajustes de usabilidade  
-
+- Ajustes de usabilidade:
+   > Nas próximas interações terá a documentação e sua explicação reorganizada para um melhor entendimento geralt
 - Expansão de funcionalidades para próximo incremento  
-
+   > A adição de formulários para o próximo sprint
 ---
 
 ## 📂 Anexos / Evidências
-- Prints de tela  
-
-- Fluxos ou protótipos  
-
 - Vídeo (MVP)  
