@@ -3,9 +3,9 @@ from flask import Flask
 app=Flask(__name__)
 
 
-from app import routes
+from projeto import routes
 from flask import url_for, request
-from app.navigation import navigation_items
+from projeto.navigation import navigation_items
 
 #filters
 def kebab_case(value):

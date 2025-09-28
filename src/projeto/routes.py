@@ -1,6 +1,6 @@
 from flask import render_template,url_for
-from app.navigation import navigation_items
-from app import app
+from projeto.navigation import navigation_items
+from projeto import app
  
 @app.route("/")
 def homepage():
@@ -30,6 +30,10 @@ def manifestoAgil():
 def principiosAgeis():
     return render_template("/paginas-treinamento/principios.html", page_url="principiosAgeis",  first_item = True)
  
+@app.route("/valores")
+def valores():
+    return render_template("/paginas-treinamento/valores.html", page_url="valores")
+
 @app.route("/product-owner")
 def productOwner():
     return render_template("/paginas-treinamento/product-owner.html", page_url="productOwner",  first_item = True)
