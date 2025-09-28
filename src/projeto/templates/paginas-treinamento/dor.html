@@ -1,3 +1,22 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>Definition of Ready</h2>
-{% endblock %}
+
+<h1 class="h2 text-darkest-gray mb-5">Definiton of Ready</h1>
+
+<section id="scrollspy-item-2">
+  <p class="text-dark-gray">
+    A Definição de Preparado é um artefato utilizado para garantir que os itens
+    a serem considerados na reunião de
+    <a href="{{url_for('sprintPlanning')}}">Sprint Planning</a> estejam
+    preparados segundo um critério bem definido. É um acordo formal entre
+    <a href="{{url_for('productOwner')}}">Product Owner</a> e
+    <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> sobre o estado
+    em que um item do Backlog deve estar para estar qualificado para discussão
+    na reunião de Sprint Planning. Ele deve ser detalhado, ter critérios de
+    aceitação claros e estar planejado seu tempo de entrega. Caso um dos itens
+    de alta prioridade não chegue à reunião de Sprint Planning preparado de
+    acordo com a Definição de Preparado, o item será rejeitado pelo Time de
+    Desenvolvimento.
+  </p>
+
+  {% endblock %}
+</section>

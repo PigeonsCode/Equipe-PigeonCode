@@ -1,5 +1,22 @@
 {% extends "page-template.html" %} {% block fullpage %}
-<main class="d-flex align-items-center justify-content-center mt-5">
-  Login de Administrador
+<main class="d-flex align-items-center justify-content-center mt-5 pt-5 h-100">
+  <div
+    class="container d-flex flex-column bg-white p-5 gap-3 rounded-4 border border-1 login-container"
+  >
+    <h5 class="text-primary mb-0">Acesso Restrito a Administradores</h5>
+    <small class="text-light-gray">Preencha os campos para entrar:</small>
+    <form method="POST" class="d-flex flex-column gap-3">
+      {{form.csrf_token}} {{form.hidden_tag() }}
+      <div class="mb-3">
+        {{form.username_adm.label(class="form-label")}}
+        {{form.username_adm(class="form-control")}}
+      </div>
+      <div class="mb-3">
+        {{form.password_adm.label(class="form-label")}}
+        {{form.password_adm(class="form-control")}}
+      </div>
+      {{form.submit_button(class="btn btn-primary")}}
+    </form>
+  </div>
 </main>
 {% endblock %}

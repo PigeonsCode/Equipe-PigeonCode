@@ -1,3 +1,211 @@
-{% extends "page-template.html" %} {% block content %}
-<h2>Princios Ágeis</h2>
+{% extends "page-template.html" %} {%block content %}
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <h1 class="h2 text-darkest-gray mb-5">Princípios Ágeis</h1>
+
+  <section class="section-content" id="scrollspy-item-1">
+    <p class="text-dark-gray">
+      Os doze princípios Ágeis foram cunhados a partir do Manifesto por parte de
+      seus autores e podem ser vistos em seguida, cada um com uma pequena
+      explicação adicional:
+    </p>
+  </section>
+
+  <section id="scrollspy-item-2">
+    <ol class="list-group list-group-numbered list-group-flush custom-list">
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Nossa maior prioridade é satisfazer o cliente por meio da entrega
+          cedo e frequente de software com valor.</b
+        >
+        <p>
+          O foco no desenvolvimento do produto está na satisfação dos clientes.
+          Gera-se, desde cedo e frequentemente, retorno ao investimento dos
+          clientes no projeto a partir da entrega de partes do produto que
+          atendam às suas necessidades. Esse princípio se opõe à prática de se
+          seguir um plano detalhado, sugerindo que a prioridade está em se
+          adaptar e buscar, em cada momento, o que de fato trará valor aos
+          clientes, para entregar-lhes o mais cedo e frequentemente possível.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Mudanças de requisitos são bem-vindas, mesmo em fases tardias do
+          desenvolvimento. Os processos Ágeis utilizam a mudança em favor da
+          vantagem competitiva para o cliente.</b
+        >
+        <p>
+          Aceitar a mudança como natural no processo de desenvolvimento do
+          produto, para melhor atender às necessidades dos clientes. Ao se
+          trabalhar em ciclos curtos de feedback, permite-se aos clientes
+          evoluírem o produto à medida que melhor entendem suas necessidades e
+          adaptarem às mudanças de mercado, tornando-se mais competitivos. Esse
+          princípio se opõe a se tratar o processo de desenvolvimento do produto
+          como previsível, cenário irreal no qual a necessidade de mudança
+          poderia e deveria ser prevenida, já que ela seria considerada
+          indesejada e custosa.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Entregar software em funcionamento com frequência, desde a cada duas
+          semanas até a cada dois meses, com uma preferência por prazos mais
+          curtos.</b
+        >
+        <p>
+          Entregar a seus clientes e usuários, com frequência, partes do produto
+          prontas gera, a cada entrega, retorno ao investimento dos clientes e
+          permite obter-se feedback sobre o que foi produzido. Assim, pode-se
+          adaptar o produto às necessidades dos clientes incrementalmente,
+          reduzindo os riscos do projeto. Esse princípio se opõe a realizar
+          poucas ou, no limite, uma entrega de valor única, apenas ao final do
+          projeto.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >As pessoas do negócio e os desenvolvedores devem trabalhar em
+          conjunto diariamente ao longo do projeto.</b
+        >
+        <p>
+          Pessoas de negócio e desenvolvedores do produto possuem o objetivo
+          comum de garantir a geração de valor para os clientes e, para atingir
+          esse objetivo, cooperam continuamente durante todo o projeto,
+          interagindo com frequência. Esse princípio se opõe ao cenário de
+          antagonismo comum em projetos de desenvolvimento de software, nos
+          quais pessoas de negócios – que frequentemente incluem os próprios
+          clientes do projeto – e desenvolvedores raramente se comunicam e,
+          muitas vezes, estão em lados opostos.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Construa projetos em torno de indivíduos motivados. Dê-lhes o
+          ambiente e o suporte que precisam e confie neles para realizarem o
+          trabalho.</b
+        >
+        <p>
+          O produto é construído por pessoas. O ambiente, o suporte e a
+          confiança necessários para realizar seu trabalho são fatores
+          fundamentais para sua motivação. Esse princípio se opõe à crença de
+          que o produto se constrói em torno das melhores ferramentas e
+          processos, e não das pessoas, apoiando-se nos melhores instrumentos de
+          monitoração e controle externos, por exemplo.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >O método mais eficiente e efetivo de se transmitir informação para e
+          entre uma equipe de desenvolvimento é a conversa face a face.</b
+        >
+        <p>
+          A melhor forma de comunicação entre membros do time que desenvolve o
+          produto e entre esse time e o mundo externo é a comunicação face a
+          face, que é direta, síncrona e enriquecida pela entonação de voz,
+          olhar e linguagem corporal, entre outros fatores. Quando a comunicação
+          presencial não é viável (em um projeto distribuído, por exemplo) é uma
+          boa prática fazer o melhor uso possível da tecnologia disponível para
+          se aproximar da comunicação face a face. Esse princípio se opõe à
+          utilização de documentos, e-mails, telefone, entre outros, como formas
+          padrão de comunicação em um projeto.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Software em funcionamento é a principal medida de progresso.</b
+        >
+        <p>
+          O progresso do projeto ocorre à medida que partes do produto que
+          signifiquem valor são entregues aos clientes do projeto. Esse
+          princípio se opõe à prática de se gerar artefatos como protótipos e
+          extensos documentos de planos e especificações e, assim, acreditar que
+          se progrediu no projeto. Isso também se opõe à geração de quaisquer
+          artefatos e partes do produto – inclusive documentação – que não gerem
+          valor para os clientes do projeto.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Os processos Ágeis promovem o desenvolvimento sustentável. Os
+          patrocinadores, desenvolvedores e usuários devem ser capazes de manter
+          indefinidamente um ritmo constante.</b
+        >
+        <p>
+          Busca-se promover um ritmo constante e sustentável para o trabalho do
+          time que desenvolve o produto, o que se torna possível quando esse
+          ritmo é apoiado por toda a cadeia, incluindo usuários e
+          patrocinadores. No entanto, ao se exigir do time um compromisso com
+          mais trabalho do que ele é capaz de produzir, são muitas vezes
+          adotadas as horas extras, o trabalho em fins de semana e a pressa
+          exagerada para se cumprir o prazo de entrega, por exemplo. Essas
+          práticas podem levar à insatisfação dos membros do time de
+          desenvolvimento, a uma menor produtividade e a uma menor qualidade no
+          produto gerado.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >A atenção contínua à excelência técnica e a um bom projeto aumentam a
+          agilidade.</b
+        >
+        <p>
+          O produto projetado com qualidade e produzido com excelência técnica
+          permite que seja facilmente ser modificado e, assim, aceite a mudança
+          como natural no processo de seu desenvolvimento. Assim, a alta
+          qualidade no produto gerado é essencial para se manter a Agilidade.
+          Esse princípio se opõe totalmente à crença de que, para se obter
+          velocidade e flexibilidade no desenvolvimento do produto, a qualidade
+          deveria ser sacrificada.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Simplicidade - a arte de se maximizar a quantidade de trabalho não
+          feito - é essencial.</b
+        >
+        <p>
+          Evita-se o desperdício no desenvolvimento do produto ao não se
+          realizar trabalho que não é necessário. Exemplos comuns de
+          desperdícios incluem desenvolvimento de funcionalidades de que os
+          clientes não precisam ou de soluções desnecessariamente complexas,
+          planejamento com nível de detalhes maior do que se pode ter em um
+          determinado momento e uso ou geração de artefatos desnecessários.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >As melhores arquiteturas, requisitos e projetos emergem de equipes
+          que se auto-organizam.</b
+        >
+        <p>
+          Equipes com maior autonomia são mais e cientes. Essas equipes
+          auto-organizadas trabalham em direção a metas acordadas, mas têm a
+          liberdade de decidir qual a melhor forma de realizar esse trabalho e,
+          assim, são responsáveis e responsabilizadas por seus resultados. Dessa
+          forma, geram um melhor produto.
+        </p>
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Em intervalos de tempo regulares, a equipe reflete sobre como se
+          tornar mais efetiva e então refina e ajusta seu comportamento de
+          acordo.</b
+        >
+        <p>
+          Para se tornar cada vez mais efetiva, a equipe regularmente inspeciona
+          suas formas de trabalho, identifica pontos de melhoria e se adapta de
+          acordo, promovendo a melhoria incremental contínua. É a inspeção e
+          adaptação que o time realiza em seus processos de trabalho.
+        </p>
+      </li>
+    </ol>
+  </section>
+</div>
+
 {% endblock %}

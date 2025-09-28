@@ -10,8 +10,9 @@ navigation_items = [
         "name": "Metodologia Scrum",
         "endpoint": "scrum",
         "sub_navigation": [
-          "Definição",
-          "Importância",
+          "O que é o Scrum?",
+          "Os benefícios do Srcum",
+          "Porque o Scrum é uma boa escolha?"
         ],
       },
       {
@@ -22,6 +23,11 @@ navigation_items = [
       {
         "name": "Princípios Ágeis",
         "endpoint": "principiosAgeis",
+        "sub_navigation": None,
+      },
+       {
+        "name": "Valores do Scrum",
+        "endpoint": "valores",
         "sub_navigation": None,
       },
      
@@ -54,7 +60,7 @@ navigation_items = [
       {
         "name": "Product Backlog",
         "endpoint": "productBacklog",
-        "sub_navigation": ["User Stories"],
+        "sub_navigation": None,
       },
       {
         "name": "Sprint Backlog",
@@ -87,7 +93,7 @@ navigation_items = [
       {
         "name": "Sprints",
         "endpoint": "sprints",
-        "sub_navigation": None,
+        "sub_navigation": ["O que é uma Sprint?", "Entendendo a Analogia do Bolo"],
       },
       {
         "name": "Sprint Planning",
@@ -112,7 +118,11 @@ navigation_items = [
       {
         "name": "Story Point",
         "endpoint": "storyPoint",
-        "sub_navigation": None,
+        "sub_navigation":["Story Point",
+                          "Para que serve estimar?",
+                          "Velocidade",
+                          "Impedimento",
+                          ],
       },
       {
         "name": "BurnDown chart",
