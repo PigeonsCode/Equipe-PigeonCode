@@ -19,13 +19,13 @@ body {
 }
 
 .text-darkest-gray {
-  color: var(--dark-gray);
+  color: var(--dark-gray) !important;
 }
 
 .text-dark-gray {
-  color: var(--dark-gray-2);
+  color: var(--dark-gray-2) !important;
 }
 
 .text-light-gray {
-  color: var(--light-gray);
+  color: var(--light-gray) !important;
 }

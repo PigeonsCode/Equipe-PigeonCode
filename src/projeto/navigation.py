@@ -54,7 +54,7 @@ navigation_items = [
       {
         "name": "Product Backlog",
         "endpoint": "productBacklog",
-        "sub_navigation": ["User Stories"],
+        "sub_navigation": None,
       },
       {
         "name": "Sprint Backlog",
@@ -87,7 +87,7 @@ navigation_items = [
       {
         "name": "Sprints",
         "endpoint": "sprints",
-        "sub_navigation": None,
+        "sub_navigation": ["O que é uma Sprint?", "Entendendo a Analogia do Bolo"],
       },
       {
         "name": "Sprint Planning",

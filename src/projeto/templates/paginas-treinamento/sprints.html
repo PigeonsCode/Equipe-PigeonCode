@@ -1,3 +1,153 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>Sprints</h2>
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <h1 class="h2 text-darkest-gray mb-5">Sprints</h1>
+
+  <section>
+    <h2 class="text-darkest-gray h3 mb-4" id="scrollspy-item-1">
+      O que é uma Sprint?
+    </h2>
+    <p class="text-dark-gray">
+      Scrum é iterativo. O produto é desenvolvido em ciclos ou iterações
+      sucessivas. Em cada um desses ciclos é gerado um
+      <a href="{{url_for('incrementoProduto')}}">incremento do produto</a>, que
+      se soma e modifica o que já se tem pronto do produto até o momento. No
+      Scrum, os ciclos são chamados de Sprints. Eles têm tamanho fixo e
+      acontecem um depois do outro, sem intervalos entre eles, ou seja, tudo em
+      um projeto que utiliza Scrum acontece dentro dos Sprints. Cada Sprint é
+      composto por:
+    </p>
+
+    <ul class="list-group list-group-flush custom-list">
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Reunião de
+          <a href="{{url_for('sprintPlanning')}}">Sprint Planning</a>:</b
+        >
+        onde se realiza o planejamento do Sprint;
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Trabalho de desenvolvimento do produto:</b>
+        inclui tudo que é necessário para se entregar uma parte do produto
+        pronta ao final do Sprint;
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Reunião de <a href="{{url_for('daillyScrum')}}">Daily Scrum</a>:</b
+        >
+        realizada diariamente durante o desenvolvimento, é uma reunião para
+        gerar visibilidade e planejar o próximo dia de afazerers da equipe;
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Reunião de
+          <a href="{{url_for('sprintReview')}}">Sprint Review</a>:</b
+        >
+        onde os resultados do trabalho realizado no Sprint são apresentados a
+        clientes e demais partes interessadas, que oferecem seu feedback;
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray"
+          >Reunião de
+          <a href="{{url_for('sprintRestrospective')}}">Sprint Retrospective</a
+          >:</b
+        >
+        onde o time avalia o que foi bem e o que precisa ser melhorado na sua
+        forma de trabalho;
+      </li>
+      <li class="list-group-item text-muted pt-3 pb-3">
+        <b class="text-dark-gray">Outros:</b> quaisquer reuniões ou sessões
+        programadas adicionais que se fizerem necessárias, como por exemplo a
+        reunião de Release Planning, as sessões de Refinamento do Product
+        Backlog, etc.
+      </li>
+    </ul>
+
+    <div class="container border rounded p-3 mt-5 mb-5">
+      <small>
+        <b>Iterativo:</b>
+        Refere-se a algo ou a um processo marcado pela repetição e por
+        refinamentos sucessivos. A palavra vem do verbo <i>iterar</i>, que
+        significa <i>repetir</i>.
+      </small>
+    </div>
+
+    <p class="text-dark-gray mb-4">
+      A figura representa a iteração do Scrum, indicando a sucessão de elementos
+      presentes em todos os ciclos (ou Sprints) e a sucessão de ciclos. A
+      reunião de Daily Scrum e quaisquer reuniões adicionais acontecem no dia a
+      dia de desenvolvimento.
+    </p>
+
+    <figure class="w-50 mx-auto d-block mb-5">
+      <img
+        src="{{url_for('static', filename='images/sprints-img-1.png')}}"
+        class="img-fluid rounded w-100"
+        alt="imagem da iteração da sprint"
+      />
+    </figure>
+
+    <p class="text-dark-gray">
+      O projeto para o desenvolvimento de um produto é contratado ou
+      simplesmente se inicia para suprir algum objetivo ou necessidade de
+      negócios, seja de um cliente específico, de um grupo de clientes ou
+      visando uma oportunidade de mercado. A <b>Visão do Produto</b> é uma boa
+      forma de traduzir esse objetivo a ser alcançado.
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="scrollspy-item-2">
+    <h2 class="text-darkest-gray h3 mb-4">Entendendo a Analogia do Bolo</h2>
+    <p class="text-dark-gray">
+      Vamos supor que dois times de confeiteiros irão assar um bolo com diversas
+      camadas, cada um utilizando um método diferente:
+    </p>
+    <figure class="w-50 mx-auto d-block mb-5">
+      <img
+        src="{{url_for('static', filename='images/sprints-img-2.png')}}"
+        class="img-fluid rounded w-100"
+        alt="imagem da Analogia do Bolo"
+      />
+    </figure>
+    <div class="d-flex flex-column gap-1 mb-5">
+      <p class="text-dark-gray">
+        O primeiro time irá usar um método tradicional, em que se produz o bolo
+        camada por camada. Assim, seus membros misturam os ingredientes da
+        primeira camada do bolo e então a assam. Em seguida, misturam os
+        ingredientes da segunda camada, assam-na e colocam sobre a primeira.
+        Fazem o mesmo com a terceira, quarta e quinta camadas, colocando cada
+        uma sobre a anterior. Somente ao final uma fatia pode ser cortada do
+        bolo para ser consumida.
+      </p>
+      <p class="text-dark-gray">
+        O segundo time tem um objetivo ousado. Deve-se permitir que o bolo seja
+        consumido o mais rápido possível, e não apenas no final. Para atingir
+        esse objetivo, o time utiliza uma forma de trabalho bem diferente: um
+        método iterativo e incremental. Eles produzem o bolo fatia por fatia,
+        sendo que cada uma já possui todas as camadas necessárias. Assim, o bolo
+        já pode ser consumido desde a sua primeira fatia. Mesmo que cada uma
+        possa ser bem fina.
+      </p>
+      <p class="text-dark-gray">
+        É claro que nenhum confeiteiro irá utilizar o método do segundo time
+        para produzir um bolo, mas o trabalho de desenvolvimento do produto com
+        Scrum se assemelha muito com essa forma de se trabalhar. Diferentemente
+        do trabalho com métodos tradicionais, o time de desenvolvimento não
+        trabalha em camadas do produto. A parte do produto, gerada pelo time em
+        cada ciclo de desenvolvimento, é uma fatia do produto de ponta a ponta,
+        pronta para ser utilizada. Essa entrega de fatias funcionando do produto
+        gera desde cedo retorno ao investimento dos clientes e possibilita o
+        feedback, reduzindo os riscos do projeto.
+      </p>
+    </div>
+  </section>
+</div>
 {% endblock %}
