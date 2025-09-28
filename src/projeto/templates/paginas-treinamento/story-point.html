@@ -1,3 +1,77 @@
-{% extends "page-template.html" %} {% block content %}
-<h2>Story Points</h2>
+{% extends "page-template.html" %}
+{% block content %}
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <section id="scrollspy-item-1">
+    <h2 class="text-darkest-gray h3 mb-4">Story Point</h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        Story Point é uma unidade de medida relativa usada pelo <a href="{{url_for('devTeam')}}">
+          Time de
+          Desenvolvimento
+        </a> para estimar o esforço necessário para implementar um item do 
+        <a href="{{url_for('productBacklog')}}">backlog</a>. Diferente de horas ou dias, story points avaliam a complexidade, o risco e o volume de trabalho de forma comparativa entre os itens. Essa abordagem facilita o planejamento e a previsão de entregas.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="scrollspy-item-2">
+    <h2 class="text-darkest-gray h3 mb-4">Para que serve estimar?</h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        Uma estratégia muito comum para se obter um <a href="{{url_for('productBacklog')}}">Product Backlog</a> 
+        planejável é aquela em que o <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> estima cada um de 
+        seus itens individualmente e então somam-se essas estimativas até o 
+        suficiente para que se possa planejar o próximo <a href="{{url_for('sprints')}}">Sprint</a> ou a próxima 
+        Release. Ou seja, estimar pode ajudar a planejar.
+      </p>
+      <p class="text-dark-gray">
+        As Story Points costumam ter um valor não linear (1, 2, 3, 5, 8, 13, 20, 40 e 100), parecidos com a sequência de Fibonacci, que ajudam a medir relativamente o esforço, complexidade e risco de uma tarefa, onde os números maiores (20,40 e 100) representam tarefas extremamente complexas ou incertas.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="scrollspy-item-3">
+    <h2 class="text-darkest-gray h3 mb-4">Velocidade</h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        Velocidade é a quantidade média de Story Points concluídos em um <a href="{{url_for('sprints')}}">Sprint</a>. 
+        Essa métrica é observada ao longo de vários Sprints e ajuda a prever a 
+        capacidade de entrega futura da equipe.
+      </p>
+      <p class="text-dark-gray">
+        Conhecer a Velocidade do <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> pode ajudar a tornar o 
+        <a href="{{url_for('productBacklog')}}">Product Backlog</a>  planejável.
+      </p>
+    </div>
+  </section>
+  <hr class="divider" />
+  <section id="scrollspy-item-4">
+    <h2 class="text-darkest-gray h3 mb-4">Impedimento</h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+       Um impedimento é qualquer obstáculo ou barreira que dificulta ou paralisa 
+        o trabalho do <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a>, ameaçando a meta do <a href="{{url_for('sprints')}}">Sprint</a>. Informa-se 
+        o impedimento ao <a href="{{url_for('scrumMaster')}}">ScrumMaster</a> assim que ele é identificado, de forma que possa ser tratado o mais rapidamente possível. O objetivo de se informar, durante a reunião de <a href="{{url_for('daillyScrum')}}">Daily Scrum</a>, quais impedimentos surgiram desde a última reunião é apenas o de dar visibilidade a todos os membros do Time de Desenvolvimento sobre o que atrapalhou ou ainda atrapalha o trabalho.
+      </p>
+      <p class="text-dark-gray">
+        Como por exemplo, um imprevisto que desorganize o tempo reservado para 
+        determinada tarefa pode afetar o andamento das atividades da equipe, atrasando 
+        o processo e o alcance do objetivo. 
+
+      </p>
+    </div>
+    </section>
+</div>
 {% endblock %}
+

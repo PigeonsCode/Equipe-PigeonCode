@@ -1,3 +1,21 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>BurnUp Chart</h2>
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+<section class="section-content">
+  <h2 class="h2 text-darkest-gray mb-5">Burnup Chart</h2>
+  <p class="text-darkest-gray">O Burnup, assim como o <a href="{{url_for('burnDownChart')}}">Burndown</a>, é um gráfico mantido pelo <a href="{{url_for('productOwner')}}">Product Owner</a> e utilizado tanto por ele quanto pelo <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> para monitorar o progresso no desenvolvimento em direção a uma entrega. O Gráfico de Burnup também não é parte do framework Scrum, mas pode ser útil para acompanhar o andamento da entrega do produto. </p>
+  <figure class="text-center mb-5">
+    <img
+        src="{{url_for('static', filename='images/Burnup Chart Exemplo.png')}}"
+        class="img-fluid rounded"
+        alt="Burnup Chart Exemplo"
+      />
+  </figure>
+</section>
 {% endblock %}

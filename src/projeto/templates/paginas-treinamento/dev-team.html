@@ -1,3 +1,17 @@
 {% extends "page-template.html" %} {% block content %}
-<h2>Dev Team</h2>
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+<section class="section-content">
+ <h2 class="h2 text-darkest-gray mb-5">Dev Team</h2>
+  <p class=text-dark-gray>O Time de Desenvolvimento realiza o trabalho de desenvolvimento do produto. Ele é multidisciplinar, o que significa que possui, em seus membros, todo o conhecimento necessário para realizar esse trabalho. O Time de 
+  Desenvolvimento é também auto-organizado, ou seja, ele próprio define como irá realizar o trabalho e gerenciar seu progresso em direção a metas de negócios 
+  acordadas com o <a href="{{url_for('productOwner')}}">Product Owner</a>.
+  </p>
+</section>
 {% endblock %}
