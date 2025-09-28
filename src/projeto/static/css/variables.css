@@ -52,3 +52,13 @@
   padding-right: 0.5rem;
   color: var(--dark-gray);
 }
+
+.list-group-dod li {
+  border: none;
+}
+
+.list-group-dod li::before {
+  content: "—";
+  padding-right: 0.5rem;
+  color: var(--dark-gray-2);
+}

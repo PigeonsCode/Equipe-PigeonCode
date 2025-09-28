@@ -1,8 +1,4 @@
 navigation_items = [
-    {
-    "topic": { "name": "Template de Conteúdo", "solo_item": True },
-    "subtopic": [{"endpoint": "template", "sub_navigation": ["Texto simples", "Conteúdo Listado - ex1", "Conteúdo Listado - ex2", "Conteúdo Listado - ex3", "Imagens"]}],
-  },
   {
     "topic": { "name": "Visão Geral", "solo_item": False },
     "subtopic": [
@@ -35,24 +31,8 @@ navigation_items = [
     "initialState": "true"
   },
   {
-    "topic": { "name": "Papéis", "solo_item": False },
-    "subtopic": [
-      {
-        "name": "Product Owner",
-        "endpoint": "productOwner",
-        "sub_navigation": None,
-      },
-      {
-        "name": "Scrum Master",
-        "endpoint": "scrumMaster",
-        "sub_navigation": None,
-      },
-      {
-        "name": "Dev Team",
-        "endpoint": "devTeam",
-        "sub_navigation": None,
-      },
-    ],
+    "topic": { "name": "Papéis", "solo_item": True },
+     "subtopic": [{"endpoint": "papeis", "sub_navigation": ["Product Owner", "Scrum Master", "Dev Team"]}],
   },
    {
     "topic": { "name": "Artefatos", "solo_item": False },
@@ -118,11 +98,7 @@ navigation_items = [
       {
         "name": "Story Point",
         "endpoint": "storyPoint",
-        "sub_navigation":["Story Point",
-                          "Para que serve estimar?",
-                          "Velocidade",
-                          "Impedimento",
-                          ],
+        "sub_navigation":["Story Point", "Para que serve estimar?", "Velocidade",],
       },
       {
         "name": "BurnDown chart",

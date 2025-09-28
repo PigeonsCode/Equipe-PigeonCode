@@ -1,0 +1,70 @@
+{% extends "page-template.html" %} {% block content %}
+<div
+  data-bs-spy="scroll"
+  data-bs-target="#side-scrollspy"
+  data-bs-offset="0"
+  data-bs-smooth-scroll="true"
+  class="scrollspy-example"
+  tabindex="0"
+>
+  <h1 class="h2 text-darkest-gray mb-5">Papéis</h1>
+  <section>
+    <h2 class="text-darkest-gray h3 mb-4" id="scrollspy-item-1">
+      Product Owner
+    </h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        O Product Owner é o responsável por definir, comunicar e manter a Visão
+        do Produto relativamente constante ao longo do projeto. O Product Owner
+        é único. Ele trabalha com os clientes do projeto e com quaisquer outras
+        partes interessadas que possam contribuir para o entendimento e
+        definição da Visão do Produto.
+      </p>
+      <p class="text-dark-gray">
+        O grupo de partes interessadas do projeto também inclui os próprios
+        usuários do produto, que receberão ao longo do desenvolvimento partes
+        prontas do produto para serem utilizadas.
+      </p>
+    </div>
+  </section>
+  <hr class="divider mt-5 mb-5" />
+  <section>
+    <h2 class="text-darkest-gray h3 mb-4" id="scrollspy-item-2">
+      Scrum Master
+    </h2>
+    <div class="d-flex flex-column gap-1">
+      <p class="text-dark-gray">
+        O Scrum Master é o responsável por garantir que os impedimentos que o
+        Time de Desenvolvimento encontre em seu trabalho sejam removidos,
+        atuando quando necessário como um agente de mudança na organização.
+        Esses impedimentos geram o risco de não se atingirem os objetivos.
+      </p>
+      <p class="text-dark-gray">
+        O Scrum Master está presente e age como um facilitador em todas as
+        reuniões do Scrum, facilita o trabalho do dia a dia do Time de
+        Desenvolvimento e facilita as interações entre o Time de Desenvolvimento
+        e o Product Owner.
+      </p>
+      <p class="text-dark-gray">
+        Ele também ensina Scrum ao Time e a se auto-organizarem. O Scrum Master
+        é tão neutro quanto possível e possui soft skills, ou seja, competências
+        comportamentais e pessoais, para realizar seu trabalho.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider mb-5 mt-5" />
+
+  <section class="mb-5">
+    <h2 class="h2 text-darkest-gray mb-5" id="scrollspy-item-3">Dev Team</h2>
+    <p class="text-dark-gray">
+      O Time de Desenvolvimento realiza o trabalho de desenvolvimento do
+      produto. Ele é multidisciplinar, o que significa que possui, em seus
+      membros, todo o conhecimento necessário para realizar esse trabalho. O
+      Time de Desenvolvimento é também auto-organizado, ou seja, ele próprio
+      define como irá realizar o trabalho e gerenciar seu progresso em direção a
+      metas de negócios acordadas com o Product Owner.
+    </p>
+  </section>
+</div>
+{% endblock %}

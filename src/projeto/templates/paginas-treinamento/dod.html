@@ -4,8 +4,8 @@
 <section id="scrollspy-item-2">
   <p class="text-dark-gray">
     A Definição de Pronto é um acordo entre o
-    <a href="{{url_for('productOwner')}}">Product Owner</a> e o
-    <a href="{{url_for('devTeam')}}">Time de Desenvolvimento</a> que estabelece
+    <a href="{{url_for('papeis')}}">Product Owner</a> e o
+    <a href="{{url_for('papeis')}}">Time de Desenvolvimento</a> que estabelece
     os critérios mínimos para que um item do backlog ou um incremento do produto
     seja considerado "pronto". Isso garante que tudo o que foi desenvolvido
     durante o Sprint está em condições de ser entregue, com qualidade e
@@ -20,5 +20,36 @@
       alt="imagem de exemplo"
     />
   </figure>
+
+  <div class="container border rounded p-3 mt-5 mb-5">
+    <div class="d-flex flex-column gap-1">
+      <b class="small">Isso pode ser considerado pronto?</b>
+      <p class="text-dark-gray small">
+        Um desenvolvedor de software entrega uma funcionalidade que considera
+        pronta. Ao começar a experimentar o que lhe foi entregue, o usuário
+        dessa funcionalidade encontra um erro. Ele então pergunta ao
+        desenvolvedor:
+      </p>
+      <ul class="list-group list-group-flush list-group-dod custom-list">
+        <li class="list-group-item text-muted pt-3 pb-3 small">
+          Você testou isso? Ao que o desenvolvedor responde:
+        </li>
+        <li class="list-group-item text-muted pt-3 pb-3 small">Não...</li>
+        <li class="list-group-item text-muted pt-3 pb-3 small">
+          Mas você não disse que está pronto?
+        </li>
+        <li class="list-group-item text-muted pt-3 pb-3 small">
+          Sim, está pronto. Só falta testar. – afirma o desenvolvedor.
+        </li>
+        <li class="list-group-item text-muted pt-3 pb-3 small">
+          Se falta testar, não está pronto!
+        </li>
+      </ul>
+      <p class="text-dark-gray small">
+        Situações como essa são comuns em projetos onde não há uma compreensão
+        conjunta do que <b>“estar pronto”</b> significa.
+      </p>
+    </div>
+  </div>
 </section>
 {% endblock %}

@@ -51,18 +51,11 @@ def principiosAgeis():
 def valores():
     return render_template("/paginas-treinamento/valores.html", page_url="valores")
 
-@app.route("/product-owner")
-def productOwner():
-    return render_template("/paginas-treinamento/product-owner.html", page_url="productOwner",  first_item = True)
- 
-@app.route("/scrum-master")
-def scrumMaster():
-    return render_template("/paginas-treinamento/scrum-master.html", page_url="scrumMaster",  first_item = True)
- 
-@app.route("/dev-team")
-def devTeam():
-    return render_template("/paginas-treinamento/dev-team.html", page_url="devTeam",  first_item = True)
- 
+
+@app.route("/papeis")
+def papeis():
+    return render_template("/paginas-treinamento/papeis.html", page_url="papeis")
+
 #Eventos
  
 @app.route("/sprints")
@@ -119,8 +112,3 @@ def burnDownChart():
 @app.route("/burn-up-chart")
 def burnUpChart():
     return render_template("/paginas-treinamento/burnup.html", page_url="burnUpChart")
- 
-# Rota de visualização de template
-@app.route("/template")
-def template():
-    return render_template("/paginas-treinamento/1-TEMPLATE.html", page_url="template")
