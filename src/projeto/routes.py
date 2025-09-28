@@ -1,6 +1,6 @@
 from flask import render_template,url_for
-from app.navigation import navigation_items
-from app import app
+from projeto.navigation import navigation_items
+from projeto import app
  
 @app.route("/")
 def homepage():
