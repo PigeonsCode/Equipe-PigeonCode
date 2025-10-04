@@ -135,7 +135,7 @@ Ambientes virtuais são utilizados para armazenamento de dados com segurança e 
 do projeto, para criar um ambiente virtual, siga estes passos:
 
 Opção 1:
-# No VScode
+#### No VScode
 1- Na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
 2- Digite "Python: Create Enviorment"
 3- Selecione a opção venv
@@ -145,7 +145,7 @@ Opção 1:
 Pronto, o código vai funcionar perfeitamente!
 
 Opção 2:
-# No terminal do VScode
+#### No terminal do VScode
 1-Digite Crtl = ', no seu teclado, o terminal vai abrir
 2-Digite python -m venv (insira o nome da pasta para o ambiente virtual, o padrão é dar o nome de venv)
 3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite ".\venv\Scripts\activate.bat"
