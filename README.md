@@ -13,6 +13,7 @@
   <a href ="#dod"> DoD</a>  |
   <a href ="#sprints"> Cronograma de Sprints</a>  |
   <a href ="#tecnologias">Tecnologias</a> |
+  <a href ="manual">Manual de Instalação</a> |
   <a href ="#colaboradores"> Colaboradores</a> |
 </p>
 <br>
@@ -83,6 +84,53 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
  <a href="https://sqlite.org/"><img src="https://img.shields.io/badge/SQLITE-blue?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=%23003B57&color=%23003B57"/></a>
  <a href="https://getbootstrap.com"><img src="https://img.shields.io/badge/BOOTSTRAP-blue?style=for-the-badge&logo=bootstrap&logoColor=white&labelColor=%237952B3&color=%237952B3"/></a>
 </h4>
+
+## 📖 Manual de Instalação <a id="manual"></a>
+
+### 1. Tenha o GIT instalado na sua máquina!
+
+O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga  um dos seguintes tutoriais:
+[Youtube](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
+[Youtube](https://youtu.be/5L4Mj5QTLyI?si=M3KtYrVmhL506rFi)
+Git ([Download](https://git-scm.com/downloads))
+
+---
+
+### 2. Tenha uma IDE!
+
+Recomenda-se o uso da IDE Visual Studio Code (VScode) a mesma utilizada no desenvolvimento da aplicação.
+VScode ([Download](https://code.visualstudio.com/download))
+
+---
+
+### 3. Tenha o Python instalado na sua maquina!
+
+Caso você não tenha o interpretador Python instalado em sua maquina, você terá duas opções:
+* Baixar pela Microsoft Store, abra o aplicativo e digite na barra de pesquisa "Python" e baixe a versão mais recente disponível
+* Baixar pelo site oficial Python.org, acesse o link ([Download](https://www.python.org/downloads/)) e selecione a versão mais 	recente (aconselhável baixar a versão 3.13, pois é a mais atualizada e estável)
+
+---
+
+### 4. Clone o repositório!
+Crie um pasta separa para o projeto e no terminal da sua IDE, digite o seguinte comando:
+
+```bash
+git clone --recurse-submodules https://github.com/tat4Souza/Equipe-PigeonCode.git
+cd Equipe-PigeonCode
+```
+
+> **Observação:** Se já tiver clonado sem os submódulos, execute:
+
+```
+git submodule update --init --recursive
+```
+
+---
+
+### 5. Crie um ambiente virtual!
+
+
+
 
 <br>
 
