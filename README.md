@@ -92,7 +92,9 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga  um dos seguintes tutoriais:
 <br>
 [Youtube](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
+<br>
 [Youtube](https://youtu.be/5L4Mj5QTLyI?si=M3KtYrVmhL506rFi)
+<br>
 Git ([Download](https://git-scm.com/downloads))
 
 ---
@@ -100,6 +102,7 @@ Git ([Download](https://git-scm.com/downloads))
 ### 2. Tenha uma IDE!
 
 Recomenda-se o uso da IDE Visual Studio Code (VScode) a mesma utilizada no desenvolvimento da aplicação.
+<br>
 VScode ([Download](https://code.visualstudio.com/download))
 
 ---
@@ -138,7 +141,7 @@ Opção 1:
 # No VScode
 1- Na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
 <br>
-2- Digite "Python: Create Enviorment"
+2- Digite"Python: Create Enviorment"
 <br>
 3- Selecione a opção venv
 <br>
@@ -155,13 +158,18 @@ Opção 2:
 <br>
 2-Digite python -m venv (insira o nome da pasta para o ambiente virtual, o padrão é dar o nome de venv)
 <br>
-3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite ".\venv\Scripts\activate.bat"
-
+3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite:
+```bash
+.\venv\Scripts\activate.bat
+```
 ---
 
 ### 6. Instale as bibliotecas!
 
-No terminal digite "pip install -r requirements.txt"
+No terminal digite:
+```bash
+pip install -r requirements.txt
+```
 <br>
 Este comando vai instalar todas as bibliotecas necessárias para o funcionamento do projeto.
 
