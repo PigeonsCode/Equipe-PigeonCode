@@ -92,7 +92,9 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga  um dos seguintes tutoriais:
 <br>
 [Youtube](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
+<br>
 [Youtube](https://youtu.be/5L4Mj5QTLyI?si=M3KtYrVmhL506rFi)
+<br>
 Git ([Download](https://git-scm.com/downloads))
 
 ---
@@ -100,6 +102,7 @@ Git ([Download](https://git-scm.com/downloads))
 ### 2. Tenha uma IDE!
 
 Recomenda-se o uso da IDE Visual Studio Code (VScode) a mesma utilizada no desenvolvimento da aplicação.
+<br>
 VScode ([Download](https://code.visualstudio.com/download))
 
 ---
@@ -135,26 +138,39 @@ Ambientes virtuais são utilizados para armazenamento de dados com segurança e 
 do projeto, para criar um ambiente virtual, siga estes passos:
 
 Opção 1:
-#### No VScode
+# No VScode
 1- Na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
-2- Digite "Python: Create Enviorment"
+<br>
+2- Digite"Python: Create Enviorment"
+<br>
 3- Selecione a opção venv
+<br>
 4- selecione um intepretador python
+<br>
 5- selecione o arquivo "requirements.txt" para download, nesta opção, a própria IDE vai baixar as bibliotecas 	necessárias!
+<br>
 
 Pronto, o código vai funcionar perfeitamente!
 
 Opção 2:
-#### No terminal do VScode
+# No terminal do VScode
 1-Digite Crtl = ', no seu teclado, o terminal vai abrir
+<br>
 2-Digite python -m venv (insira o nome da pasta para o ambiente virtual, o padrão é dar o nome de venv)
-3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite ".\venv\Scripts\activate.bat"
-
+<br>
+3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite:
+```bash
+.\venv\Scripts\activate.bat
+```
 ---
 
 ### 6. Instale as bibliotecas!
 
-No terminal digite "pip install -r requirements.txt"
+No terminal digite:
+```bash
+pip install -r requirements.txt
+```
+<br>
 Este comando vai instalar todas as bibliotecas necessárias para o funcionamento do projeto.
 
 ---
