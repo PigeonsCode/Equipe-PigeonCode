@@ -13,7 +13,7 @@
   <a href ="#dod"> DoD</a>  |
   <a href ="#sprints"> Cronograma de Sprints</a>  |
   <a href ="#tecnologias">Tecnologias</a> |
-  <a href ="manual">Manual de Instalação</a> |
+  <a href ="#manual">Manual de Instalação</a> |
   <a href ="#colaboradores"> Colaboradores</a> |
 </p>
 <br>
@@ -91,9 +91,9 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga  um dos seguintes tutoriais:
 <br>
-[Youtube](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
+[Como instalar o Git e configurar o GitHub](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
 <br>
-[Youtube](https://youtu.be/5L4Mj5QTLyI?si=M3KtYrVmhL506rFi)
+[Configurando a Chave SSH entre o Git e o Github](https://youtu.be/5L4Mj5QTLyI?si=M3KtYrVmhL506rFi)
 <br>
 Git ([Download](https://git-scm.com/downloads))
 
@@ -120,14 +120,7 @@ Caso você não tenha o interpretador Python instalado em sua maquina, você ter
 Crie um pasta separa para o projeto e no terminal da sua IDE, digite o seguinte comando:
 
 ```bash
-git clone --recurse-submodules https://github.com/tat4Souza/Equipe-PigeonCode.git
-cd Equipe-PigeonCode
-```
-
-> **Observação:** Se já tiver clonado sem os submódulos, execute:
-
-```
-git submodule update --init --recursive
+git clone https://github.com/tat4Souza/Equipe-PigeonCode.git
 ```
 
 ---
@@ -137,9 +130,8 @@ git submodule update --init --recursive
 Ambientes virtuais são utilizados para armazenamento de dados com segurança e para organizar as bibliotecas específicas    
 do projeto, para criar um ambiente virtual, siga estes passos:
 
-Opção 1:
-# No VScode
-1- Na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
+# Opção 1
+1- No VScode, na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
 <br>
 2- Digite"Python: Create Enviorment"
 <br>
@@ -152,9 +144,8 @@ Opção 1:
 
 Pronto, o código vai funcionar perfeitamente!
 
-Opção 2:
-# No terminal do VScode
-1-Digite Crtl = ', no seu teclado, o terminal vai abrir
+# Opção 2:
+1-No terminal do VScode digite Crtl = ', no seu teclado, o terminal vai abrir
 <br>
 2-Digite python -m venv (insira o nome da pasta para o ambiente virtual, o padrão é dar o nome de venv)
 <br>
