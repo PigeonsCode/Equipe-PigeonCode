@@ -4,20 +4,16 @@ from flask_sqlalchemy import SQLAlchemy #importação do banco de dados
 from flask_login import LoginManager
 from flask import url_for, request
 from flask_bcrypt import Bcrypt
-
+from projeto.navigation import navigation_items
 
 app=Flask(__name__)
 
-app.secret_key="f136993e7607606083988b249a75fa2f"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
 app.config["SECRET_KEY"] = "ba7783e47efacd4b8c6b40475222bbac"
-
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///banco.db"
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-Login_manager= LoginManager(app)
-Login_manager.login_view="loginADM"
-
-from projeto.navigation import navigation_items
+login_manager= LoginManager(app)
+login_manager.login_view="loginADM"
 
 #filters
 def kebab_case(value):
