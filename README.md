@@ -34,13 +34,14 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 | Rank | Prioridade | User Story                                                                                                                                                                         | Estimativa | Sprint |
 | :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: |
 |  1   |   Média    | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                    |     8      |   1    |
-|  2   |    Alta    | Como administrador, quero que os DEVs em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                   |     13     |   1    |
-|  3   |   Média    | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos dos formulários.                      |     20     |   1    |
-|  4   |   Média    | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                          |     13     |   2    |
-|  5   |    Alta    | Como administrador, desejo que os DEVs em treinamento completem os formulários avaliativos com facilidade para agilizar o processo de preenchimento.                               |     13     |   2    |
-|  6   |   Média    | Como administrador, pretendo que os DEVs em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas. |     8      |   2    |
-|  7   |   Baixa    | Como administrador, quero que os DEVs em treinamento adicionem uma descrição aos formulários para um entendimento mais completo a respeito da qualidade do evento avaliado.        |     5      |   2    |
-|  8   |   Baixa    | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                             |     8      |   3    |
+|  2   |    Alta    | Como administrador, quero que os funcionários em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                   |     13     |   1    |
+|  3   |   Média    | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos pelas respostas dos formulários.                      |     20     |   1    |
+|  4   |    Alta    | Como administrador, quero que o formulário avaliativo considere os processos envolvidos dentro da metodologia SCRUM, para que ao respondido, possa demonstrar a qualidade da aplicação da metodoliga pelas minhas equipes. |     20     |   2    |
+|  5   |    Alta    | Como administrador, desejo que os formulários tenham uma estrutura intuitiva de perguntas e repostas para agilizar o processo de preenchimento.                                  |     20     |   2    |
+|  6   |   Média    | Como administrador, pretendo que os funcionários em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas. |     13      |   2    |
+|  7   |   Alta     | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                          |     13     |   3    |
+|  8   |   Alta     | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                             |     20      |   3    |
+|  9  |   Média    | Como administrador, desejo visualizar métricas sobre cada processo avaliado pelo formulário para um entendimento mais profundo de quais itens apresentam boa qualidade e quais não. |     13      |   3    |
 
 ---
 
