@@ -8,9 +8,6 @@ from projeto import app
 from projeto.forms import FormLoginAdm
 from projeto.models import Adm_User
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Adm_User.query.get(int(user_id))
 
 @app.route("/")
 def homepage():
@@ -36,6 +33,12 @@ def loginADM():
              flash("Usuário ou senha incorretos!")
              redirect (url_for("loginADM"))
     return render_template("login-adm.html", form = form_login_adm)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("homepage"))
 
 @app.route("/formularios")
 def forms():
