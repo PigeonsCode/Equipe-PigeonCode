@@ -1,16 +1,28 @@
 import bcrypt
-from projeto import database,app,bcrypt
+from projeto import database,app,bcrypt, login_manager
 from projeto.models import Adm_User
-from flask import Flask,render_template,url_for,redirect
-from flask_login import login_required,login_user,logout_user,current_user,login_manager
+from flask import Flask,render_template,url_for,redirect,flash
+from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm
 from projeto.models import Adm_User
 
+@login_manager.user_loader
+def load_user(user_id):
+    return Adm_User.query.get(int(user_id))
+
 @app.route("/")
 def homepage():
     return render_template("index.html", navigation=navigation_items, page_url="homepage")
+
+@app.route("/triagem-adm")
+def teste_adm():
+    if current_user.is_authenticated:
+        return redirect(url_for("area_restrita"))
+    else:
+        return redirect(url_for("loginADM"))
+    
 
 @app.route("/login-adm", methods = ["GET", "POST"])
 def loginADM():
@@ -18,9 +30,11 @@ def loginADM():
     if form_login_adm.validate_on_submit():
          user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
          if  user_login_attempt and bcrypt.check_password_hash(user_login_attempt.password_db , form_login_adm.password_adm.data) :
-            login_user(user_login_attempt,remember=True)
+            login_user(user_login_attempt,remember=False)
             return redirect (url_for("area_restrita")) #criar pagin de acesso restrito com o nome AcessoADM, usar @login_required
-
+         else:
+             flash("Usuário ou senha incorretos!")
+             redirect (url_for("loginADM"))
     return render_template("login-adm.html", form = form_login_adm)
 
 @app.route("/formularios")
@@ -108,7 +122,7 @@ def storyPoint():
 @app.route("/burn-down-chart")
 def burnDownChart():
     return render_template("/paginas-treinamento/burndown.html", page_url="burnDownChart")
- 
+
 @app.route("/burn-up-chart")
 def burnUpChart():
     return render_template("/paginas-treinamento/burnup.html", page_url="burnUpChart")
