@@ -13,7 +13,8 @@ class FormLoginAdm(FlaskForm):
 #validação dos dados inseridos pelo usuário
 
 class FormUserAvalia(FlaskForm):
-    #inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas, para que haja a conversão de string para int
+    # Inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas,
+    #para que haja a conversão de string para int
     p1 = RadioField("Perguntas 1",
                           choices=[
                           (4,""),
