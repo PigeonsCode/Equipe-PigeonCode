@@ -17,199 +17,6 @@ class FormUserAvalia(FlaskForm):
     #para que haja a conversão de string para int
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
      incremento_do_produto_p9 = RadioField("Como foi a satisfação do cliente em relação à entrega do incremento do produto ao final do Sprint?",
                           choices=[
                           (4,"O cliente está completamente satisfeito e ansioso para a próxima entrega. Foram feitas nulas ou poucas críticas a respeito do que lhe foi apresentado e o feedback se manteve positivo em praticamente toda sua extensão."),
@@ -290,3 +97,204 @@ class FormUserAvalia(FlaskForm):
                           (1,"O gráfico de Burnup não foi utilizado de forma adequada, dificultando a visualização do progresso das Sprints e comprometendo o acompanhamento do avanço do projeto.")],validators=[DataRequired()])
     
     
+      
+    sprint_backlog_p1 = RadioField("As tarefas definidas no Sprint Backlog decorrem dos respectivos itens no Product Backlog?",
+                          choices=[
+                          (4,"Sim, todas as tarefas são derivadas de pelo menos uma das User Stories programadas para a Sprint em questão."),
+                          (3,"Parcialmente, algumas tarefas decorrem de User Stories de Sprints passadas ou futuras, mas a maioria está fiel ao programado para a Sprint."),
+                          (2,"Minimamente, a maioria das tarefas estão desconexas com as User Stories definidas previamente, deixando o time confuso sobre o que deve ser entregue."),
+                          (1,"Não, nenhuma das tarefas decorrem das User Stories corretas, impossibilitando que o time entregue o MVP referente a Sprint.")],validators=[DataRequired()])
+    
+    sprint_backlog_p2 = RadioField("A velocidade é definida pela quantidade média de Story points concluídos em uma Sprint. Com base nessa definição, os itens do Sprint Backlog respeitam a métrica do time?",
+                          choices=[
+                          (4,"Sim, os itens foram definidos o mais próximo possível da média alcançável, tendo qualquer item sobressalente definido como meta complementar às obrigatórias."),
+                          (3,"Parcialmente, houve a tentativa de permanecer na média do time, mas devido ao valor prometido, itens a mais foram estabelecidos como meta obrigatória."),
+                          (2,"Minimamente, ou a quantidade de Story Points está consideravelmente acima da média, arriscando a conclusão do prometido para Sprint. Ou, a quantidade de Story Points está consideravelmente abaixo da média e não foram adicionados mais itens para evitar períodos de zero produtividade"),
+                          (1,"Não, a média não foi considerada em nenhum momento e a quantidade de Story Points está muito acima ou muito abaixo da média, arriscando a entrega do produto inteiro e a qualidade das próximas Sprints.")],validators=[DataRequired()])
+    
+    sprint_backlog_p3 = RadioField("A Sprint possui um MVP (Produto mínimo viável) bem estabelecido?",
+                          choices=[
+                          (4,"Sim, o MVP pode ser enxergado claramente tanto pelas tarefas abordadas no Sprint Backlog, quanto explicado mais a fundo em algum outro tipo de documento. A equipe tem plena consciência do que deve ser entregue."),
+                          (3,"Parcialmente, o MVP pode ser enxergado nas tarefas abordadas do Sprint Backlog, porém não está registrado explicitamente em nenhum lugar. A equipe tem bom conhecimento sobre o que deve ser entregue."),
+                          (2,"Minimamente, o MVP pode ser vagamente observado nas tarefas e não está registrado em nenhum outro local. A equipe está consideravelmente perdida em relação ao que foi prometido."),
+                          (1,"Não, o MVP não é claro por meio da escolha das tarefas e não está anotado em nenhum lugar. A equipe não sabe o que deve ser entregue.")],validators=[DataRequired()])
+    
+    sprint_backlog_p4 = RadioField("As tarefas selecionadas possuem prioridade, User Story e estimativas (Story Points) bem definidas?",
+                          choices=[
+                          (4,"Sim, as tarefas listadas no Sprint Backlog possuem cada um dos itens mencionados, escritos de forma clara e concisa."),
+                          (3,"Parcialmente, quase todas estão padronizadas e alguns itens estão mais concisos e bem escritos do que outros."),
+                          (2,"Minimamente, a lista foi feita seguindo um padrão diferente, porém ainda mantém os itens principais: User Story e Story Points."),
+                          (1,"Não, a lista está despadronizada e segue algo único e pensado pela própria equipe ao invés das normas especificadas.")],validators=[DataRequired()])
+    
+    dod_p1 = RadioField(" A Definition of Done têm critérios de aceitação bem definidos para considerar um item pronto?",
+                          choices=[
+                          (4,"Sim, foram definidos critérios de aceitação bem específicos, objetivos e inquestionáveis, levando a uma fácil compreensão sobre o que se considerou pronto."),
+                          (3,"Parcialmente, foram definidos critérios de aceitação específicos, objetivos, mas questionáveis, levando a algumas dúvidas sobre o que se considerou pronto."),
+                          (2,"Minimamente, foram definidos critérios nada específicos, não objetivos e questionáveis, levando a uma dificuldade de compreensão sobre o que se considera pronto."),
+                          (1,"Não, não foram definidos critérios de aceitação sobre a DoD, ocasionando total falta de consenso no que seria considerado pronto")],validators=[DataRequired()])
+    
+    dod_p2 = RadioField("A Definition of Done foi acordada formalmente entre o Product Owner e o Time de Desenvolvimento?",
+                          choices=[
+                          (4,"Sim, o Product Owner e o time desenvolveram os critérios em conjunto, deixando a DoD documentada e de fácil acesso a todos."),
+                          (3,"Parcialmente, uma das partes teve mais poder de decisão do que a outra, porém a DoD foi documentada e de fácil acesso a todos."),
+                          (2,"Minimamente, apenas uma das partes decidiu os critérios para a DoD, em que ela não está claramente documentada e não está de fácil acesso a todos."),
+                          (1,"Não, apenas uma das partes decidiu os critérios, a DoD não está documentada, sendo lembrada por meio de acordos verbais, gerando grandes chances do filtro ser completamente ignorado e vários itens não prontos serem aprovados.")],validators=[DataRequired()])
+    
+    dod_p3 = RadioField("O DoR foi seguido corretamente pela equipe de desenvolvimento?",
+                          choices=[
+                          (4,"Sim, todos tiveram uma clara compreensão e conseguiram seguir os critérios para definir itens como preparado corretamente."),
+                          (3,"Parcialmente, a maioria teve uma boa compreensão e conseguiu seguir os critérios para definir itens como preparado de forma aceitável, mas não excelente."),
+                          (2,"Minimamente, a minoria compreendeu e dificilmente conseguiu seguir os critérios para definir itens como preparado, tendo alguns itens definidos incorretamente."),
+                          (1,"Não, não houve compreensão e não foi possível seguir os critérios para definir itens como preparado corretamente.")],validators=[DataRequired()])
+    
+    
+    sprint_review_p1 = RadioField("As partes interessadas forneceram feedback sobre o incremento apresentado?",
+                          choices=[
+                          (4,"Sim, as partes interessadas forneceram feedback claro e construtivo sobre o incremento, contribuindo significativamente para melhorias no produto"),
+                          (3,"Parcialmente, o feedback das partes interessadas foi fornecido acerca do incremento, mas de forma pouco objetiva ou pouco detalhada."),
+                          (2,"Minimamente, houve pouco feedback das partes interessadas sobre o incremento, sem contribuições relevantes para sua melhoria."),
+                          (1,"Não, as partes interessadas não forneceram feedback sobre o incremento apresentado, resultando em incerteza sobre o nível de satisfação.")],validators=[DataRequired()])
+    
+    sprint_review_p2 = RadioField("Os resultados do Sprint estão bem alinhados à visão do produto e ao objetivo definido? Houve impedimentos significativos que afetaram essas entregas?",
+                          choices=[
+                          (4,"Sim, os resultados do Sprint estão totalmente alinhados à visão do produto e ao objetivo definido. Não houve impedimentos significativos durante o trabalho."),
+                          (3,"Parcialmente, os resultados do Sprint estão em boa parte alinhados à visão do produto e ao objetivo definido. Mas alguns impedimentos afetaram pequenas entregas e detalhes."),
+                          (2,"Minimamente, os resultados do Sprint ficaram pouco alinhados com a visão do produto e o objetivo definido. Houve impedimentos relevantes que afetaram a entrega."),
+                          (1,"Não, os resultados do Sprint estão desalinhados com a visão do produto e com o objetivo definido. Houve fortes impedimentos que comprometeram significativamente a entrega.")],validators=[DataRequired()])
+    
+    sprint_review_p3 = RadioField("No caso de itens não concluídos, o Product Backlog foi atualizado de acordo?",
+                          choices=[
+                          (4,"Sim, o Product Backlog foi atualizado de acordo, refletindo fielmente o estado atual dos itens não concluídos"),
+                          (3,"Parcialmente, o Product Backlog foi atualizado de acordo, mas alguns ajustes ou itens ficaram pendentes de revisão."),
+                          (2,"Minimamente, o Product Backlog foi atualizado de forma incompleta, com diversas informações desatualizadas."),
+                          (1,"Não, o Product Backlog não foi atualizado, afetando a transparência e o planejamento das próximas Sprints.")],validators=[DataRequired()])
+    
+    sprint_review_p4 = RadioField("Com base no ritmo do time e nas funcionalidades restantes, a previsão de entrega para o Produto Final ainda é realista?",
+                          choices=[
+                          (4,"Sim, a previsão de entrega continua realista, considerando o ritmo de trabalho atual e as atividades restantes."),
+                          (3,"Parcialmente, a previsão de entrega ainda é realista, mas há riscos que podem comprometer o prazo se não receberem atenção e serem tratados."),
+                          (2,"Minimamente, a previsão de entrega parece pouco realista, e o ritmo de trabalho do time precisa se ajustar para evitar atrasos."),
+                          (1,"Não, a previsão de entrega não parece mais realista, exigindo um replanejamento e revisão do trabalho acerca do produto.")],validators=[DataRequired()])
+    
+    burndown_p1 = RadioField("O gráfico apresenta uma linha de progresso ideal, dedicada a guiar o tempo em que as tarefas são concluídas até o final do Sprint?",
+                          choices=[
+                          (4,"Sim, o gráfico apresenta uma linha de progresso ideal, que serve como referência para guiar o ritmo em que as tarefas devem ser concluídas ao longo do Sprint."),
+                          (3,"Parcialmente, nem todas as tarefas ou prazos refletem com precisão o ritmo planejado."),
+                          (2,"Minimamente, o gráfico mostra apenas alguns pontos de referência do progresso ideal, dificultando que o time o use como guia consistente para acompanhar a conclusão das tarefas."),
+                          (1,"Não, o gráfico não apresenta uma linha de progresso ideal clara, impedindo que o time tenha uma referência eficaz para acompanhar o andamento das tarefas até o final do Sprint.")],validators=[DataRequired()])
+    
+    burndown_p2 = RadioField("Ao longo do Sprint, no BurnDown Chart, como você avalia a linha de conclusão do trabalho real com a linha de conclusão ideal estabelecida?",
+                          choices=[
+                          (4,"A linha de conclusão do trabalho real acompanhou a linha ideal, mostrando que o Sprint seguiu o planejamento previsto e que o time conseguiu cumprir as tarefas dentro do prazo."),
+                          (3,"A linha de conclusão do trabalho real apresentou um desempenho próximo da linha ideal, com pequenas variações."),
+                          (2,"A linha de conclusão do trabalho real divergiu de forma considerável da linha ideal em alguns momentos."),
+                          (1,"A linha de conclusão do trabalho real apresentou grandes diferenças em relação à linha ideal, mostrando que o planejamento do Sprint não foi seguido corretamente e que o time enfrentou dificuldades para concluir as tarefas no prazo.")],validators=[DataRequired()])
+    product_backlog_p1 = RadioField("As tarefas foram priorizadas a partir da dor do cliente?",
+                          choices=[
+                          (4,"Sim e todos os itens seguem uma ordem de prioridade definida a partir dos princípios e feedbacks do cliente."),
+                          (3,"Parcialmente, a maioria dos itens está priorizada no ponto de vista do cliente, porém um item ou outro leva em conta requisitos na perspectiva de desenvolvimento ao invés do que traz maior valor de produto."),
+                          (2,"Minimamente, a minoria parte da dor do cliente, enquanto outras pela ótica do desenvolvimento e as outras que deveriam ser incluídas foram esquecidas."),
+                          (1,"Não foram respeitadas as dores do cliente, levando a um Product Backlog inconciso e incerto quanto ao MVP.")],coerce=int,validators=[DataRequired()])
+    
+    product_backlog_p2 = RadioField("Os itens do Product Backlog seguem o padrão de Id, User Story, Descrição, Prioridade e Estimativa?",
+                          choices=[
+                          (4,"Sim, as tarefas listadas no Product Backlog possuem cada um dos itens mencionados, escritos de forma clara e concisa."),
+                          (3,"Parcialmente, quase todas estão padronizadas e alguns itens estão mais concisos e bem escritos do que outros."),
+                          (2,"Minimamente, a lista foi feita seguindo um padrão diferente, porém ainda mantém os itens principais: User Story, Descrição e Prioridade."),
+                          (1,"Não, a lista está despadronizada e segue algo único e pensado pela própria equipe ao invés das normas especificadas.")],validators=[DataRequired()])
+    
+    product_backlog_p3 = RadioField("As User Stories têm uma definição clara de seus objetivos?",
+                          choices=[
+                          (4,"Sim, as histórias foram escritas claramente e seguem o padrão: Como <usuário>, quero <funcionalidade> para <finalidade>."),
+                          (3,"Parcialmente, algumas histórias ficaram confusas, permitindo interpretações levemente diferentes dos membros. Contudo, seguem o padrão especificado."),
+                          (2,"Minimamente, a maioria das histórias são confusas, permitindo várias interpretações diferentes. Algumas seguem o padrão, enquanto outras fogem."),
+                          (1,"Não, todas as histórias estão confusas e mal escritas, deixando o time desorientado sobre o caminho a seguir. Não seguem o padrão em nenhum dos itens listados.")],
+                          validators=[DataRequired()])
+    
+    product_backlog_p4 = RadioField("Houve mudanças decorrentes de conversas com o cliente? Se sim, o Product Backlog foi atualizado corretamente a partir do novo feedback?",
+                          choices=[
+                          (4,"Mudanças existiram e o Product Backlog foi alterado de acordo, com os novos itens seguindo o padrão corretamente. "),
+                          (3,"O Product Backlog não possui todas as atualizações conversadas. Porém, os itens adicionados continuam seguindo o padrão corretamente. "),
+                          (2,"Não houveram mudanças e o Product Backlog não precisou ser alterado, mantendo a qualidade que já possuía."),
+                          (1,"O Product Backlog não foi alterado, mesmo com atualizações pendentes. Permaneceu o mesmo até o fim da Sprint. ")],validators=[DataRequired()])
+   
+
+    dor_p1 = RadioField("A Definition of Ready têm critérios específicos, mensuráveis e atingíveis para considerar um item preparado?",
+                          choices=[
+                          (4,"Sim, todos os critérios da DoR são específicos, mensuráveis e atingíveis, proporcionando total clareza e objetividade para os membros do time."),
+                          (3,"Parcialmente, a maioria dos critérios são específicos, mas existem itens subjetivos, gerando o risco de debates durante a checagem."),
+                          (2,"Minimamente, a maioria dos critérios é vago e não mensurável. A DoR foi feita, mas raramente é checada."),
+                          (1,"Não, os critérios são completamente subjetivos e a equipe está perdida. Ou a DoR é ignorada ou nem foi feita pelo time.")]
+                          ,validators=[DataRequired()])
+    
+    
+    dor_p2 = RadioField("A Definition of Ready foi acordada formalmente entre o Product Owner e o Time de Desenvolvimento?",
+                          choices=[
+                          (4,"Sim, o Product Owner e o time desenvolveram os critérios em conjunto, deixando a DoR documentada e de fácil acesso a todo"),
+                          (3,"Parcialmente, uma das partes teve mais poder de decisão do que a outra, porém a DoR foi documentada e de fácil acesso a todos."),
+                          (2,"Minimamente, apenas uma das partes decidiu os critérios para a DoR, em que ela não está claramente documentada e não está de fácil acesso a todos"),
+                          (1,"Não, apenas uma das partes decidiu os critérios, a DoR não está documentada, sendo lembrada por meio de acordos verbais, gerando grandes chances do filtro ser completamente ignorado e vários itens não preparados serem aprovados.")],validators=[DataRequired()])
+    
+    dor_p3 = RadioField("O DoR foi seguido corretamente pela equipe de desenvolvimento?",
+                          choices=[
+                          (4,"Sim, todos tiveram uma clara compreensão e conseguiram seguir os critérios para definir itens como preparado corretamente."),
+                          (3,"Parcialmente, a maioria teve uma boa compreensão e conseguiu seguir os critérios para definir itens como preparado de forma aceitável, mas não excelente."),
+                          (2,"Minimamente, a minoria compreendeu e dificilmente conseguiu seguir os critérios para definir itens como preparado, tendo alguns itens definidos incorretamente"),
+                          (1,"Não, não houve compreensão e não foi possível seguir os critérios para definir itens como preparado corretamente.")],validators=[DataRequired()])
+   
+
+    
+    sprint_planning_p1 = RadioField("Na reunião, foram definidos quais itens do Product Backlog seriam realizados na Sprint?",
+                          choices=[
+                          (4,"Sim, os itens do Product Backlog que seriam selecionados para a Sprint foram definidos de forma clara e objetiva, não gerando dúvidas."),
+                          (3,"Parcialmente, os itens do Product Backlog que seriam selecionados para a Sprint não foram definidos com excelência, mas foi possível ter uma compreensão boa, sem muitas dúvidas."),
+                          (2,"Minimamente, os itens do Product Backlog que seriam selecionados para a Sprint não foram definidos corretamente, gerando pouca compreensão e muitas dúvidas."),
+                          (1,"Não, não foram definidos os itens do Product Backlog a serem selecionados para a Sprint, gerando grande incompreensão e falta de organização.")],
+                          validators=[DataRequired()])
+    
+    sprint_planning_p2 = RadioField("As tarefas foram planejadas devidamente?",
+                          choices=[
+                          (4,"Sim, as tarefas foram planejadas considerando os itens do Product Backlog que devem ser priorizados, bem como quais serão os itens entregáveis para a Sprint e se existem riscos e dependências entre eles."),
+                          (3,"Parcialmente, as tarefas consideraram a maioria dos itens marcados como prioridade no Product Backlog, excluindo alguns itens de pouca prioridade. Foram definidos os itens entregáveis, mas a análise de riscos e dependências foi pouco discutida."),
+                          (2,"Minimamente, as tarefas desconsideraram algumas prioridades médias e várias das baixas. Itens que deveriam entrar como entregáveis foram esquecidos e a análise de riscos foi extremamente breve ou inexistente."),
+                          (1,"Não, as tarefas selecionadas não levaram em conta quais itens deveriam ser priorizados do Product Backlog, muito menos os itens entregáveis e os riscos e dependências entre eles; resultando em uma Sprint com promessas confusas.")],validators=[DataRequired()])
+    
+    sprint_planning_p3 = RadioField("Como você avalia a forma como foi feita a divisão das tarefas?",
+                          choices=[
+                          (4,"Ótima, as tarefas foram bem distribuídas, considerando a capacidade e habilidade de cada membro, favorecendo o equilíbrio do time e o cumprimento dos prazos."),
+                          (3,"Boa, a maioria das tarefas foram distribuídas considerando a capacidade e habilidade de cada membro e, como certas tarefas foram mal pensadas, uma pequena parte dos colaboradores tem mais trabalho e responsabilidades."),
+                          (2,"Neutra, a maioria das tarefas foram distribuídas sem considerar a capacidade e habilidade de cada membro e, com isso, vários colaboradores se viram sobrecarregados de trabalho."),
+                          (1,"Ruim, as tarefas foram mal distribuídas, muitos membros ficaram sobrecarregados enquanto outros tiveram pouca participação e ficaram ociosos.")],validators=[DataRequired()])
+    
+    sprint_planning_p4 = RadioField("Os itens selecionados do Product Backlog atendiam ao DoR definido antes do início do planejamento?",
+                          choices=[
+                          (4,"Sim, todos os itens selecionados do Product Backlog atenderam ao DoR definido, apresentando critérios claros, compreensíveis e prontos para execução."),
+                          (3,"Parcialmente, a maioria dos itens selecionados do Product Backlog atendeu ao DoR definido, mas alguns apresentaram dúvidas que precisaram ser resolvidas durante a Sprint."),
+                          (2,"Minimamente, poucos itens selecionados do Product Backlog atenderam ao DoR definido, ocasionando grandes incertezas e retrabalho durante a execução."),
+                          (1,"Não, os itens selecionados do Product Backlog não atenderam ao DoR definido, comprometendo a clareza e o andamento do Sprint.")],validators=[DataRequired()])
+    
+    
+    story_point_p1 = RadioField("As Story Points foram definidas de acordo com as estimativas de esforço entre os membros do Time de Desenvolvimento?",
+                          choices=[
+                          (4,"Sim, todas as Story Points foram definidas de acordo com as estimativas de esforço compartilhadas pelos membros do Time de Desenvolvimento."),
+                          (3,"Parcialmente, a maioria das Story Points foram definidas com as estimativas de esforço entre os membros do Time de Desenvolvimento, mas houveram outras que foram definidas por perspectivas individuais."),
+                          (2,"Minimamente, poucas Story Points foram definidas de acordo com as estimativas do Time de Desenvolvimento."),
+                          (1,"Não, as Story Points não foram definidas de acordo com as estimativas do Time de Desenvolvimento, sendo determinadas sem consenso ou alinhamento entre os membros.")],validators=[DataRequired()])
+    
+    
+    story_point_p2 = RadioField(" Como você avalia a utilização das métricas de estimativa em seus Backlogs?",
+                          choices=[
+                          (4,"As métricas de estimativa foram utilizadas de forma consistente e eficaz, permitindo que o Time de Desenvolvimento planejasse e priorizasse as tarefas do Backlog com clareza e precisão."),
+                          (3,"As métricas de estimativa foram úteis na maior parte do tempo, auxiliando o planejamento do Backlog, embora algumas tarefas possam não ter sido estimadas com total precisão."),
+                          (2,"A utilização das métricas de estimativa apresentou resultados medianos, sem grande impacto no planejamento do Backlog."),
+                          (1,"As métricas de estimativa foram pouco e/ou mal utilizadas, dificultando o planejamento e a priorização das tarefas do Backlog, atrapalhando o acompanhamento do progresso do Sprint.")],validators=[DataRequired()])
+   
+    
+ 
+    
+    
+ 
+
+
+
+
