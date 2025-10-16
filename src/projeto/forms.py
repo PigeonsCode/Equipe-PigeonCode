@@ -15,33 +15,105 @@ class FormLoginAdm(FlaskForm):
 class FormUserAvalia(FlaskForm):
     # Inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas,
     #para que haja a conversão de string para int
-    p1 = RadioField("Perguntas 1",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],coerce=int,validators=[DataRequired()])
-    
-    p2 = RadioField("Perguntas 2",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p3 = RadioField("Perguntas 3",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p4 = RadioField("Perguntas 4",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     sprint_backlog_p1 = RadioField("As tarefas definidas no Sprint Backlog decorrem dos respectivos itens no Product Backlog?",
                           choices=[
@@ -71,59 +143,6 @@ class FormUserAvalia(FlaskForm):
                           (2,"Minimamente, a lista foi feita seguindo um padrão diferente, porém ainda mantém os itens principais: User Story e Story Points."),
                           (1,"Não, a lista está despadronizada e segue algo único e pensado pela própria equipe ao invés das normas especificadas.")],validators=[DataRequired()])
     
-    p9 = RadioField("Perguntas 9",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p10 = RadioField("Perguntas 10",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
-
-    p11 = RadioField("Perguntas 11",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
-
-    p12 = RadioField("Perguntas 12",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
-
-    p13 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    
-    p14 = RadioField("Perguntas 14",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p15 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
     dod_p1 = RadioField(" A Definition of Done têm critérios de aceitação bem definidos para considerar um item pronto?",
                           choices=[
                           (4,"Sim, foram definidos critérios de aceitação bem específicos, objetivos e inquestionáveis, levando a uma fácil compreensão sobre o que se considerou pronto."),
@@ -145,55 +164,6 @@ class FormUserAvalia(FlaskForm):
                           (2,"Minimamente, a minoria compreendeu e dificilmente conseguiu seguir os critérios para definir itens como preparado, tendo alguns itens definidos incorretamente."),
                           (1,"Não, não houve compreensão e não foi possível seguir os critérios para definir itens como preparado corretamente.")],validators=[DataRequired()])
     
-    p19 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p20 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-
-    p21 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p22 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p23 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p24 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p25 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
     
     sprint_review_p1 = RadioField("As partes interessadas forneceram feedback sobre o incremento apresentado?",
                           choices=[
@@ -223,55 +193,6 @@ class FormUserAvalia(FlaskForm):
                           (2,"Minimamente, a previsão de entrega parece pouco realista, e o ritmo de trabalho do time precisa se ajustar para evitar atrasos."),
                           (1,"Não, a previsão de entrega não parece mais realista, exigindo um replanejamento e revisão do trabalho acerca do produto.")],validators=[DataRequired()])
     
-    p29 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p30 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p31 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p32 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p33 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p34 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p35 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
     burndown_p1 = RadioField("O gráfico apresenta uma linha de progresso ideal, dedicada a guiar o tempo em que as tarefas são concluídas até o final do Sprint?",
                           choices=[
                           (4,"Sim, o gráfico apresenta uma linha de progresso ideal, que serve como referência para guiar o ritmo em que as tarefas devem ser concluídas ao longo do Sprint."),
@@ -286,12 +207,6 @@ class FormUserAvalia(FlaskForm):
                           (2,"A linha de conclusão do trabalho real divergiu de forma considerável da linha ideal em alguns momentos."),
                           (1,"A linha de conclusão do trabalho real apresentou grandes diferenças em relação à linha ideal, mostrando que o planejamento do Sprint não foi seguido corretamente e que o time enfrentou dificuldades para concluir as tarefas no prazo.")],validators=[DataRequired()])
     
-    p38 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
     
  
 
