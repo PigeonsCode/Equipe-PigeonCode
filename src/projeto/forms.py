@@ -43,65 +43,7 @@ class FormUserAvalia(FlaskForm):
                           (3,"O Product Backlog não possui todas as atualizações conversadas. Porém, os itens adicionados continuam seguindo o padrão corretamente. "),
                           (2,"Não houveram mudanças e o Product Backlog não precisou ser alterado, mantendo a qualidade que já possuía."),
                           (1,"O Product Backlog não foi alterado, mesmo com atualizações pendentes. Permaneceu o mesmo até o fim da Sprint. ")],validators=[DataRequired()])
-    
-    p5 = RadioField("Perguntas 5",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p6 = RadioField("Perguntas 6",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p7 = RadioField("Perguntas 7",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p8 = RadioField("Perguntas 8",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p9 = RadioField("Perguntas 9",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p10 = RadioField("Perguntas 10",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
-
-    p11 = RadioField("Perguntas 11",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
-
-    p12 = RadioField("Perguntas 12",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-
+   
 
     dor_p1 = RadioField("A Definition of Ready têm critérios específicos, mensuráveis e atingíveis para considerar um item preparado?",
                           choices=[
@@ -125,43 +67,10 @@ class FormUserAvalia(FlaskForm):
                           (3,"Parcialmente, a maioria teve uma boa compreensão e conseguiu seguir os critérios para definir itens como preparado de forma aceitável, mas não excelente."),
                           (2,"Minimamente, a minoria compreendeu e dificilmente conseguiu seguir os critérios para definir itens como preparado, tendo alguns itens definidos incorretamente"),
                           (1,"Não, não houve compreensão e não foi possível seguir os critérios para definir itens como preparado corretamente.")],validators=[DataRequired()])
+   
+
     
-    p16 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p17 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p18 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p19 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p20 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p21 = RadioField("Na reunião, foram definidos quais itens do Product Backlog seriam realizados na Sprint?",
+    sprint_planning_p1 = RadioField("Na reunião, foram definidos quais itens do Product Backlog seriam realizados na Sprint?",
                           choices=[
                           (4,"Sim, os itens do Product Backlog que seriam selecionados para a Sprint foram definidos de forma clara e objetiva, não gerando dúvidas."),
                           (3,"Parcialmente, os itens do Product Backlog que seriam selecionados para a Sprint não foram definidos com excelência, mas foi possível ter uma compreensão boa, sem muitas dúvidas."),
@@ -169,91 +78,29 @@ class FormUserAvalia(FlaskForm):
                           (1,"Não, não foram definidos os itens do Product Backlog a serem selecionados para a Sprint, gerando grande incompreensão e falta de organização.")],
                           validators=[DataRequired()])
     
-    p22 = RadioField("As tarefas foram planejadas devidamente?",
+    sprint_planning_p2 = RadioField("As tarefas foram planejadas devidamente?",
                           choices=[
                           (4,"Sim, as tarefas foram planejadas considerando os itens do Product Backlog que devem ser priorizados, bem como quais serão os itens entregáveis para a Sprint e se existem riscos e dependências entre eles."),
                           (3,"Parcialmente, as tarefas consideraram a maioria dos itens marcados como prioridade no Product Backlog, excluindo alguns itens de pouca prioridade. Foram definidos os itens entregáveis, mas a análise de riscos e dependências foi pouco discutida."),
                           (2,"Minimamente, as tarefas desconsideraram algumas prioridades médias e várias das baixas. Itens que deveriam entrar como entregáveis foram esquecidos e a análise de riscos foi extremamente breve ou inexistente."),
                           (1,"Não, as tarefas selecionadas não levaram em conta quais itens deveriam ser priorizados do Product Backlog, muito menos os itens entregáveis e os riscos e dependências entre eles; resultando em uma Sprint com promessas confusas.")],validators=[DataRequired()])
     
-    p23 = RadioField("Como você avalia a forma como foi feita a divisão das tarefas?",
+    sprint_planning_p3 = RadioField("Como você avalia a forma como foi feita a divisão das tarefas?",
                           choices=[
                           (4,"Ótima, as tarefas foram bem distribuídas, considerando a capacidade e habilidade de cada membro, favorecendo o equilíbrio do time e o cumprimento dos prazos."),
                           (3,"Boa, a maioria das tarefas foram distribuídas considerando a capacidade e habilidade de cada membro e, como certas tarefas foram mal pensadas, uma pequena parte dos colaboradores tem mais trabalho e responsabilidades."),
                           (2,"Neutra, a maioria das tarefas foram distribuídas sem considerar a capacidade e habilidade de cada membro e, com isso, vários colaboradores se viram sobrecarregados de trabalho."),
                           (1,"Ruim, as tarefas foram mal distribuídas, muitos membros ficaram sobrecarregados enquanto outros tiveram pouca participação e ficaram ociosos.")],validators=[DataRequired()])
     
-    p24 = RadioField("Os itens selecionados do Product Backlog atendiam ao DoR definido antes do início do planejamento?",
+    sprint_planning_p4 = RadioField("Os itens selecionados do Product Backlog atendiam ao DoR definido antes do início do planejamento?",
                           choices=[
                           (4,"Sim, todos os itens selecionados do Product Backlog atenderam ao DoR definido, apresentando critérios claros, compreensíveis e prontos para execução."),
                           (3,"Parcialmente, a maioria dos itens selecionados do Product Backlog atendeu ao DoR definido, mas alguns apresentaram dúvidas que precisaram ser resolvidas durante a Sprint."),
                           (2,"Minimamente, poucos itens selecionados do Product Backlog atenderam ao DoR definido, ocasionando grandes incertezas e retrabalho durante a execução."),
                           (1,"Não, os itens selecionados do Product Backlog não atenderam ao DoR definido, comprometendo a clareza e o andamento do Sprint.")],validators=[DataRequired()])
     
-    p25 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
     
-    p26 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p27 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p28 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p29 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p30 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p31 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p32 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p33 = RadioField("Pergunta 33",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p34 = RadioField("As Story Points foram definidas de acordo com as estimativas de esforço entre os membros do Time de Desenvolvimento?",
+    story_point_p1 = RadioField("As Story Points foram definidas de acordo com as estimativas de esforço entre os membros do Time de Desenvolvimento?",
                           choices=[
                           (4,"Sim, todas as Story Points foram definidas de acordo com as estimativas de esforço compartilhadas pelos membros do Time de Desenvolvimento."),
                           (3,"Parcialmente, a maioria das Story Points foram definidas com as estimativas de esforço entre os membros do Time de Desenvolvimento, mas houveram outras que foram definidas por perspectivas individuais."),
@@ -261,33 +108,13 @@ class FormUserAvalia(FlaskForm):
                           (1,"Não, as Story Points não foram definidas de acordo com as estimativas do Time de Desenvolvimento, sendo determinadas sem consenso ou alinhamento entre os membros.")],validators=[DataRequired()])
     
     
-    p35 = RadioField(" Como você avalia a utilização das métricas de estimativa em seus Backlogs?",
+    story_point_p2 = RadioField(" Como você avalia a utilização das métricas de estimativa em seus Backlogs?",
                           choices=[
                           (4,"As métricas de estimativa foram utilizadas de forma consistente e eficaz, permitindo que o Time de Desenvolvimento planejasse e priorizasse as tarefas do Backlog com clareza e precisão."),
                           (3,"As métricas de estimativa foram úteis na maior parte do tempo, auxiliando o planejamento do Backlog, embora algumas tarefas possam não ter sido estimadas com total precisão."),
                           (2,"A utilização das métricas de estimativa apresentou resultados medianos, sem grande impacto no planejamento do Backlog."),
                           (1,"As métricas de estimativa foram pouco e/ou mal utilizadas, dificultando o planejamento e a priorização das tarefas do Backlog, atrapalhando o acompanhamento do progresso do Sprint.")],validators=[DataRequired()])
-    
-    p36 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p37 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
-    
-    p38 = RadioField("Perguntas 13",
-                          choices=[
-                          (4,""),
-                          (3,""),
-                          (2,""),
-                          (1,"")],validators=[DataRequired()])
+   
     
  
     
