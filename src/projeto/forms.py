@@ -54,7 +54,7 @@ class FormUserAvalia(FlaskForm):
                           (2,"Minimamente, a minoria foi questionada e deu respostas sobre o progresso, planejamento e impedimentos de forma insatisfatória."),
                           (1,"Não, não foi utilizado nenhuma metodologia de perguntas para acompanhar o progresso, planejamento e impedimentos do time, ocasionando em extrema incerteza sobre o andamento do trabalho.")],validators=[DataRequired()])
     
-    daily_scrum_p1 = RadioField("Como você avalia a eficácia das reuniões de Daily Scrum? (Considere se elas mantiveram o foco de acompanhar o progresso do Sprint.)",
+    daily_scrum_p2 = RadioField("Como você avalia a eficácia das reuniões de Daily Scrum? (Considere se elas mantiveram o foco de acompanhar o progresso do Sprint.)",
                           choices=[
                           (4,"Ótima, todos tiveram abertura e conseguiram comunicar claramente sobre seus progressos, planos e impedimentos, deixando evidente o avanço do time."),
                           (3,"Boa, a maioria teve abertura e conseguiu comunicar claramente sobre seus progressos, planos e impedimentos. Por terem membros que ou não se comunicaram com clareza, ou não tiveram espaço para falar, o avanço do time é perceptível, mas incerto em certas partes."),
@@ -270,8 +270,13 @@ class FormUserAvalia(FlaskForm):
                           (3,"Parcialmente, a maioria dos itens selecionados do Product Backlog atendeu ao DoR definido, mas alguns apresentaram dúvidas que precisaram ser resolvidas durante a Sprint."),
                           (2,"Minimamente, poucos itens selecionados do Product Backlog atenderam ao DoR definido, ocasionando grandes incertezas e retrabalho durante a execução."),
                           (1,"Não, os itens selecionados do Product Backlog não atenderam ao DoR definido, comprometendo a clareza e o andamento do Sprint.")],validators=[DataRequired()])
-    
-    
+    sprint_planning_p5 = RadioField("A equipe analisou seu histórico de velocidade e capacidade de trabalho para planejar os itens para o Sprint?",
+                          choices=[
+                          (4,"Sim, a equipe analisou cuidadosamente o histórico de velocidade e a capacidade de trabalho, possibilitando um planejamento de forma equilibrada e realista."),
+                          (3,"Parcialmente, a equipe considerou parcialmente o histórico de velocidade e a capacidade de trabalho, mas alguns detalhes esquecidos poderiam ter tornado o planejamento mais preciso."),
+                          (2,"Minimamente, a equipe avaliou de forma rasa seu histórico de velocidade e capacidade de trabalho, resultando em um planejamento pouco realista."),
+                          (1,"Não, a equipe não analisou seu histórico de velocidade nem a capacidade de trabalho, o que comprometeu o planejamento do Sprint.")],
+                          validators=[DataRequired()])
     story_point_p1 = RadioField("As Story Points foram definidas de acordo com as estimativas de esforço entre os membros do Time de Desenvolvimento?",
                           choices=[
                           (4,"Sim, todas as Story Points foram definidas de acordo com as estimativas de esforço compartilhadas pelos membros do Time de Desenvolvimento."),
