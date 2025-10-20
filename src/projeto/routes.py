@@ -40,9 +40,9 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/formularios")
+@app.route("/formulario-avaliativo")
 def forms():
-    return render_template("forms.html", page_url="scrum")
+    return render_template("forms.html", page_url="formulario-avaliativo")
  
 # Páginas de conteúdo
  

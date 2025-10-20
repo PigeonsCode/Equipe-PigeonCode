@@ -43,7 +43,7 @@
       <div
         class="{% if navigation | selectattr('show_aside') | list %}col-md-7{% else %}col-md-8{% endif %}"
       >
-        {% if not first_item %}
+        <!-- {% if not first_item %}
         <nav class="d-flex mb-5 custom-navbar">
           <a
             class="nav-link fw-bold text-roboto text-uppercase nav__links {% if request.path != '/formularios'%}active{% endif %}"
@@ -57,7 +57,7 @@
             >Formulários</a
           >
         </nav>
-        {% endif %} {%block content %} {% endblock %}
+        {% endif %} --> {%block content %} {% endblock %} 
       </div>
       {% if navigation | selectattr('show_aside') | list %}
       <aside class="col-2">
