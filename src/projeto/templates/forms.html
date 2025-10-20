@@ -21,7 +21,7 @@
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
                 <hr class="question-divider mb-4 mt-4">
-
+<!-- incremento do produto -->
                 <div>
                     {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -34,6 +34,204 @@
 
                 <hr class="question-divider mb-4 mt-4">
             </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+            
+<!--sprint retrospective-->
+                <div>
+                    {{form.sprint_retrospective_p4.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_retrospective_p4 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+                
+<!-- burnup -->
+                <div>
+                    {{form. burnup_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form. burnup_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+              
+<!--sprint backlog-->
+                <div>
+                    {{form.sprint_backlog_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_backlog_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+                
+
+                <div>
+                    {{form.sprint_backlog_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_backlog_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+               
+
+                <div>
+                    {{form.sprint_backlog_p3 .label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_backlog_p3 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+                
+                <div>
+                    {{form.sprint_backlog_p4.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_backlog_p4 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+               
+<!-- definition of done -->
+                <div>
+                    {{form.dod_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.dod_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+              
+                <div>
+                    {{form.dod_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.dod_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+                
+
+                <div>
+                    {{form.dod_p3 .label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.dod_p3  %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+               
+<!-- sprint review -->
+                <div>
+                    {{form.sprint_review_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_review_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+                {{form.csrf_token}} 
+                {{form.hidden_tag() }}
+                
+
+                <div>
+                    {{form.sprint_review_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_review_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                </div>
+
+                <hr class="question-divider mb-4 mt-4">
+            </form>
+
+            
         </section>
         
     </div>
