@@ -17,23 +17,23 @@
 
 ## 📋 Backlog da Sprint <a id="backlog-sprint"></a>
 
-| Rank | Prioridade | Funcionalidade                                                      | Descrição                                                                                                                                                                                 | Estimativa | Sprint | Status |
-| :--: | :--------: | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: | :----: |
-|  1   |    Alta    | Definir lógica de pontuação.                                        | Decidir os critérios de pontuação e peso das respostas para os formulários da área de treinamento. (Meta)                                                                                 |      8      |   2    |        |
-|  2   |    Alta    | Prática do Flask-WTF.                                               | Praticar a criação e gerenciamento de formulários com o uso da biblioteca Flask-WTF e WTForms, a fim de replicar a lógica aos componentes do site. (Meta)                                 |      20      |   2    |        |
-|  3   |   Média    | Estudar Formulários no Bootstrap.                                   | Praticar por meio de projetos rápidos e práticos e reunir conhecimentos suficientes para incluir formulários personalizados e estilizados no site. (Meta)                                 |      20      |   2    |        |
-|  4   |   Média    | Elaborar as perguntas que serão feitas nos formulários avaliativos. | Reunir perguntas para os formulários com base no modo de pontuação definido pelo sistema avaliativo. (Meta)                                                                               |      5      |   2    |        |
-|  5   |    Alta    | Modelagem teórica da estrutura de BD. | Fazer a modelagem teórica, desenvolvendo a relação entre as tabelas no banco de dados. Estabelecer chaves estrangeiras, primárias e tipos de dados. (Meta) | 13 | 2 |
-|  6   |    Alta    | Estrutura de BD para projetos e respostas.                          | Criar tabelas de projetos e respostas com seus respectivos relacionamentos no SQLite, seguindo o modelo definido. (Meta)                                                                  |      5      |   2    |        |
-|  7   |   Média    | Página de formulário. | Implementar a página em HTML que contém o formulário. (Meta) | 8 | 2 | |
-|  8   |   Alta     | Criar campos do Formulário. | Criar os campos dos formulários para inserir num arquivo forms.py, contendo também as validações nos campos dos formulários. (Meta) | 8 | 2 | |
-|  9  |    Alta    | Funcionalidade de Submit de formulário.                            | Desenvolver a lógica de envio do formulário para que ele seja armazenado no banco de dados efetivamente. Deve conter um campo para selecionar a qual projeto ele se refere. (Meta) |      13      |   2    |        |
-|  10   |  Média    | Tratamento de erros formulários | Inserir as estruturas de get_flashed ao formulário, estruturando as mensagens de erro de validação dos campos via flash. (Meta) | 13 | 2 | |
-|  11  |   Média    | Estilização de mensagens de erro do formulário avaliativo.                        | Exibir mensagens de erro de validação para campos que forem obrigatórios nos formulários avaliativos. (Meta)                                                                              |      3      |   2    |        |
-|  12  |   Média    | Estilização de mensagens de erro do formulário de login.                            | Implementar a exibição das mensagens de erro de validação para os campos do formulário de login para o acesso ao administrador. (Meta)                                                    |      3      |   2    |        |
-|  13  |   Média    | Funcionalidade de Logout de administrador.                          | Criar um botão com a lógica de logout, visível apenas na área de acesso restrito ao administrador e quando ele já estiver logado. (Meta)                                                  |       3     |   2    |        |
-|  14  |   Baixa    | Redirecionamento do Logout. | Redirecionar o administrador à página de landing page após clicar em logout. (Meta) | 2 | 2 | |
-|  15  |   Baixa    | Incremento e Sprint Review.                                         | Gravar vídeo do incremento e preparar apresentação para o Sprint Review. (Meta)                                                                                                           |      2      |   2    |        |
+| Rank | Prioridade | Funcionalidade                                                      | Descrição                                                                                                                                                                          | Estimativa | Sprint | Status |
+| :--: | :--------: | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: | :----: |
+|  1   |    Alta    | Definir lógica de pontuação.                                        | Decidir os critérios de pontuação e peso das respostas para os formulários da área de treinamento. (Meta)                                                                          |     8      |   2    |        |
+|  2   |    Alta    | Prática do Flask-WTF.                                               | Praticar a criação e gerenciamento de formulários com o uso da biblioteca Flask-WTF e WTForms, a fim de replicar a lógica aos componentes do site. (Meta)                          |     20     |   2    |        |
+|  3   |   Média    | Estudar Formulários no Bootstrap.                                   | Praticar por meio de projetos rápidos e práticos e reunir conhecimentos suficientes para incluir formulários personalizados e estilizados no site. (Meta)                          |     20     |   2    |        |
+|  4   |   Média    | Elaborar as perguntas que serão feitas nos formulários avaliativos. | Reunir perguntas para os formulários com base no modo de pontuação definido pelo sistema avaliativo. (Meta)                                                                        |     5      |   2    |        |
+|  5   |    Alta    | Modelagem teórica da estrutura de BD.                               | Fazer a modelagem teórica, desenvolvendo a relação entre as tabelas no banco de dados. Estabelecer chaves estrangeiras, primárias e tipos de dados. (Meta)                         |     13     |   2    |
+|  6   |    Alta    | Estrutura de BD para projetos e respostas.                          | Criar tabelas de projetos e respostas com seus respectivos relacionamentos no SQLite, seguindo o modelo definido. (Meta)                                                           |     5      |   2    |        |
+|  7   |   Média    | Página de formulário.                                               | Implementar a página em HTML que contém o formulário. (Meta)                                                                                                                       |     8      |   2    |        |
+|  8   |    Alta    | Criar campos do Formulário.                                         | Criar os campos dos formulários para inserir num arquivo forms.py, contendo também as validações nos campos dos formulários. (Meta)                                                |     8      |   2    |        |
+|  9   |    Alta    | Funcionalidade de Submit de formulário.                             | Desenvolver a lógica de envio do formulário para que ele seja armazenado no banco de dados efetivamente. Deve conter um campo para selecionar a qual projeto ele se refere. (Meta) |     13     |   2    |        |
+|  10  |   Média    | Tratamento de erros formulários                                     | Inserir as estruturas de get_flashed ao formulário, estruturando as mensagens de erro de validação dos campos via flash. (Meta)                                                    |     13     |   2    |        |
+|  11  |   Média    | Estilização de mensagens de erro do formulário avaliativo.          | Exibir mensagens de erro de validação para campos que forem obrigatórios nos formulários avaliativos. (Meta)                                                                       |     3      |   2    |        |
+|  12  |   Média    | Estilização de mensagens de erro do formulário de login.            | Implementar a exibição das mensagens de erro de validação para os campos do formulário de login para o acesso ao administrador. (Meta)                                             |     3      |   2    |        |
+|  13  |   Média    | Funcionalidade de Logout de administrador.                          | Criar um botão com a lógica de logout, visível apenas na área de acesso restrito ao administrador e quando ele já estiver logado. (Meta)                                           |     3      |   2    |        |
+|  14  |   Baixa    | Redirecionamento do Logout.                                         | Redirecionar o administrador à página de landing page após clicar em logout. (Meta)                                                                                                |     2      |   2    |        |
+|  15  |   Baixa    | Incremento e Sprint Review.                                         | Gravar vídeo do incremento e preparar apresentação para o Sprint Review. (Meta)                                                                                                    |     2      |   2    |        |
 
 <br>
 
@@ -69,10 +69,10 @@
       <th>Linkedin</th>
     </tr>
     <tr>
-      <td>Manuela Santos</td>
+      <td>Adler Rocha</td>
       <td>Scrum Master</td>
-      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Taís Souza</td>
@@ -81,10 +81,10 @@
       <td><a href="https://www.linkedin.com/in/tais-f-souza"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
-      <td>Adler Rocha</td>
+      <td>Manuela Santos</td>
       <td>Desenvolvedor</td>
-      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Daniel Nathan</td>
