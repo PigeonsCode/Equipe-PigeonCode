@@ -112,3 +112,94 @@ aside {
 .login-container {
   width: 55vh;
 }
+
+/* Radio Input */
+
+.radio-container input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+.radio-container label {
+  cursor: pointer;
+  padding: 1.6rem 1.8rem 1.6rem 1.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid #DADADA;
+  background-color: #F5F6F7;
+  color: var(--dark-gray);
+  outline: 5px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.radio-container label:last-child {
+  margin-bottom: 2rem;
+}
+
+.radio-container input[type='radio']:hover + label, .radio-container input[type='radio']:focus + label {
+  background-color: rgba(var(--bs-primary-rgb), 0.3);
+  border-color: #8f9efd;
+}
+
+.radio-container input[type='radio']:focus + label {
+  outline: 5px solid  rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.radio-container input[type='radio']:checked + label {
+  background-color: var(--bs-primary);
+  color: var(--color-white);
+  border-color: #394dcd;
+  position: relative;
+  overflow: hidden;
+}
+
+.radio-container input[type='radio']:checked + label::before {
+  content: "";
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-white);
+  right: 0;
+  top: 0;
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+
+/* Question Divider */
+
+.question-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-divider::before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: #dadada;
+  position: absolute;
+}
+
+.question-divider span {
+  z-index: 1;
+  background-color: var(--bs-primary);
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-white);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 3px solid var(--color-white);
+
+}
+
+

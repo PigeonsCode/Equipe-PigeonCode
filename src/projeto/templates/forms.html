@@ -1,6 +1,6 @@
 {% extends "page-template.html" %} {% block fullpage %}
 <main class="d-flex align-items-center justify-content-center mt-5 pt-5 pb-5 w-60 h-100">
-    <div class="container d-flex flex-column bg-white p-4 pt-5 pb-5 gap-3 rounded-4 border border-1 ">
+    <div class="container d-flex flex-column bg-white p-4 pt-5 pb-5 mb-5 gap-3 rounded-4 border border-1 ">
         <section class="w-90 m-auto">
             <div class="mb-4 d-flex flex-column gap-2">
                 <h4 class="fw-bold text-darkest-gray">Avaliação sobre processos da metodologia SCRUM</h4>
@@ -15,24 +15,126 @@
                     <label >Selecionar Projeto</label>
                 </div>
             </div>
-
             
-            <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
+            <form method="POST" class="d-flex flex-column gap-3 mt-3 m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
-                <hr class="question-divider mb-4 mt-4">
 
-                <div>
-                    {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
+                <h5 class="fw-bold text-center text-dark-gray">Incremento do Produto</h5>
+
+                <div class="question-divider mt-2 mb-4">
+                    <span>1</span>
+                </div>
+                
+                {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
                     {% for radio_item in form.incremento_do_produto_p1 %}
                         {{ radio_item(class="radio__input") }}
                         {{ radio_item.label(class="radio__label") }}
                     {% endfor %}
                 </div>
+                
+                <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
                 </div>
 
-                <hr class="question-divider mb-4 mt-4">
+                {{form.incremento_do_produto_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.incremento_do_produto_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                <div class="question-divider mt-4 mb-4">
+                    <span>3</span>
+                </div>
+
+                {{form.incremento_do_produto_p3.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.incremento_do_produto_p3 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                <div class="question-divider mt-4 mb-4">
+                    <span>4</span>
+                </div>
+
+                {{form.incremento_do_produto_p4.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.incremento_do_produto_p4 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                <h5 class="fw-bold text-center text-dark-gray ">Daily Scrum</h5>
+
+                <div class="question-divider mt-2 mb-4">
+                    <span>1</span>
+                </div>
+
+                {{form.daily_scrum_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.daily_scrum_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                
+                <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
+                </div>
+
+                {{form.daily_scrum_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.daily_scrum_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                <h5 class="fw-bold text-center text-dark-gray ">Sprint Retrospective</h5>
+
+                <div class="question-divider mt-2 mb-4">
+                    <span>1</span>
+                </div>
+
+                {{form.sprint_retrospective_p1.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_retrospective_p1 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+                
+                <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
+                </div>
+
+                {{form.sprint_retrospective_p2.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_retrospective_p2 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                <div class="question-divider mt-4 mb-4">
+                    <span>3</span>
+                </div>
+
+                {{form.sprint_retrospective_p3.label(class="mb-4 text-dark-gray")}}
+                <div class="radio-container">
+                    {% for radio_item in form.sprint_retrospective_p3 %}
+                        {{ radio_item(class="radio__input") }}
+                        {{ radio_item.label(class="radio__label") }}
+                    {% endfor %}
+                </div>
+
+                {{form.botao_confirmar(class="btn btn-primary mt-5")}}
             </form>
         </section>
         
