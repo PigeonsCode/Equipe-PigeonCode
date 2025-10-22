@@ -16,12 +16,13 @@
                 </div>
             </div>
 
-            
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
                 <hr class="question-divider mb-4 mt-4">
-<!-- incremento do produto -->
+                <div class="question-divider mt-4 mb-4">
+                    <span>1</span>
+                </div>
                 <div>
                     {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -31,15 +32,123 @@
                     {% endfor %}
                 </div>
                 </div>
-
-                <hr class="question-divider mb-4 mt-4">
+                   <hr class="question-divider mb-4 mt-4">
             </form>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
             
-<!--sprint retrospective-->
+                <div class="question-divider mt-4 mb-4">
+                    <span>4</span>
+                </div>
                 <div>
                     {{form.sprint_retrospective_p4.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -56,8 +165,10 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
-                
-<!-- burnup -->
+             <h5 class="fw-bold text-center text-dark-gray">Burnup</h5>
+            <div class="question-divider mt-4 mb-4">
+                    <span>1</span>
+                </div>
                 <div>
                     {{form. burnup_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -75,7 +186,11 @@
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
               
-<!--sprint backlog-->
+             <h5 class="fw-bold text-center text-dark-gray">Sprint Backlog</h5>
+              <div class="question-divider mt-4 mb-4">
+                    <span>1</span>
+                </div>
+
                 <div>
                     {{form.sprint_backlog_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -92,6 +207,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                 <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
+                </div>
                 
 
                 <div>
@@ -110,6 +228,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                 <div class="question-divider mt-4 mb-4">
+                    <span>3</span>
+                </div>
                
 
                 <div>
@@ -128,6 +249,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                 <div class="question-divider mt-4 mb-4">
+                    <span>4</span>
+                </div>
                 
                 <div>
                     {{form.sprint_backlog_p4.label(class="mb-4 text-dark-gray")}}
@@ -145,8 +269,10 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
-               
-<!-- definition of done -->
+            <h5 class="fw-bold text-center text-dark-gray">Definition of done</h5>
+                <div class="question-divider mt-4 mb-4">
+                    <span>1</span>
+                </div>
                 <div>
                     {{form.dod_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -163,6 +289,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
+                </div>
               
                 <div>
                     {{form.dod_p2.label(class="mb-4 text-dark-gray")}}
@@ -180,7 +309,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
-                
+                <div class="question-divider mt-4 mb-4">
+                    <span>3</span>
+                </div>
 
                 <div>
                     {{form.dod_p3 .label(class="mb-4 text-dark-gray")}}
@@ -198,8 +329,11 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                 <h5 class="fw-bold text-center text-dark-gray">Sprint review</h5>
                
-<!-- sprint review -->
+                 <div class="question-divider mt-4 mb-4">
+                    <span>1</span>
+                </div>
                 <div>
                     {{form.sprint_review_p1.label(class="mb-4 text-dark-gray")}}
                 <div class="radio-container">
@@ -216,6 +350,9 @@
             <form method="POST" class="d-flex flex-column gap-3 mt-3  m-auto">
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+                 <div class="question-divider mt-4 mb-4">
+                    <span>2</span>
+                </div>
                 
 
                 <div>
@@ -228,7 +365,7 @@
                 </div>
                 </div>
 
-                <hr class="question-divider mb-4 mt-4">
+                
             </form>
 
             
