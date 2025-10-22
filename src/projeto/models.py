@@ -12,3 +12,25 @@ class Adm_User(database.Model,UserMixin):
      password_db = database.Column(database.String,nullable=False,unique=True)
 
 
+class FormsNotas(database.Model):
+     id = database.Column(database.Integer, primary_key=True, nullable=False, unique=True)
+     projeto_id = database.Column(database.Integer,database.ForeignKey('projetos.id'),nullable=False)
+     pior_nota = database.Column(database.Integer, nullable=False)
+     melhor_nota = database.Column(database.Integer, nullable=False)
+     m_inpr = database.Column(database.Integer, nullable=False)
+     m_dasc = database.Column(database.Integer, nullable=False)
+     m_spretro = database.Column(database.Integer, nullable=False)
+     m_buup = database.Column(database.Integer, nullable=False)
+     m_spba = database.Column(database.Integer, nullable=False)
+     m_dod = database.Column(database.Integer, nullable=False)
+     m_spre = database.Column(database.Integer, nullable=False)
+     m_budo = database.Column(database.Integer, nullable=False)
+     m_prba = database.Column(database.Integer, nullable=False)
+     m_dor = database.Column(database.Integer, nullable=False)
+     m_sppl = database.Column(database.Integer, nullable=False)
+     m_stpo = database.Column(database.Integer, nullable=False)
+
+class Projetos(database.Model):
+     id = database.Column(database.Integer, primary_key=True, nullable=False, unique=True)
+     nome_projeto = database.Column(database.String, unique=True, nullable=False)
+     id_forms = database.relationship('FormsNotas', backref = 'projetos', lazy=True)
