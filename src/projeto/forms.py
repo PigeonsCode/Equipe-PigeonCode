@@ -24,7 +24,7 @@ class FormUserAvalia(FlaskForm):
                           (2,"O cliente está insatisfeito e exigente para a próxima entrega. Foram feitas muitas críticas leves e muitas críticas extensas. O feedback pendeu mais para o lado negativo do que positivo e mudanças drásticas foram solicitadas."),
                           (1,"Cliente extremamente insatisfeito e risco de desistência. Foram feitas apenas críticas extensas. O feedback foi completamente negativo e a continuação do projeto está ameaçada.")],validators=[DataRequired()])
     
-    inscremento_do_produto_p2 = RadioField("O incremento do produto atendeu a todas as tarefas definidas na versão final do Sprint Backlog?",
+    incremento_do_produto_p2 = RadioField("O incremento do produto atendeu a todas as tarefas definidas na versão final do Sprint Backlog?",
                           choices=[
                           (4,"Sim, todas as tarefas obrigatórias foram concluídas com êxito e também as definidas como metas complementares. O maior valor de produto para aquela Sprint foi entregue com sucesso."),
                           (3,"Parcialmente, todas as tarefas obrigatórias foram concluídas, porém algumas ou todas as complementares foram deixadas para a próxima Sprint. O valor do incremento do produto entregue foi alto."),
@@ -291,6 +291,8 @@ class FormUserAvalia(FlaskForm):
                           (3,"As métricas de estimativa foram úteis na maior parte do tempo, auxiliando o planejamento do Backlog, embora algumas tarefas possam não ter sido estimadas com total precisão."),
                           (2,"A utilização das métricas de estimativa apresentou resultados medianos, sem grande impacto no planejamento do Backlog."),
                           (1,"As métricas de estimativa foram pouco e/ou mal utilizadas, dificultando o planejamento e a priorização das tarefas do Backlog, atrapalhando o acompanhamento do progresso do Sprint.")],validators=[DataRequired()])
+    
+    botao_confirmar = SubmitField("Enviar")
    
     
  
