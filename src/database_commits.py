@@ -1,7 +1,7 @@
 import os, dotenv
 import secrets
 from projeto import database,app
-from projeto.models import Adm_User
+from projeto.models import Adm_User, FormsNotas
 from projeto import bcrypt
 from dotenv import load_dotenv
 
