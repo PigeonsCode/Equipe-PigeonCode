@@ -292,7 +292,7 @@ class FormUserAvalia(FlaskForm):
                           (2,"A utilização das métricas de estimativa apresentou resultados medianos, sem grande impacto no planejamento do Backlog."),
                           (1,"As métricas de estimativa foram pouco e/ou mal utilizadas, dificultando o planejamento e a priorização das tarefas do Backlog, atrapalhando o acompanhamento do progresso do Sprint.")],validators=[DataRequired()])
     
-    botao_confirmar = SubmitField("Enviar")
+    botao_confirmar = SubmitField("Enviar Formulário")
    
     
  

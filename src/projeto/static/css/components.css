@@ -202,4 +202,16 @@ aside {
 
 }
 
+/* Formulário Avaliativo */
 
+.form-avaliation {
+  position: relative;
+}
+
+.btn-submit-avaliation {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-top: 2rem;
+
+}
