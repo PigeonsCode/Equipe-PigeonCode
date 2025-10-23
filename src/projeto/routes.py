@@ -5,7 +5,7 @@ from flask import Flask,render_template,url_for,redirect,flash
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
-from projeto.forms import FormLoginAdm
+from projeto.forms import FormLoginAdm, FormUserAvalia
 from projeto.models import Adm_User
 
 
@@ -42,7 +42,8 @@ def logout():
 
 @app.route("/formulario-avaliativo")
 def forms():
-    return render_template("forms.html", page_url="formulario-avaliativo")
+    form_avaliacao = FormUserAvalia()
+    return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
 # Páginas de conteúdo
  
