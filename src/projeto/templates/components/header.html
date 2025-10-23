@@ -11,15 +11,23 @@
       <li class="nav-item">
         <a
           href="{{ url_for('scrum') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm'%}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita'%}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-book"></i> Treinamentos</a
         >
       </li>
       <li class="nav-item">
         <a
+          href="{{ url_for('forms') }}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/formulario-avaliativo'%}active{% endif %}"
+          aria-current="page"
+          ><i class='bx  bx-widget-vertical'  ></i>  Avaliação de Processos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
           href="{{ url_for('teste_adm') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/area-restrita' or request.path == '/login-adm' %}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-user"></i> Acesso ao ADM</a
         >
@@ -28,9 +36,10 @@
        <li class="nav-item">
         <a
           href="{{ url_for('logout') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %}" style="color: red;"
           aria-current="page"
-          ><i class="bx bx-user"></i> Sair</a
+          ><i class='bx bx-arrow-out-right-square-half' style="color: red;"></i>
+  Sair</a
         >
       </li>
       {%endif%}

@@ -31,17 +31,17 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 ## 📋 Backlog do Produto <a id="backlog-produto"></a>
 
-| Rank | Prioridade | User Story                                                                                                                                                                         | Estimativa | Sprint |
-| :--: | :--------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: |
-|  1   |   Média    | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                    |     8      |   1    |
-|  2   |    Alta    | Como administrador, quero que os funcionários em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                   |     13     |   1    |
-|  3   |   Média    | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos pelas respostas dos formulários.                      |     20     |   1    |
+| Rank | Prioridade | User Story                                                                                                                                                                                                                 | Estimativa | Sprint |
+| :--: | :--------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :----: |
+|  1   |   Média    | Como administrador, desejo visualizar um protótipo navegável do projeto para aprovar o design visual escolhido.                                                                                                            |     8      |   1    |
+|  2   |    Alta    | Como administrador, quero que os funcionários em treinamento tenham acesso a explicações sobre a metodologia SCRUM para aplicarem corretamente as práticas no dia a dia.                                                   |     13     |   1    |
+|  3   |   Média    | Como administrador, desejo ter uma área restrita ao meu acesso contendo as funcionalidades necessárias para visualizar os resultados obtidos pelas respostas dos formulários.                                              |     20     |   1    |
 |  4   |    Alta    | Como administrador, quero que o formulário avaliativo considere os processos envolvidos dentro da metodologia SCRUM, para que ao respondido, possa demonstrar a qualidade da aplicação da metodoliga pelas minhas equipes. |     20     |   2    |
-|  5   |    Alta    | Como administrador, desejo que os formulários tenham uma estrutura intuitiva de perguntas e repostas para agilizar o processo de preenchimento.                                  |     20     |   2    |
-|  6   |   Média    | Como administrador, pretendo que os funcionários em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas. |     13      |   2    |
-|  7   |   Alta     | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                          |     13     |   3    |
-|  8   |   Alta     | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                             |     20      |   3    |
-|  9  |   Média    | Como administrador, desejo visualizar métricas sobre cada processo avaliado pelo formulário para um entendimento mais profundo de quais itens apresentam boa qualidade e quais não. |     13      |   3    |
+|  5   |    Alta    | Como administrador, desejo que os formulários tenham uma estrutura intuitiva de perguntas e repostas para agilizar o processo de preenchimento.                                                                            |     20     |   2    |
+|  6   |   Média    | Como administrador, pretendo que os funcionários em treinamento possam vincular cada formulário a uma das seções previamente criadas, garantindo organização e visualização das respostas.                                 |     13     |   2    |
+|  7   |    Alta    | Como administrador, pretendo organizar as avaliações em sessões específicas para cada projeto, auxiliando em sua análise.                                                                                                  |     13     |   3    |
+|  8   |    Alta    | Como administrador, quero ter acesso a gráficos referentes as respostas dos formulários a fim de compreender rapidamente a qualidade entregue em cada.                                                                     |     20     |   3    |
+|  9   |   Média    | Como administrador, desejo visualizar métricas sobre cada processo avaliado pelo formulário para um entendimento mais profundo de quais itens apresentam boa qualidade e quais não.                                        |     13     |   3    |
 
 ---
 
@@ -64,7 +64,7 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 ## 🗓️ Cronograma das Sprints <a id="sprints"></a>
 
 | Sprint   | Período       | Documentação                                       | Histórico                             |
-| -------- | ------------- | -------------------------------------------------- |---------------------------------------|
+| -------- | ------------- | -------------------------------------------------- | ------------------------------------- |
 | SPRINT 1 | 08/09 - 28/09 | [Sprint 1 Docs](./docs/sprints/sprint-1/README.md) | [MVP](./docs/sprints/sprint-1/sp1.md) |
 | SPRINT 2 | 06/10 - 26/10 | [Sprint 2 Docs](./docs/sprints/sprint-2/README.md) | [MVP](./docs/sprints/sprint-2/sp2.md) |
 | SPRINT 3 | 03/11 - 23/11 | [Sprint 3 Docs](./docs/sprints/sprint-3/README.md) | [MVP](./docs/sprints/sprint-3/sp3.md) |
@@ -90,7 +90,7 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
 
 ### 1. Tenha o GIT instalado na sua máquina!
 
-O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga  um dos seguintes tutoriais:
+O GIT é um software de controle de versão muito utilizado pelos desenvolvedores, caso você não tenha este software na sua maquina, siga um dos seguintes tutoriais:
 <br>
 [Como instalar o Git e configurar o GitHub](https://youtu.be/POpFXae0NP0?si=BXIsrLyj8FkGp9fw)
 <br>
@@ -111,8 +111,9 @@ VScode ([Download](https://code.visualstudio.com/download))
 ### 3. Tenha o Python instalado na sua maquina!
 
 Caso você não tenha o interpretador Python instalado em sua maquina, você terá duas opções:
-* Baixar pela Microsoft Store, abra o aplicativo e digite na barra de pesquisa "Python" e baixe a versão mais recente disponível
-* Baixar pelo site oficial Python.org, acesse o link ([Download](https://www.python.org/downloads/)) e selecione a versão mais 	recente (aconselhável baixar a versão 3.13, pois é a mais atualizada e estável)
+
+- Baixar pela Microsoft Store, abra o aplicativo e digite na barra de pesquisa "Python" e baixe a versão mais recente disponível
+- Baixar pelo site oficial Python.org, acesse o link ([Download](https://www.python.org/downloads/)) e selecione a versão mais recente (aconselhável baixar a versão 3.13, pois é a mais atualizada e estável)
 
 ---
 
@@ -128,10 +129,11 @@ git clone https://github.com/tat4Souza/Equipe-PigeonCode.git
 
 ### 5. Crie um ambiente virtual!
 
-Ambientes virtuais são utilizados para armazenamento de dados com segurança e para organizar as bibliotecas específicas    
+Ambientes virtuais são utilizados para armazenamento de dados com segurança e para organizar as bibliotecas específicas  
 do projeto, para criar um ambiente virtual, siga estes passos:
 
 # Opção 1
+
 1- No VScode, na barra de pesquisa superior do VScode, clique na barra e selecione a opção "Show run and commands", ou insira o caractere ">"
 <br>
 2- Digite"Python: Create Enviorment"
@@ -140,39 +142,41 @@ do projeto, para criar um ambiente virtual, siga estes passos:
 <br>
 4- selecione um intepretador python
 <br>
-5- selecione o arquivo "requirements.txt" para download, nesta opção, a própria IDE vai baixar as bibliotecas 	necessárias!
+5- selecione o arquivo "requirements.txt" para download, nesta opção, a própria IDE vai baixar as bibliotecas necessárias!
 <br>
 
 Pronto, o código vai funcionar perfeitamente!
 
 # Opção 2:
+
 1-No terminal do VScode digite Crtl = ', no seu teclado, o terminal vai abrir
 <br>
 2-Digite python -m venv (insira o nome da pasta para o ambiente virtual, o padrão é dar o nome de venv)
 <br>
 3-Abra o terminal (Ctrl+ ou View > Terminal), clique na seta ao lado do ícone "+" para abrir a lista de perfis e selecione "Command Prompt" e digite:
+
 ```bash
 .\venv\Scripts\activate.bat
 ```
+
 ---
 
 ### 6. Instale as bibliotecas!
 
 No terminal digite:
+
 ```bash
 pip install -r requirements.txt
 ```
+
 <br>
 Este comando vai instalar todas as bibliotecas necessárias para o funcionamento do projeto.
 
 ---
 
 ### 7. Inicialize o programa!
+
 Va até o arquivo "main.py" e aperte F5, ou inicialize o código a partir da seta que se localiza no canto superior direito.
-
-
-
-
 
 <br>
 
@@ -186,11 +190,12 @@ Va até o arquivo "main.py" e aperte F5, ou inicialize o código a partir da set
       <th>Github</th>
       <th>Linkedin</th>
     </tr>
-    <tr>
-      <td>Manuela Santos</td>
+   
+   <tr>
+      <td>Adler Rocha</td>
       <td>Scrum Master</td>
-      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Taís Souza</td>
@@ -198,11 +203,11 @@ Va até o arquivo "main.py" e aperte F5, ou inicialize o código a partir da set
       <td><a href="https://github.com/tat4Souza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href="https://www.linkedin.com/in/tais-f-souza"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
-    <tr>
-      <td>Adler Rocha</td>
+     <tr>
+      <td>Manuela Santos</td>
       <td>Desenvolvedor</td>
-      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Daniel Nathan</td>
