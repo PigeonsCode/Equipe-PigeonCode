@@ -51,14 +51,14 @@ def forms():
 
         lista_incremento_do_produto = [ incremento_r1, incremento_r2, incremento_r3, incremento_r4]
         media_incremento_do_produto = calc_media(lista_incremento_do_produto)
-        print(media_incremento_do_produto)
+        
 
         daily_p1 = form_avaliacao.daily_scrum_p1.data
         daily_p2 = form_avaliacao.daily_scrum_p2.data
 
         lista_daily_scrum = [daily_p1,daily_p2]
         media_daily_scrum = calc_media(lista_daily_scrum)
-        print(media_daily_scrum)
+      
 
         sprint_retro_r1 = form_avaliacao.sprint_retrospective_p1.data
         sprint_retro_r2 = form_avaliacao.sprint_retrospective_p2.data
@@ -67,7 +67,7 @@ def forms():
 
         lista_sprint_retro=[sprint_retro_r1,sprint_retro_r2,sprint_retro_r3,sprint_retro_r4]
         media_sprint_retro = calc_media(lista_sprint_retro)
-        print(media_sprint_retro)
+       
 
         burnu_r1 = form_avaliacao.burnup_p1.data
 
@@ -78,7 +78,7 @@ def forms():
 
         lista_sprint_back = [sprint_back_r1,sprint_back_r2,sprint_back_r3,sprint_back_r4]
         media_sprint_back = calc_media(lista_sprint_back)
-        print(media_sprint_back)
+       
 
         dod_r1 = form_avaliacao.dod_p1.data
         dod_r2 = form_avaliacao.dod_p2.data
@@ -86,7 +86,7 @@ def forms():
         
         lista_dor = [dod_r1,dod_r2,dod_r3]
         media_dod = calc_media(lista_dor)
-        print(media_dod)
+       
 
         sprint_rev_r1 = form_avaliacao.sprint_review_p1.data
         sprint_rev_r2 = form_avaliacao.sprint_review_p2.data
@@ -95,14 +95,14 @@ def forms():
 
         lista_sprint_rev = [sprint_rev_r1,sprint_rev_r2,sprint_rev_r3,sprint_rev_r4]
         media_sprint_rev = calc_media(lista_sprint_rev)
-        print(media_sprint_rev)
+        
 
         burndown_r1 = form_avaliacao.burndown_p1.data
         burndown_r2 = form_avaliacao.burndown_p2.data
 
         lista_burndown = [burndown_r1,burndown_r2]
         media_burndown = calc_media(lista_burndown)
-        print(media_burndown)
+        
 
         product_backlog_r1 = form_avaliacao.product_backlog_p1.data
         product_backlog_r2 = form_avaliacao.product_backlog_p2.data
@@ -111,7 +111,7 @@ def forms():
 
         lista_backlog = [product_backlog_r1,product_backlog_r2,product_backlog_r3,product_backlog_r4]
         media_backlog = calc_media(lista_backlog)
-        print(media_backlog)
+        
 
         dor_r1 = form_avaliacao.dor_p1.data
         dor_r2 = form_avaliacao.dor_p2.data 
@@ -119,7 +119,7 @@ def forms():
 
         lista_dor = [dor_r1,dor_r2,dor_r3]
         media_dor = calc_media(lista_dor)
-        print(media_dor)
+      
 
         sprint_planning_r1 = form_avaliacao.sprint_planning_p1.data
         sprint_planning_r2 = form_avaliacao.sprint_planning_p2.data 
@@ -129,14 +129,30 @@ def forms():
 
         lista_sprint_planning = [sprint_planning_r1,sprint_planning_r2,sprint_planning_r3,sprint_planning_r4,sprint_planning_r5]
         media_sprint_planning = calc_media(lista_sprint_planning)
-        print(media_sprint_planning)
+       
 
         story_point_r1 = form_avaliacao.story_point_p1.data
         story_point_r2 = form_avaliacao.story_point_p2.data
 
         lista_story_point = [story_point_r1,story_point_r2]
         media_story_point = calc_media(lista_story_point)
-        print(media_story_point)
+        
+        lista_notas = (media_story_point,media_backlog,media_burndown,media_daily_scrum,media_dod,media_dor,media_incremento_do_produto,
+                       media_sprint_back,media_sprint_planning,media_sprint_back,media_sprint_retro,media_sprint_rev)
+        maior=max(lista_notas)
+        menor=min(lista_notas)
+       
+
+        formulario = FormsNotas (projeto_id = 1 ,pior_nota=menor, 
+                                 melhor_nota=maior, m_inpr= media_incremento_do_produto,
+                                 m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
+                                 m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,
+                                 m_spre=media_sprint_rev,m_budo=media_burndown,
+                                 m_prba=media_backlog,m_dor =media_dor,m_sppl=media_sprint_planning,
+                                 m_stpo = media_story_point)
+        database.session.add(formulario)
+        database.session.commit()
+        redirect (url_for(forms))
         
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
