@@ -6,7 +6,7 @@ from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm, FormUserAvalia
-from projeto.models import Adm_User
+from projeto.models import Adm_User,FormsNotas
 
 
 @app.route("/")
@@ -40,9 +40,54 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/formulario-avaliativo")
+@app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
     form_avaliacao = FormUserAvalia()
+    if form_avaliacao.validate_on_submit():
+        incremento_r1 = form_avaliacao.incremento_do_produto_p1.data
+        incremento_r2 = form_avaliacao.incremento_do_produto_p2.data
+        incremento_r3 = form_avaliacao.incremento_do_produto_p3.data
+        incremento_r4 = form_avaliacao.incremento_do_produto_p4.data
+
+        lista_incremento_do_produto = [ incremento_r1, incremento_r2, incremento_r3, incremento_r4]
+        
+        print(lista_incremento_do_produto)
+
+        daily_p1 = form_avaliacao.daily_scrum_p1.data
+        daily_p2 = form_avaliacao.daily_scrum_p2.data
+
+        lista_daily_scrum = [daily_p1,daily_p2]
+
+        sprint_retro_r1 = form_avaliacao.sprint_retrospective_p1.data
+        sprint_retro_r2 = form_avaliacao.sprint_retrospective_p2.data
+        sprint_retro_r3 = form_avaliacao.sprint_retrospective_p3.data
+        sprint_retro_r4 = form_avaliacao.sprint_retrospective_p4.data
+
+        lista_sprint_retro=[sprint_retro_r1,sprint_retro_r2,sprint_retro_r3,sprint_retro_r4]
+
+        burnu_r1 = form_avaliacao.burnup_p1.data
+
+        sprint_back_r1 = form_avaliacao.sprint_backlog_p1.data
+        sprint_back_r2 = form_avaliacao.sprint_backlog_p2.data
+        sprint_back_r3 = form_avaliacao.sprint_backlog_p3.data
+        sprint_back_r4 = form_avaliacao.sprint_backlog_p4.data
+
+        lista_sprint_back = [sprint_back_r1,sprint_back_r2,sprint_back_r3,sprint_back_r4]
+
+        dod_r1 = form_avaliacao.dod_p1.data
+        dod_r2 = form_avaliacao.dod_p2.data
+        dod_r3 = form_avaliacao.dod_p3.data
+        
+        lista_dor = [dod_r1,dod_r2,dod_r3]
+
+        sprint_rev_r1 = form_avaliacao.sprint_review_p1.data
+        sprint_rev_r2 = form_avaliacao.sprint_review_p2.data
+        sprint_rev_r3 = form_avaliacao.sprint_review_p3.data
+        sprint_rev_r4 = form_avaliacao.sprint_review_p4.data
+
+        lista_sprint_rev = [sprint_rev_r1,sprint_rev_r2,sprint_rev_r3,sprint_rev_r4]
+
+        
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
 # Páginas de conteúdo
