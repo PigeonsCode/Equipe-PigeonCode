@@ -7,7 +7,7 @@ from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm, FormUserAvalia
 from projeto.models import Adm_User,FormsNotas
-
+from projeto.function import calc_media
 
 @app.route("/")
 def homepage():
@@ -50,6 +50,8 @@ def forms():
         incremento_r4 = form_avaliacao.incremento_do_produto_p4.data
 
         lista_incremento_do_produto = [ incremento_r1, incremento_r2, incremento_r3, incremento_r4]
+        media_incremento_do_produto = calc_media(lista_incremento_do_produto)
+        print(media_incremento_do_produto)
         
         print(lista_incremento_do_produto)
 
@@ -87,6 +89,36 @@ def forms():
 
         lista_sprint_rev = [sprint_rev_r1,sprint_rev_r2,sprint_rev_r3,sprint_rev_r4]
 
+        burndown_r1 = form_avaliacao.burndown_p1.data
+        burndown_r2 = form_avaliacao.burndown_p2.data
+
+        lista_burndown = [burndown_r1,burndown_r2]
+
+        product_backlog_r1 = form_avaliacao.product_backlog_p1.data
+        product_backlog_r2 = form_avaliacao.product_backlog_p2.data
+        product_backlog_r3 = form_avaliacao.product_backlog_p3.data
+        product_backlog_r4 = form_avaliacao.product_backlog_p4.data
+
+        lista_backlog = [product_backlog_r1,product_backlog_r2,product_backlog_r3,product_backlog_r4]
+
+        dor_r1 = form_avaliacao.dor_p1.data
+        dor_r2 = form_avaliacao.dor_p2.data 
+        dor_r3 = form_avaliacao.dor_p3.data
+
+        lista_dor = [dor_r1,dor_r2,dor_r3]
+
+        sprint_planning_r1 = form_avaliacao.sprint_planning_p1.data
+        sprint_planning_r2 = form_avaliacao.sprint_planning_p2.data 
+        sprint_planning_r3 = form_avaliacao.sprint_planning_p3.data
+        sprint_planning_r4 = form_avaliacao.sprint_planning_p4.data
+        sprint_planning_r5 = form_avaliacao.sprint_planning_p5.data
+
+        lista_sprint_planning = [sprint_planning_r1,sprint_planning_r2,sprint_planning_r3,sprint_planning_r4,sprint_planning_r5]
+
+        story_point_r1 = form_avaliacao.story_point_p1.data
+        story_point_r2 = form_avaliacao.story_point_p2.data
+
+        lista_story_point = [story_point_r1,story_point_r2]
         
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
