@@ -153,7 +153,7 @@ def forms():
         database.session.add(formulario)
         database.session.commit()
         
-        redirect (url_for("forms"))
+        return redirect (url_for("forms"))
         
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
