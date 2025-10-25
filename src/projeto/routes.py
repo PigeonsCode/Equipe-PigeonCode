@@ -7,7 +7,7 @@ from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm, FormUserAvalia
 from projeto.models import Adm_User,FormsNotas
-from projeto.function import calc_media
+from projeto.function import calc_media,menor_index,maior_index
 
 @app.route("/")
 def homepage():
@@ -42,6 +42,11 @@ def logout():
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
+    lista_de_sessoes =['m_inpr','m_dasc','m_spretro',
+    'm_buup','m_spba','m_dod','m_spre','m_budo','m_prba','m_dor','m_sppl','m_stpo']
+    lista_notas = [media_incremento_do_produto,media_daily_scrum,media_sprint_retro,burnu_r1
+    ,media_sprint_back,media_dod,media_sprint_rev,media_burndown,media_backlog,media_dor,
+    media_sprint_planning,media_story_point]
     form_avaliacao = FormUserAvalia()
     # DEBUG: log quando receber POST para ajudar no diagnóstico
     if request.method == 'POST':
@@ -150,8 +155,6 @@ def forms():
         lista_story_point = [story_point_r1,story_point_r2]
         media_story_point = calc_media(lista_story_point)
         
-        lista_notas = (media_story_point,media_backlog,media_burndown,media_daily_scrum,media_dod,media_dor,media_incremento_do_produto,
-                       media_sprint_back,media_sprint_planning,media_sprint_back,media_sprint_retro,media_sprint_rev)
         maior=max(lista_notas)
         menor=min(lista_notas)
        
