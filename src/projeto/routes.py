@@ -155,10 +155,12 @@ def forms():
         lista_story_point = [story_point_r1,story_point_r2]
         media_story_point = calc_media(lista_story_point)
         
-        maior=max(lista_notas)
-        menor=min(lista_notas)
-       
+        menor_pos= menor_index(lista_notas)
+        menor = lista_de_sessoes[menor_pos]
 
+        maior_pos = maior_index(lista_notas)
+        maior = lista_de_sessoes(maior_pos)
+        
         formulario = FormsNotas (projeto_id = 1 ,pior_nota=menor, 
                                  melhor_nota=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
