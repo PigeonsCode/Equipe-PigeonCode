@@ -44,19 +44,6 @@ def logout():
 def forms():
    
     form_avaliacao = FormUserAvalia()
-    # DEBUG: log quando receber POST para ajudar no diagnóstico
-    if request.method == 'POST':
-        print('\n[DEBUG] POST recebido em /formulario-avaliativo')
-        try:
-            print('[DEBUG] form.errors =', form_avaliacao.errors)
-        except Exception as e:
-            print('[DEBUG] erro ao ler form.errors:', e)
-        try:
-            # mostra chaves/valores enviados (útil para ver se o CSRF token está presente)
-            data_preview = {k: v for k, v in form_avaliacao.data.items()}
-            print('[DEBUG] form.data preview =', data_preview)
-        except Exception as e:
-            print('[DEBUG] erro ao ler form.data:', e)
     if form_avaliacao.validate_on_submit():
         incremento_r1 = form_avaliacao.incremento_do_produto_p1.data
         incremento_r2 = form_avaliacao.incremento_do_produto_p2.data
