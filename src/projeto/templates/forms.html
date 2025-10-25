@@ -20,9 +20,20 @@
                 
             </div>
 
-            <form method="POST" class="d-flex form-avaliation flex-column gap-3 mt-3 m-auto">
+            <form method="POST" class="d-flex form-avaliation flex-column gap-3 mt-3 m-auto" onsubmit="console.log('form onsubmit fired', event)" novalidate>
                 {{form.csrf_token}} 
                 {{form.hidden_tag() }}
+
+                {# Exibe mensagens flash geradas pelo servidor (ex.: erros de validação) #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category if category else 'warning' }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
                 <h5 class="fw-bold text-center text-dark-gray">Incremento do Produto</h5>
 
@@ -501,7 +512,7 @@
                 </div>
 
 
-                {{form.botao_confirmar(class="btn btn-submit-avaliation btn-primary mt-5")}}
+                {{form.botao_confirmar(class="btn btn-submit-avaliation btn-primary mt-5", onclick="console.log('submit clicked', event)")}}
             </form>
         </section>   
     </div>

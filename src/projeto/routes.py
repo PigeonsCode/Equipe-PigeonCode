@@ -1,7 +1,7 @@
 import bcrypt
 from projeto import database,app,bcrypt, login_manager
 from projeto.models import Adm_User
-from flask import Flask,render_template,url_for,redirect,flash
+from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
@@ -43,6 +43,19 @@ def logout():
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
     form_avaliacao = FormUserAvalia()
+    # DEBUG: log quando receber POST para ajudar no diagnóstico
+    if request.method == 'POST':
+        print('\n[DEBUG] POST recebido em /formulario-avaliativo')
+        try:
+            print('[DEBUG] form.errors =', form_avaliacao.errors)
+        except Exception as e:
+            print('[DEBUG] erro ao ler form.errors:', e)
+        try:
+            # mostra chaves/valores enviados (útil para ver se o CSRF token está presente)
+            data_preview = {k: v for k, v in form_avaliacao.data.items()}
+            print('[DEBUG] form.data preview =', data_preview)
+        except Exception as e:
+            print('[DEBUG] erro ao ler form.data:', e)
     if form_avaliacao.validate_on_submit():
         incremento_r1 = form_avaliacao.incremento_do_produto_p1.data
         incremento_r2 = form_avaliacao.incremento_do_produto_p2.data
@@ -153,8 +166,23 @@ def forms():
         database.session.add(formulario)
         database.session.commit()
         
-        return redirect (url_for("forms"))
         
+        return redirect (url_for("forms"))
+
+    
+    if request.method == "POST" and form_avaliacao.errors:
+        missing = []
+        for field_name, field_errors in form_avaliacao.errors.items():
+            try:
+                label = getattr(form_avaliacao, field_name).label.text
+            except Exception:
+                label = field_name
+            missing.append(f"{label}: {'; '.join(field_errors)}")
+        
+        print('[DEBUG] Enviando flashes por item:', missing)
+        for item_msg in missing:
+            flash(item_msg, "danger")
+
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
 # Páginas de conteúdo
