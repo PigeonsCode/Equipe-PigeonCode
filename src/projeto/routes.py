@@ -28,7 +28,7 @@ def loginADM():
          user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
          if  user_login_attempt and bcrypt.check_password_hash(user_login_attempt.password_db , form_login_adm.password_adm.data) :
             login_user(user_login_attempt,remember=False)
-            return redirect (url_for("area_restrita")) #criar pagin de acesso restrito com o nome AcessoADM, usar @login_required
+            return redirect (url_for("area_restrita")) #criar pagina de acesso restrito com o nome AcessoADM, usar @login_required
          else:
              flash("Usuário ou senha incorretos!")
              redirect (url_for("loginADM"))
@@ -175,9 +175,9 @@ def forms():
                 label = field_name
             missing.append(f"{label}: {'; '.join(field_errors)}")
         
-        print('[DEBUG] Enviando flashes por item:', missing)
-        for item_msg in missing:
-            flash(item_msg, "danger")
+      
+        
+        flash("Você deve preencher todos os campos do formulário", "danger")
 
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
