@@ -3,7 +3,10 @@ import secrets
 from projeto import database,app
 from projeto.models import Adm_User, FormsNotas,Projetos
 from projeto import bcrypt
-senha= "faatec_#20252"
+
+dotenv.load_dotenv()
+senha= os.getenv('SENHA_ADM')
+
 senha_hash = bcrypt.generate_password_hash(senha).decode('utf-8')
 print(senha_hash)
 with app.app_context():

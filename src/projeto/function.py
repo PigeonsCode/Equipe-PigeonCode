@@ -6,7 +6,7 @@ def calc_media(lista_de_notas):
       total_notas+=float(i)
 
    media = total_notas/n_elementos
-   return round(media, )
+   return round(media, 2)
 
 def menor_index(lista_de_notas):
    menor = lista_de_notas[0]
