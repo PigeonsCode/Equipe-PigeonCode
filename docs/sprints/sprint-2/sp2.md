@@ -50,9 +50,9 @@
 
 | Sprint | Entregas Principais                                                          | Status |
 | ------ | ---------------------------------------------------------------------------- | ------ |
-| 02     | Formulário avaliativo com perguntas e alternativas sobre os processos SCRUM. |        |
-| 02     | Lógica de pontuação por trás do formulário avaliativo.                       |        |
-| 02     | Dados tratados do formulário armazenados no banco de dados.                  |        |
+| 02     | Formulário avaliativo com perguntas e alternativas sobre os processos SCRUM. | ✅     |
+| 02     | Lógica de pontuação por trás do formulário avaliativo.                       | ✅     |
+| 02     | Dados tratados do formulário armazenados no banco de dados.                  | ✅     |
 
 ---
 
