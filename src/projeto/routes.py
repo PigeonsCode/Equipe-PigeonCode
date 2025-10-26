@@ -162,22 +162,10 @@ def forms():
         database.session.add(formulario)
         database.session.commit()
         
-        
         return redirect (url_for("forms"))
 
-    
     if request.method == "POST" and form_avaliacao.errors:
-        missing = []
-        for field_name, field_errors in form_avaliacao.errors.items():
-            try:
-                label = getattr(form_avaliacao, field_name).label.text
-            except Exception:
-                label = field_name
-            missing.append(f"{label}: {'; '.join(field_errors)}")
-        
-      
-        
-        flash("Você deve preencher todos os campos do formulário", "danger")
+        flash("Você deve preencher todos os campos do formulário!", "danger")
 
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
