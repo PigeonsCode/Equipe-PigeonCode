@@ -162,6 +162,7 @@ def forms():
         database.session.add(formulario)
         database.session.commit()
         
+        flash("Formulário enviado com sucesso!", "success")
         return redirect (url_for("forms"))
 
     if request.method == "POST" and form_avaliacao.errors:
