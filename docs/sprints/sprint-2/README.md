@@ -33,7 +33,7 @@
 |  12  |   Média    | Estilização de mensagens de erro do formulário de login.            | Implementar a exibição das mensagens de erro de validação para os campos do formulário de login para o acesso ao administrador. (Meta)                                             |     3      |   2    |   ✅   |
 |  13  |   Média    | Funcionalidade de Logout de administrador.                          | Criar um botão com a lógica de logout, visível apenas na área de acesso restrito ao administrador e quando ele já estiver logado. (Meta)                                           |     3      |   2    |   ✅   |
 |  14  |   Baixa    | Redirecionamento do Logout.                                         | Redirecionar o administrador à página de landing page após clicar em logout. (Meta)                                                                                                |     2      |   2    |   ✅   |
-|  15  |   Baixa    | Incremento e Sprint Review.                                         | Gravar vídeo do incremento e preparar apresentação para o Sprint Review. (Meta)                                                                                                    |     2      |   2    |        |
+|  15  |   Baixa    | Incremento e Sprint Review.                                         | Gravar vídeo do incremento e preparar apresentação para o Sprint Review. (Meta)                                                                                                    |     2      |   2    |   ✅   |
 
 <br>
 
