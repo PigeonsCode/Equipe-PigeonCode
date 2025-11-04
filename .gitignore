@@ -3,3 +3,4 @@ __pycache__/
 secrets_.py
 instance/
 projeto/database_commits.py
+venv/
