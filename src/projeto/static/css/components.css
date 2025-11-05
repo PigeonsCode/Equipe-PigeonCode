@@ -266,6 +266,10 @@ aside {
     border-radius: 3px;
   }
 
+  .header ul li span {
+    display: none !important;
+  }
+
   .header {
     font-size: 20px;
   }
