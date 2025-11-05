@@ -12,6 +12,14 @@
 
   --body-background: #f9fafb;
   --roboto: "Roboto", sans-serif;
+
+  /* Classes responsivas */
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+  --xxl: 1400px;
+
 }
 
 /* Redefinindo estilo padrão do botão do bootstrap */
