@@ -21,12 +21,6 @@
     />
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      defer
       type="module"
       src="{{ url_for('static', filename='js/main.js') }}"
     ></script>
@@ -38,21 +32,40 @@
   {% block body %}
   <body>
     {% include "components/header.html" %} {% block fullpage %}
-    <main class="content p-4 mt-5 row gx-5">
-      <aside class="col-md-3">{% include "components/sidebar.html" %}</aside>
+
+    <div
+      class="offcanvas offcanvas-start w-md-50 w-sm-100 d-xl-none sidebar-mobile"
+      tabindex="-1"
+      id="sidebarMobile"
+      aria-labelledby="sidebarMobileLabel"
+    >
+      <div class="offcanvas-body p-0">
+        {% with idAccordion="accordionSidebarMobile" %} {% include
+        "components/sidebar.html" %} {% endwith %}
+      </div>
+    </div>
+    <main class="content w-sm-100 gx-0 p-4 mt-5 row gx-md-5">
+      <aside class="col-xl-3 d-none d-xl-block">
+        {% with idAccordion="accordionSidebar" %} {% include
+        "components/sidebar.html" %} {% endwith %}
+      </aside>
       <div
-        class="{% if navigation | selectattr('show_aside') | list %}col-md-7{% else %}col-md-8{% endif %}"
+        class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}"
       >
-      {%block content %} {% endblock %} 
+        {%block content %} {% endblock %}
       </div>
       {% if navigation | selectattr('show_aside') | list %}
-      <aside class="col-2">
+      <aside class="col-2 d-none d-xl-block">
         {% include "components/side-scrollspy.html" %}
       </aside>
       {% endif %}
     </main>
     {% endblock %} {% include "components/footer.html" %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     {% block body_end %} {% endblock %}
   </body>
   {% endblock %}

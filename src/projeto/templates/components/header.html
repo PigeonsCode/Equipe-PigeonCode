@@ -1,19 +1,20 @@
 <header
   class="header navbar fixed-top bg-white navbar-expand-md border border-1"
 >
-  <div class="container">
+  <div class="container d-md-flex flex-row">
     <a href="{{url_for('homepage')}}"
       ><img
         src="{{ url_for('static', filename='images/logo-devloop.svg') }}"
         alt="logo"
     /></a>
-    <ul class="navbar navbar-nav">
+    <ul class="navbar navbar-nav d-md-flex flex-row gap-2">
       <li class="nav-item">
         <a
           href="{{ url_for('scrum') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita' and request.path != '/'  %}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita' and request.path != '/' %}active{% endif %}"
           aria-current="page"
-          ><i class="bx bx-book"></i> Treinamentos</a
+          ><i class="bx bx-book"></i>
+          <span class="d-none d-md-block">Treinamentos</span></a
         >
       </li>
       <li class="nav-item">
@@ -21,26 +22,40 @@
           href="{{ url_for('forms') }}"
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/formulario-avaliativo'%}active{% endif %}"
           aria-current="page"
-          ><i class='bx  bx-widget-vertical'  ></i>  Avaliação de Processos</a
-        >
+          ><i class="bx bx-widget-vertical"></i>
+          <span class="d-none d-md-block">Avaliação de Processos</span>
+        </a>
       </li>
       <li class="nav-item">
         <a
           href="{{ url_for('teste_adm') }}"
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/area-restrita' or request.path == '/login-adm' %}active{% endif %}"
           aria-current="page"
-          ><i class="bx bx-user"></i> Acesso ao ADM</a
-        >
+          ><i class="bx bx-user"></i>
+          <span class="d-none d-md-block">Acesso ao ADM</span>
+        </a>
       </li>
       {%if current_user.is_authenticated%}
-       <li class="nav-item">
+      <li class="nav-item">
         <a
           href="{{ url_for('logout') }}"
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %} text-danger"
           aria-current="page"
-          ><i class='bx bx-arrow-out-right-square-half'></i>Terminar sessão</a
+          ><i class="bx bx-arrow-out-right-square-half"></i>Terminar sessão</a
         >
       </li>
+      {%endif%} {% if request.path != '/login-adm' and request.path !=
+      '/formulario-avaliativo' and request.path != '/area-restrita' and
+      request.path != '/' %}
+      <button
+        class="btn-menu d-xl-none d-flex align-item-center justify-content-center"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebarMobile"
+        aria-controls="sidebarMobile"
+      >
+        <i class="bx bx-menu"></i>
+      </button>
       {%endif%}
     </ul>
   </div>

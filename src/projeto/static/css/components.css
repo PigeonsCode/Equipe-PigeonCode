@@ -6,6 +6,22 @@
   font-size: 14px;
 }
 
+.btn-menu {
+  font-size: 20px;
+  background-color: var(--body-background);
+  border: 1px solid var(--border-color);
+  padding: 3px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s all ease;
+}
+
+.btn-menu:focus, .btn-menu:active, .btn-menu:hover {
+  border: 1px solid var(--bs-primary);
+}
+
+
 /* Sidebar */
 
 aside {
@@ -27,6 +43,8 @@ aside {
 .sidebar-custom-button::after {
   display: none;
 }
+
+
 
 /* SubHeader */
 
@@ -215,3 +233,36 @@ aside {
   margin-top: 2rem;
 
 }
+
+@media screen and (min-width: 769px) {
+  .offcanvas.show:not(.hiding), .offcanvas.showing, .offcanvas.offcanvas-start {
+    width: 35% !important;
+  }
+  .sidebar {
+    height: 100%;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  aside {
+    position: relative;
+  }
+  .sidebar {
+    height: 100%;
+  }
+
+  .header {
+    font-size: 20px;
+  }
+
+  .header ul a, .header ul button {
+    background-color: var(--body-background);
+    border: 1px solid var(--border-color);
+    padding: 3px;
+    border-radius: 3px;
+  }
+
+}
+

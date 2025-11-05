@@ -1,556 +1,530 @@
 {% extends "page-template.html" %} {% block fullpage %}
-<main class="d-flex align-items-center justify-content-center mt-5 pt-5 pb-5 w-60 h-100">
-    <div class="container d-flex flex-column bg-white p-4 pt-5 pb-5 mb-5 gap-3 rounded-4 border border-1 ">
-        <section class="w-90 m-auto">
-            <div class="mb-3 d-flex flex-column  p-4 gap-2">
-                <h3 class="fw-bold text-darkest-gray mb-4 text-center">Avaliação sobre processos do SCRUM</h3>
-                <p class=" text-light-gray">Responda as perguntas abaixo sinceramente e levando em conta o desempenho e comportamento dos seus colaboradores de trabalho. Cada questão permite apenas uma alternativa como escolha a fim de pontuar mais claramente a qualidade dos processos e artefatos da metodologia SCRUM a serem analisados.</p>
-                
-                <p class="small text-primary fw-bold  mb-4 ">Todas as perguntas devem ser respondidas*</p>
+<main
+  class="d-flex align-items-center justify-content-center mt-5 pt-5 pb-5 w-60 w-sm-100 h-100"
+>
+  <div
+    class="d-flex flex-column w-sm-100 bg-white p-sm-0 p-4 pt-5 pb-5 mb-5 gap-3 rounded-4 border border-1"
+  >
+    <section class="w-90 m-auto">
+      <div class="mb-3 d-flex flex-column p-4 gap-2">
+        <h3 class="fw-bold text-darkest-gray mb-4 text-center">
+          Avaliação sobre processos do SCRUM
+        </h3>
+        <p class="text-light-gray">
+          Responda as perguntas abaixo sinceramente e levando em conta o
+          desempenho e comportamento dos seus colaboradores de trabalho. Cada
+          questão permite apenas uma alternativa como escolha a fim de pontuar
+          mais claramente a qualidade dos processos e artefatos da metodologia
+          SCRUM a serem analisados.
+        </p>
 
-                <div class="form-floating mb-2" >
-                    <select class="form-select w-auto" aria-label="select-projeto">
-                        <option selected>Abrir o menu de seleção</option>
-                        <option value="1">Projeto Sprint Manager</option>
-                        <option value="2">Projeto Product Vision</option>
-                        <option value="3">Projeto Daily Sync</option>
-                    </select>
-                    <label >Selecionar Projeto</label>
-                </div>
-                
-            </div>
+        <p class="small text-primary fw-bold mb-4">
+          Todas as perguntas devem ser respondidas*
+        </p>
 
-            <form method="POST" class="d-flex form-avaliation flex-column gap-3 mt-3 m-auto" onsubmit="console.log('form onsubmit fired', event)" novalidate>
-                {{form.csrf_token}} 
-                {{form.hidden_tag() }}
+        <div class="form-floating mb-2">
+          <select class="form-select w-auto" aria-label="select-projeto">
+            <option selected>Abrir o menu de seleção</option>
+            <option value="1">Projeto Sprint Manager</option>
+            <option value="2">Projeto Product Vision</option>
+            <option value="3">Projeto Daily Sync</option>
+          </select>
+          <label>Selecionar Projeto</label>
+        </div>
+      </div>
 
-                {# Exibe mensagens flash geradas pelo servidor (ex.: erros de validação) #}
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                            {% if category == 'danger': %}
-                                <div class="alert alert-danger" role="alert">
-                                    {{ message }}
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+      <form
+        method="POST"
+        class="d-flex form-avaliation flex-column gap-3 mt-3 m-auto"
+        onsubmit="console.log('form onsubmit fired', event)"
+        novalidate
+      >
+        {{form.csrf_token}} {{form.hidden_tag() }} {# Exibe mensagens flash
+        geradas pelo servidor (ex.: erros de validação) #} {% with messages =
+        get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+        category, message in messages %} {% if category == 'danger': %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
 
-                <h5 class="fw-bold text-center text-dark-gray">Incremento do Produto</h5>
+        <h5 class="fw-bold text-center text-dark-gray">
+          Incremento do Produto
+        </h5>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.incremento_do_produto_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-                
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
 
-                {{form.incremento_do_produto_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.incremento_do_produto_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.incremento_do_produto_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.incremento_do_produto_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
 
-                {{form.incremento_do_produto_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.incremento_do_produto_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.incremento_do_produto_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.incremento_do_produto_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>4</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
 
-                {{form.incremento_do_produto_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.incremento_do_produto_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.incremento_do_produto_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.incremento_do_produto_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray ">Daily Scrum</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>4</span>
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
+        {{form.incremento_do_produto_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.incremento_do_produto_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                {{form.daily_scrum_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.daily_scrum_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-                
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
+        <h5 class="fw-bold text-center text-dark-gray">Daily Scrum</h5>
 
-                {{form.daily_scrum_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.daily_scrum_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray ">Sprint Retrospective</h5>
+        {{form.daily_scrum_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.daily_scrum_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
 
-                {{form.sprint_retrospective_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_retrospective_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-                
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
+        {{form.daily_scrum_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.daily_scrum_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                {{form.sprint_retrospective_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_retrospective_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <h5 class="fw-bold text-center text-dark-gray">Sprint Retrospective</h5>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
 
-                {{form.sprint_retrospective_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_retrospective_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>4</span>
-                </div>
+        {{form.sprint_retrospective_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_retrospective_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                {{form.sprint_retrospective_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_retrospective_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <h5 class="fw-bold text-center text-dark-gray">Burnup</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form. burnup_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form. burnup_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-              
-                <h5 class="fw-bold text-center text-dark-gray">Sprint Backlog</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
 
-                {{form.sprint_backlog_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_backlog_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-               
-                {{form.sprint_backlog_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_backlog_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                 <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
+        {{form.sprint_retrospective_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_retrospective_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                {{form.sprint_backlog_p3 .label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_backlog_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                 <div class="question-divider mt-4 mb-4">
-                    <span>4</span>
-                </div>
-                
-                {{form.sprint_backlog_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_backlog_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <h5 class="fw-bold text-center text-dark-gray">Definition of done</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
 
-                {{form.dod_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dod_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-              
-                {{form.dod_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dod_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
-                
-                {{form.dod_p3 .label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dod_p3  %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <h5 class="fw-bold text-center text-dark-gray">Sprint review</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.sprint_review_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_review_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-                
-                {{form.sprint_review_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_review_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_retrospective_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_retrospective_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>4</span>
+        </div>
 
-                {{form.sprint_review_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_review_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_retrospective_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_retrospective_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>4</span>
-                </div>
-                
-                {{form.sprint_review_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_review_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <h5 class="fw-bold text-center text-dark-gray">Burnup</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray">BurnDown</h5>
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.burndown_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.burndown_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form. burnup_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form. burnup_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>2</span>
-                </div>
-                
-                {{form.burndown_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.burndown_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <h5 class="fw-bold text-center text-dark-gray">Sprint Backlog</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray">Product Backlog</h5>
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.product_backlog_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.product_backlog_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-                
-                <div class="question-divider mt-2 mb-4">
-                    <span>2</span>
-                </div>
-                
-                {{form.product_backlog_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.product_backlog_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_backlog_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_backlog_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>3</span>
-                </div>
-                
-                {{form.product_backlog_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.product_backlog_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
 
-                <div class="question-divider mt-2 mb-4">
-                    <span>4</span>
-                </div>
-                
-                {{form.product_backlog_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.product_backlog_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_backlog_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_backlog_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray">Definition of Ready</h5>
-                <div class="question-divider mt-2 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.dor_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dor_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
 
-                 <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-                
-                {{form.dor_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dor_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_backlog_p3 .label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_backlog_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
-                
-                {{form.dor_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.dor_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>4</span>
+        </div>
 
-                <h5 class="fw-bold text-center text-dark-gray">Sprint Planning</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.sprint_planning_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_planning_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-            
-                
-                {{form.sprint_planning_p2.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_planning_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.sprint_backlog_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_backlog_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>3</span>
-                </div>
-            
-                
-                {{form.sprint_planning_p3.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_planning_p3 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <h5 class="fw-bold text-center text-dark-gray">Definition of done</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>4</span>
-                </div>
-            
-                
-                {{form.sprint_planning_p4.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_planning_p4 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.dod_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dod_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
-                <div class="question-divider mt-4 mb-4">
-                    <span>5</span>
-                </div>
-            
-                
-                {{form.sprint_planning_p5.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.sprint_planning_p5 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
 
-                 <h5 class="fw-bold text-center text-dark-gray">Story Point</h5>
-                <div class="question-divider mt-4 mb-4">
-                    <span>1</span>
-                </div>
-                
-                {{form.story_point_p1.label(class="mb-4 text-dark-gray")}}
-                <div class="radio-container">
-                    {% for radio_item in form.story_point_p1 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
-           
-                <div class="question-divider mt-4 mb-4">
-                    <span>2</span>
-                </div>
-            
-                
-                {{form.story_point_p2.label(class="mb-4 text-dark-gray ")}}
-                <div class="radio-container mb-5">
-                    {% for radio_item in form.story_point_p2 %}
-                        {{ radio_item(class="radio__input") }}
-                        {{ radio_item.label(class="radio__label") }}
-                    {% endfor %}
-                </div>
+        {{form.dod_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dod_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
 
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
 
-                {{form.botao_confirmar(class="btn btn-submit-avaliation btn-primary mt-5", onclick="console.log('submit clicked', event)")}}
-            </form>
-        </section>   
-    </div>
+        {{form.dod_p3 .label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dod_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">Sprint review</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.sprint_review_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_review_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.sprint_review_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_review_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
+
+        {{form.sprint_review_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_review_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-2 mb-4">
+          <span>4</span>
+        </div>
+
+        {{form.sprint_review_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_review_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">BurnDown</h5>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.burndown_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.burndown_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-2 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.burndown_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.burndown_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">Product Backlog</h5>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.product_backlog_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.product_backlog_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-2 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.product_backlog_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.product_backlog_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-2 mb-4">
+          <span>3</span>
+        </div>
+
+        {{form.product_backlog_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.product_backlog_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-2 mb-4">
+          <span>4</span>
+        </div>
+
+        {{form.product_backlog_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.product_backlog_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">Definition of Ready</h5>
+        <div class="question-divider mt-2 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.dor_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dor_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.dor_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dor_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
+
+        {{form.dor_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.dor_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">Sprint Planning</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.sprint_planning_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_planning_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.sprint_planning_p2.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_planning_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>3</span>
+        </div>
+
+        {{form.sprint_planning_p3.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_planning_p3 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>4</span>
+        </div>
+
+        {{form.sprint_planning_p4.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_planning_p4 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>5</span>
+        </div>
+
+        {{form.sprint_planning_p5.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.sprint_planning_p5 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <h5 class="fw-bold text-center text-dark-gray">Story Point</h5>
+        <div class="question-divider mt-4 mb-4">
+          <span>1</span>
+        </div>
+
+        {{form.story_point_p1.label(class="mb-4 text-dark-gray")}}
+        <div class="radio-container">
+          {% for radio_item in form.story_point_p1 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        <div class="question-divider mt-4 mb-4">
+          <span>2</span>
+        </div>
+
+        {{form.story_point_p2.label(class="mb-4 text-dark-gray ")}}
+        <div class="radio-container mb-5">
+          {% for radio_item in form.story_point_p2 %} {{
+          radio_item(class="radio__input") }} {{
+          radio_item.label(class="radio__label") }} {% endfor %}
+        </div>
+
+        {{form.botao_confirmar(class="btn btn-submit-avaliation btn-primary
+        mt-5", onclick="console.log('submit clicked', event)")}}
+      </form>
+    </section>
+  </div>
 </main>
 
-{% endblock %}
+{% endblock %} {% block body_end %}
 
-{% block body_end %}
-
-<div class="toast-container position-fixed top-5 mt-3 end-0 p-3 ">
-    <div id="liveToast" class="toast bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body d-flex gap-2 align-items-center" id="toastBodyContent">
-                <i class='bx bx-check bg-light text-success text-center p-1 rounded-circle'></i> 
-                <p id="toastMessageText" class="m-0 text-light"></p>
-            </div>
-            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
+<div class="toast-container position-fixed top-5 mt-3 end-0 p-3">
+  <div
+    id="liveToast"
+    class="toast bg-success border-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div
+        class="toast-body d-flex gap-2 align-items-center"
+        id="toastBodyContent"
+      >
+        <i
+          class="bx bx-check bg-light text-success text-center p-1 rounded-circle"
+        ></i>
+        <p id="toastMessageText" class="m-0 text-light"></p>
+      </div>
+      <button
+        type="button"
+        class="btn-close me-2 m-auto btn-close-white"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
     </div>
+  </div>
 </div>
 
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %} {% if category == 'success' %}
+<script>
+  document.getElementById("toastMessageText").innerHTML = "{{message}}";
+  var toastEl = document.getElementById("liveToast");
+  var toast = new bootstrap.Toast(toastEl, { delay: 2500 });
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-      {% for category, message in messages %}
-        {% if category == 'success' %}
-            <script>
-                document.getElementById('toastMessageText').innerHTML = '{{message}}';
-                var toastEl = document.getElementById('liveToast');
-                var toast = new bootstrap.Toast(toastEl, {delay: 2500})
-
-                toast.show();
-            </script>
-        {% endif %}
-      {% endfor %}
-  {% endif %}
-{% endwith %}
-
-{% endblock %}
+  toast.show();
+</script>
+{% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}
