@@ -14,7 +14,7 @@
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita' and request.path != '/' %}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-book"></i>
-          <span class="d-none d-md-block">Treinamentos</span></a
+          <span class="d-none d-lg-block">Treinamentos</span></a
         >
       </li>
       <li class="nav-item">
@@ -23,7 +23,7 @@
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/formulario-avaliativo'%}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-widget-vertical"></i>
-          <span class="d-none d-md-block">Avaliação de Processos</span>
+          <span class="d-none d-lg-block">Avaliação de Processos</span>
         </a>
       </li>
       <li class="nav-item">
@@ -32,7 +32,7 @@
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/area-restrita' or request.path == '/login-adm' %}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-user"></i>
-          <span class="d-none d-md-block">Acesso ao ADM</span>
+          <span class="d-none d-lg-block">Acesso ao ADM</span>
         </a>
       </li>
       {%if current_user.is_authenticated%}
@@ -41,7 +41,8 @@
           href="{{ url_for('logout') }}"
           class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/login-adm'%}active{% endif %} text-danger"
           aria-current="page"
-          ><i class="bx bx-arrow-out-right-square-half"></i>Terminar sessão</a
+          ><i class="bx bx-arrow-out-right-square-half"></i
+          ><span class="d-none d-lg-block">Terminar sessão</span></a
         >
       </li>
       {%endif%} {% if request.path != '/login-adm' and request.path !=

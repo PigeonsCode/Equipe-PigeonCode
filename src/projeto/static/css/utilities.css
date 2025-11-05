@@ -17,3 +17,8 @@
 .w-40 {
   width: 40% !important;
 }
+
+.main-center {
+  flex-grow: 1;
+  align-self: stretch;
+}

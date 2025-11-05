@@ -128,7 +128,7 @@ aside {
 
 /* Login Container */
 .login-container {
-  width: 55vh;
+  width: 30%;
 }
 
 /* Radio Input */
@@ -234,6 +234,43 @@ aside {
 
 }
 
+
+
+@media screen and (max-width: 1200px) {
+  .form-main {
+    width: 80% !important;
+  }
+
+  .login-container {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  header .container, .container-md, .container-sm {
+    max-width: 95% !important;
+  }
+
+  .form-main {
+    width: 90% !important;
+  }
+
+  .login-container {
+    width: 55%;
+  }
+
+  .header ul a, .header ul button {
+    background-color: var(--body-background);
+    border: 1px solid var(--border-color);
+    padding: 3px;
+    border-radius: 3px;
+  }
+
+  .header {
+    font-size: 20px;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .offcanvas.show:not(.hiding), .offcanvas.showing, .offcanvas.offcanvas-start {
     width: 35% !important;
@@ -245,6 +282,10 @@ aside {
 
 
 @media screen and (max-width: 768px) {
+  header .container, .container-md, .container-sm {
+    max-width: 95% !important;
+  }
+
   aside {
     position: relative;
   }
@@ -252,38 +293,20 @@ aside {
     height: 100%;
   }
 
-  .header {
-    font-size: 20px;
-  }
-
-  .header ul a, .header ul button {
-    background-color: var(--body-background);
-    border: 1px solid var(--border-color);
-    padding: 3px;
-    border-radius: 3px;
-  }
-
-}
-
-@media screen and (max-width: 1200px) {
-  .form-main {
-    width: 80% !important;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .form-main {
-    width: 90% !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
   .form-main {
     width: 95% !important;
+  }
+
+  .login-container {
+    width: 70%;
   }
 }
 
 @media screen and (max-width: 576px) {
+  .login-container {
+    width: 95%;
+  }
+
   .form-main {
     margin: 1rem 0 1rem 0 !important;
   }
