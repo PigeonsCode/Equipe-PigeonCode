@@ -1,7 +1,7 @@
 import os, dotenv
 from projeto import bcrypt
 from projeto import database, app
-from projeto.models import Adm_User, FormsNotas
+from projeto.models import Adm_User, FormsNotas, Projetos
 
 
 with app.app_context():
@@ -17,6 +17,10 @@ with app.app_context():
     user_db="cliente-adm",
     password_db=senha_cripto
     )
+    
+    projeto=Projetos(nome_projeto="Projeto teste 1")
+
     database.session.add(user)
+    database.session.add(projeto)
     database.session.commit()
  
