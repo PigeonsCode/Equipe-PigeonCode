@@ -5,21 +5,18 @@ from projeto.models import Adm_User, FormsNotas
 
 
 with app.app_context():
+    database.drop_all()
     database.create_all()
+    dotenv.load_dotenv()
 
+    senha = os.getenv('SENHA_ADM')
 
+    senha_cripto =bcrypt.generate_password_hash(senha)
 
-dotenv.load_dotenv()
-
-senha = os.getenv('SENHA_ADM')
-
-senha_cripto =bcrypt.generate_password_hash(senha)
-
-with app.app_context():
- user=Adm_User(
- user_db="cliente-adm",
- password_db=senha_cripto
-)
-database.session.add(user)
-database.session.commit()
+    user=Adm_User(
+    user_db="cliente-adm",
+    password_db=senha_cripto
+    )
+    database.session.add(user)
+    database.session.commit()
  
