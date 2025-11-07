@@ -40,14 +40,20 @@
       aria-labelledby="sidebarMobileLabel"
     >
       <div class="offcanvas-body p-0">
-        {% with idAccordion="accordionSidebarMobile" %} {% include
-        "components/sidebar.html" %} {% endwith %}
+        {% if request.path == '/area-restrita' %} {% with
+        idAccordion="accordionSidebarMobile" %} {% include
+        "components/sidebar-adm.html" %} {% endwith %} {% else %} {% with
+        idAccordion="accordionSidebarMobile" %} {% include
+        "components/sidebar.html" %} {% endwith %} {% endif %}
       </div>
     </div>
     <main class="content w-sm-100 gx-0 p-4 mt-5 row gx-md-5">
       <aside class="col-xl-3 d-none d-xl-block">
-        {% with idAccordion="accordionSidebar" %} {% include
-        "components/sidebar.html" %} {% endwith %}
+        {% if request.path == '/area-restrita' %} {% with
+        idAccordion="accordionSidebar" %} {% include
+        "components/sidebar-adm.html"%} {% endwith %} {% else %} {% with
+        idAccordion="accordionSidebar" %} {% include "components/sidebar.html"
+        %} {% endwith %} {% endif %}
       </aside>
       <div
         class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}"
