@@ -44,11 +44,21 @@ def show_aside(nav_item, request_path):
 
 
 @app.context_processor
-def inject_navigation():
+def inject_global():
+    projects = Projetos.query.order_by(Projetos.id).all()
+    projects_list = []
     nav_copy = []
     for nav in navigation_items:
         nav_copy.append({**nav, 'nav_open': is_nav_open(nav, request.path), 'show_aside': show_aside(nav, request.path)})
-    return dict(navigation=nav_copy)
+    
+    for p in projects:
+        projects_list.append({
+            'id': p.id,
+            'nome': p.nome_projeto
+         })
+
+    return dict(navigation=nav_copy, projetos=projects_list, teste= 'teste')
 
 from projeto import routes, models
+from projeto.models import Projetos 
 

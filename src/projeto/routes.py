@@ -6,11 +6,12 @@ from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
 from projeto.forms import FormLoginAdm, FormUserAvalia
-from projeto.models import Adm_User,FormsNotas
+from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
 
 @app.route("/")
 def homepage():
+
     return render_template("index.html", navigation=navigation_items, page_url="homepage")
 
 @app.route("/triagem-adm")
