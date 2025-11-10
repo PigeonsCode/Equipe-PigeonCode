@@ -11,7 +11,7 @@
       <li class="nav-item">
         <a
           href="{{ url_for('scrum') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita' and request.path != '/' %}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path != '/login-adm' and request.path != '/formulario-avaliativo' and request.path != '/area-restrita' and request.path != '/' and not request.path.startswith('/relatorio/') %}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-book"></i>
           <span class="d-none d-lg-block">Treinamentos</span></a
@@ -29,7 +29,7 @@
       <li class="nav-item">
         <a
           href="{{ url_for('teste_adm') }}"
-          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/area-restrita' or request.path == '/login-adm' %}active{% endif %}"
+          class="nav-link d-flex align-items-center justify-content-center gap-1 {% if request.path == '/area-restrita' or request.path == '/login-adm' or request.path.startswith('/relatorio/') %}active{% endif %}"
           aria-current="page"
           ><i class="bx bx-user"></i>
           <span class="d-none d-lg-block">Acesso ao ADM</span>

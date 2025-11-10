@@ -231,7 +231,15 @@ aside {
   bottom: 0;
   right: 0;
   margin-top: 2rem;
+}
 
+
+/* Botão de Criar Projeto */
+
+.btn-projeto i {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  padding: 5px;
 }
 
 
@@ -346,5 +354,9 @@ aside {
 
   footer div {
     flex-direction: column;
+  }
+
+  .btn-projeto {
+    width: 100% !important;
   }
 }

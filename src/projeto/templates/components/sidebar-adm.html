@@ -1,5 +1,19 @@
-<div>
+<div class="accordion sidebar" id="{{idAccordion}}">
+  <!-- <div class="accordion-button sidebar-custom-button btn-projeto">
+    <span>Adicionar Projeto</span>
+    <button>+</button>
+  </div> -->
+
   {%for projeto in projetos %}
-  <p>projeto:{{projeto.nome}}</p>
+  <t-accordion
+    accordionParent="{{idAccordion}}"
+    soloLink="{{url_for('relatorio', id_relatorio=projeto.id)}}"
+    title="{{projeto.nome}}"
+    isSolo="{{True}}"
+  ></t-accordion>
   {% endfor %}
+</div>
+<div class="d-xl-block d-none">
+  {% with class="w-100" %} {% include "components/project-button.html" %} {%
+  endwith %}
 </div>

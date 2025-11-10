@@ -1,5 +1,16 @@
 {%extends "page-template.html"%}{% block content %}
-
-<p class="text-dark-gray mt-5 pt-5">Área restrita em breve...🚧</p>
-
+<div
+  class="{% if projetos != [] %}d-xl-none{% endif %} d-block d-flex justify-content-center mb-4"
+>
+  {% with class="w-auto gap-5" %} {% include"components/project-button.html" %}
+  {% endwith %}
+</div>
+<p class="text-light-gray text-center flex-1">
+  {% if projetos != [] %} Selecione um projeto para ver o relatório gerado a
+  partir das respostas obtidas no formulário avaliativo.
+  <span class="text-primary fw-bold">Ou</span>, adicione um novo projeto. {%
+  else %} <span class="text-primary fw-bold">Adicione um projeto</span> para
+  poder visualizar o relatório gerado a partir das respostas coletadas do
+  formulário avaliativo. {% endif %}
+</p>
 {% endblock %}
