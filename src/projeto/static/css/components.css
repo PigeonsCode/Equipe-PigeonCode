@@ -17,7 +17,9 @@
   transition: 0.2s all ease;
 }
 
-.btn-menu:focus, .btn-menu:active, .btn-menu:hover {
+.btn-menu:focus,
+.btn-menu:active,
+.btn-menu:hover {
   border: 1px solid var(--bs-primary);
 }
 
@@ -61,7 +63,7 @@ aside {
   font-weight: 600 !important;
 }
 
-.custom-navbar > a.active::after {
+.custom-navbar>a.active::after {
   content: "";
   left: 0;
   width: 100%;
@@ -160,16 +162,17 @@ aside {
   margin-bottom: 2rem;
 }
 
-.radio-container input[type='radio']:hover + label, .radio-container input[type='radio']:focus + label {
+.radio-container input[type='radio']:hover+label,
+.radio-container input[type='radio']:focus+label {
   background-color: rgba(var(--bs-primary-rgb), 0.3);
   border-color: #8f9efd;
 }
 
-.radio-container input[type='radio']:focus + label {
-  outline: 5px solid  rgba(var(--bs-primary-rgb), 0.2);
+.radio-container input[type='radio']:focus+label {
+  outline: 5px solid rgba(var(--bs-primary-rgb), 0.2);
 }
 
-.radio-container input[type='radio']:checked + label {
+.radio-container input[type='radio']:checked+label {
   background-color: var(--bs-primary);
   color: var(--color-white);
   border-color: #394dcd;
@@ -177,7 +180,7 @@ aside {
   overflow: hidden;
 }
 
-.radio-container input[type='radio']:checked + label::before {
+.radio-container input[type='radio']:checked+label::before {
   content: "";
   position: absolute;
   width: 2.5rem;
@@ -242,6 +245,34 @@ aside {
   padding: 5px;
 }
 
+/* Botão de Apagar Projeto */
+.adm-accordion {
+  position: relative;
+}
+
+.btn-remover-proj {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 18px;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 1rem;
+  color: var(--light-gray);
+  transition: 0.2s all ease;
+  z-index: 100;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.btn-remover-proj:hover {
+  color: var(--bs-primary);
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -255,7 +286,10 @@ aside {
 }
 
 @media screen and (max-width: 992px) {
-  header .container, .container-md, .container-sm {
+
+  header .container,
+  .container-md,
+  .container-sm {
     max-width: 95% !important;
   }
 
@@ -267,7 +301,8 @@ aside {
     width: 55%;
   }
 
-  .header ul a, .header ul button {
+  .header ul a,
+  .header ul button {
     background-color: var(--body-background);
     border: 1px solid var(--border-color);
     padding: 3px;
@@ -284,9 +319,13 @@ aside {
 }
 
 @media screen and (min-width: 769px) {
-  .offcanvas.show:not(.hiding), .offcanvas.showing, .offcanvas.offcanvas-start {
+
+  .offcanvas.show:not(.hiding),
+  .offcanvas.showing,
+  .offcanvas.offcanvas-start {
     width: 35% !important;
   }
+
   .sidebar {
     height: 100%;
   }
@@ -294,13 +333,17 @@ aside {
 
 
 @media screen and (max-width: 768px) {
-  header .container, .container-md, .container-sm {
+
+  header .container,
+  .container-md,
+  .container-sm {
     max-width: 95% !important;
   }
 
   aside {
     position: relative;
   }
+
   .sidebar {
     height: 100%;
   }

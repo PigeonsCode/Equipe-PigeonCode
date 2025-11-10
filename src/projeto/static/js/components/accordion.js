@@ -8,30 +8,33 @@ export class TAccordion extends HTMLElement {
     const isSolo = this.getAttribute("isSolo");
     const soloLink = this.getAttribute("soloLink");
     const collapseId = `collapse-${title.replace(/\s+/g, "-")}`;
+    const isSidebarAdm = this.getAttribute("isSidebarAdm");
+    const content = this.getAttribute("content")
+
     const children = [...this.children];
 
     const item = document.createElement("div");
     item.className = "accordion-item";
 
     if (isSolo) {
-      item.innerHTML = ` <h2 class="accordion-header">
+      item.innerHTML = ` <h2 class="accordion-header ${isSidebarAdm ? "d-flex justify-content-between adm-accordion" : ""}">
         <a
-          class="accordion-button sidebar-custom-button ${
-            window.location.pathname == soloLink ? "" : "collapsed"
-          }"
+          class="accordion-button sidebar-custom-button ${window.location.pathname == soloLink ? "" : "collapsed"
+        }"
           type="button"
           href="${soloLink}"
         >
           ${title}
         </a>
-      </h2>`;
+        ${isSidebarAdm ? content : ''}
+      </h2>
+      `;
     } else {
       item.innerHTML = `
       <h2 class="accordion-header">
         <button
-          class="accordion-button ${
-            initialState === "false" ? "collapsed" : ""
-          }"
+          class="accordion-button ${initialState === "false" ? "collapsed" : ""
+        }"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#${collapseId}"
@@ -43,8 +46,7 @@ export class TAccordion extends HTMLElement {
       </h2>
       <div
         id="${collapseId}"
-        class="accordion-collapse collapse ${
-          initialState === "true" ? "show" : ""
+        class="accordion-collapse collapse ${initialState === "true" ? "show" : ""
         }"
        
       >
