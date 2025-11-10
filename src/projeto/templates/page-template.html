@@ -40,7 +40,8 @@
       aria-labelledby="sidebarMobileLabel"
     >
       <div class="offcanvas-body p-0">
-        {% if request.path == '/area-restrita' %} {% with
+        {% if request.path == '/area-restrita' or
+        request.path.startswith('/relatorio/') %} {% with
         idAccordion="accordionSidebarMobile" %} {% include
         "components/sidebar-adm.html" %} {% endwith %} {% else %} {% with
         idAccordion="accordionSidebarMobile" %} {% include
@@ -48,15 +49,19 @@
       </div>
     </div>
     <main class="content w-sm-100 gx-0 p-4 mt-5 row gx-md-5">
+      {% if projetos != [] or (request.path != '/area-restrita' and not
+      request.path.startswith('/relatorio/')and navigation) %}
       <aside class="col-xl-3 d-none d-xl-block">
-        {% if request.path == '/area-restrita' %} {% with
+        {% if request.path == '/area-restrita' or
+        request.path.startswith('/relatorio/') %} {% with
         idAccordion="accordionSidebar" %} {% include
         "components/sidebar-adm.html"%} {% endwith %} {% else %} {% with
         idAccordion="accordionSidebar" %} {% include "components/sidebar.html"
         %} {% endwith %} {% endif %}
       </aside>
+      {% endif %}
       <div
-        class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}"
+        class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}{% if projetos == [] and (request.path.startswith('/relatorio/') or request.path == '/area-restrita') %} m-auto col-xl-9{% endif %}"
       >
         {%block content %} {% endblock %}
       </div>
