@@ -5,7 +5,7 @@ from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
-from projeto.forms import FormLoginAdm, FormUserAvalia
+from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
 
@@ -41,16 +41,23 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/relatorio/<int:id_relatorio>")
+@app.route("/relatorio/<int:id_relatorio>", methods = ["GET","POST"])
+@login_required
 def relatorio(id_relatorio):
-    try:
-        Projetos.query.get_or_404(id_relatorio)
-    except Exception as e:
-        print(f'Erro ao buscar projeto: {e}')
-        raise
+    formdelprojeto = FormDelProjeto()
+    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+        print("post correct action")
+        print("correct action")
+        projeto_del = Projetos.query.filter_by(id=id_relatorio).all()
+        formularios_del = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+        print(formularios_del)
+
+        return redirect(url_for("homepage"))
+    
+    
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form)
+    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form,form_del=formdelprojeto)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -185,7 +192,7 @@ def forms():
 # Páginas de conteúdo
  
 #Visão Geral e papéis
-@app.route("/area-restrita")
+@app.route("/area-restrita",methods = ["GET","POST"])
 @login_required
 def area_restrita():
     return render_template("/area-restrita.html")

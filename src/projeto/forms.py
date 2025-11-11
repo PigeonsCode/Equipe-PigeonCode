@@ -13,9 +13,8 @@ class FormLoginAdm(FlaskForm):
 #validação dos dados inseridos pelo usuário
 
 class FormDelProjeto(FlaskForm):
-    project_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired(),EqualTo("CONFIRMAR")])
-    btn_del_project = BooleanField("Clique para confirmar a deleção do projeto, esta ação é irreversível")
-    submit_button = SubmitField("Deletar projeto para sempre")
+    project_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired()])
+    submit_button_del = SubmitField("Deletar projeto para sempre")
     
 class FormCriaProjeto(FlaskForm):
     project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=60)])
