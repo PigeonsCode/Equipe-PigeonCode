@@ -8,7 +8,7 @@ from projeto import app
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
-
+from sqlalchemy import delete
 @app.route("/")
 def homepage():
 
@@ -47,10 +47,15 @@ def relatorio(id_relatorio):
     formdelprojeto = FormDelProjeto()
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
         print("post correct action")
-        print("correct action")
-        projeto_del = Projetos.query.filter_by(id=id_relatorio).all()
-        formularios_del = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-        print(formularios_del)
+        print("correct action in validation")
+        
+        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+        Projetos.query.filter_by(id=id_relatorio).delete()
+
+        #forms_del = FormsNotas.delete().where(FormsNotas.c.projeto_id==id_relatorio)
+        print("sucessful deletion")
+        database.session.commit()
+
 
         return redirect(url_for("homepage"))
     
