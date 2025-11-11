@@ -164,7 +164,7 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
-        formulario = FormsNotas (projeto_id = 1 ,pior_nota_sessao=menor, 
+        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data ,pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
                                  m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,

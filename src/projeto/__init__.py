@@ -57,8 +57,6 @@ def inject_global():
             'nome': p.nome_projeto
          })
         
-    print(projects_list)
-
     return dict(navigation=nav_copy, projetos=projects_list)
 
 from projeto import routes, models

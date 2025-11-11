@@ -355,6 +355,11 @@ aside {
   .login-container {
     width: 70%;
   }
+
+  .select-container {
+    width: 100% !important;
+  }
+
 }
 
 @media screen and (max-width: 576px) {
