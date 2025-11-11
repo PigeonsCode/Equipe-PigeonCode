@@ -13,7 +13,8 @@ class FormLoginAdm(FlaskForm):
 #validação dos dados inseridos pelo usuário
 
 class FormCriaProjeto(FlaskForm):
-    project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=12)])
+    project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=60)])
+    submit_button =  SubmitField("Criar projeto")
 
 class FormUserAvalia(FlaskForm):
     # Inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas,
