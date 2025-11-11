@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm #biblioteca que permite a criação de formulários de login
-from wtforms import StringField, PasswordField,SubmitField, RadioField #importação dos campos dos formulários
+from wtforms import StringField, PasswordField,SubmitField, RadioField,BooleanField #importação dos campos dos formulários
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError #importação de funções que validam as informações inseridas 
 #pelo usuário
 from projeto.models import Adm_User
@@ -13,8 +13,8 @@ class FormLoginAdm(FlaskForm):
 #validação dos dados inseridos pelo usuário
 
 class FormDelProjeto(FlaskForm):
-    project_name_del = 
     project_name_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired(),EqualTo("CONFIRMAR")])
+    btn_del_project = BooleanField("Clique para confirmar a deleção do projeto, esta ação é irreversível")
 
 class FormCriaProjeto(FlaskForm):
     project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=60)])
