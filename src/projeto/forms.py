@@ -13,12 +13,14 @@ class FormLoginAdm(FlaskForm):
 #validação dos dados inseridos pelo usuário
 
 class FormDelProjeto(FlaskForm):
-    project_name_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired(),EqualTo("CONFIRMAR")])
+    project_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired(),EqualTo("CONFIRMAR")])
     btn_del_project = BooleanField("Clique para confirmar a deleção do projeto, esta ação é irreversível")
-
+    submit_button = SubmitField("Deletar projeto para sempre")
+    
 class FormCriaProjeto(FlaskForm):
     project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=60)])
     submit_button =  SubmitField("Criar projeto")
+
 
 class FormUserAvalia(FlaskForm):
     # Inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas,
