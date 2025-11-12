@@ -5,10 +5,10 @@ from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app, process_notas_pie
-from projeto.forms import FormLoginAdm, FormUserAvalia
+from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
-
+from sqlalchemy import delete
 @app.route("/")
 def homepage():
 
@@ -41,13 +41,22 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/relatorio/<int:id_relatorio>")
+@app.route("/relatorio/<int:id_relatorio>", methods = ["GET","POST"])
+@login_required
 def relatorio(id_relatorio):
-    try:
-        Projetos.query.get_or_404(id_relatorio)
-    except Exception as e:
-        print(f'Erro ao buscar projeto: {e}')
-        raise
+    formdelprojeto = FormDelProjeto()
+    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+        
+        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+        Projetos.query.filter_by(id=id_relatorio).delete()
+        database.session.commit()
+        return redirect(url_for("homepage"))
+    
+    elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
+     flash("digite CONFIRMAR")
+    
+    
+    
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
 
@@ -57,8 +66,7 @@ def relatorio(id_relatorio):
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
-
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form, dados_pie = dados_pie)
+    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -193,7 +201,7 @@ def forms():
 # Páginas de conteúdo
  
 #Visão Geral e papéis
-@app.route("/area-restrita")
+@app.route("/area-restrita",methods = ["GET","POST"])
 @login_required
 def area_restrita():
     return render_template("/area-restrita.html")
