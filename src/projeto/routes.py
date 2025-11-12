@@ -4,7 +4,7 @@ from projeto.models import Adm_User
 from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
-from projeto import app
+from projeto import app, process_notas_pie
 from projeto.forms import FormLoginAdm, FormUserAvalia
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
@@ -50,7 +50,15 @@ def relatorio(id_relatorio):
         raise
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form)
+
+    if respostas_form:
+        dados_pie = process_notas_pie(respostas_form)
+    else:
+        dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
+        'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
+
+
+    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form, dados_pie = dados_pie)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():

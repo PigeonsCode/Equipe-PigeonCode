@@ -4,4 +4,68 @@
   {% endwith %}
 </div>
 <p class="text-dark-gray">Relatório {{relatorio}} em breve...🚧</p>
+
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+{% endblock %}
+
+{% block body_end %}
+
+<script>
+
+  const dados_graficos = {
+    verde: parseInt('{{ dados_pie.contagens.verde|tojson|safe }}'),
+    amarelo:  parseInt('{{ dados_pie.contagens.amarelo|tojson|safe }}'),
+    vermelho:  parseInt('{{ dados_pie.contagens.vermelho|tojson|safe }}'),
+  };  
+
+    const corVerde = '#10B981';
+    const corAmarelo = '#FCD34D';
+    const corVermelho = '#EF4444';
+
+    // Calcular o total de notas
+    const totalNotas = dados_graficos.verde + dados_graficos.amarelo + dados_graficos.vermelho;
+
+    if (totalNotas > 0) {
+        const ctx = document.getElementById('myChart');
+        
+        const data = {
+            labels: [
+                'Verde (Nota > 3.0)', 
+                'Amarelo (2.0 < Nota ≤ 3.0)', 
+                'Vermelho (Nota ≤ 2.0)'
+            ],
+            datasets: [{
+                label: 'Contagem de Notas',
+                data: [
+                    dados_graficos.verde,  // Contagem de notas verdes
+                    dados_graficos.amarelo, // Contagem de notas amarelas
+                    dados_graficos.vermelho // Contagem de notas vermelhas
+                ],
+                backgroundColor: [
+                    corVerde, 
+                    corAmarelo, 
+                    corVermelho 
+                ],
+                hoverOffset: 12,
+                borderWidth: 1,
+                borderColor: '#ffffff'
+            }]
+        };
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: data
+        });
+
+    } else {
+        // Mensagem se não houver notas
+        document.getElementById('myChart').parentElement.innerHTML = '<p class="text-center text-xl text-gray-500 p-8">Nenhuma nota válida encontrada para gerar o gráfico.</p>';
+    }
+ 
+</script>
+
 {% endblock %}
