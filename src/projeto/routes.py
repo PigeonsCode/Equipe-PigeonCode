@@ -55,9 +55,10 @@ def relatorio(id_relatorio):
         #forms_del = FormsNotas.delete().where(FormsNotas.c.projeto_id==id_relatorio)
         print("sucessful deletion")
         database.session.commit()
-
-
         return redirect(url_for("homepage"))
+    elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
+     flash("digite CONFIRMAR")
+    
     
     
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404

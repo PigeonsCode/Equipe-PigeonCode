@@ -11,6 +11,12 @@
   {{form_del.project_del_confirm}}
   <br>
   {{form_del.submit_button_del}}
+   <div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="text-center text-danger">{{message}}</div>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
 
 
 </form>
