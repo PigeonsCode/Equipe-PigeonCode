@@ -13,6 +13,10 @@
   --body-background: #f9fafb;
   --roboto: "Roboto", sans-serif;
 
+  --chart-green: #10B981;
+  --chart-yellow: #FCD34D;
+  --chart-red: #EF4444;
+
 }
 
 /* Redefinindo estilo padrão do botão do bootstrap */
@@ -52,7 +56,7 @@
 .list-group-bullet li::before {
   content: "•";
   padding-right: 0.5rem;
-  color: var(--dark-gray);
+  color: var(--dark-gray-2);
 }
 
 .list-group-dod li {
@@ -63,4 +67,16 @@
   content: "—";
   padding-right: 0.5rem;
   color: var(--dark-gray-2);
+}
+
+.text-chart-green {
+  color: var(--chart-green);
+}
+
+.text-chart-yellow {
+  color: var(--chart-yellow);
+}
+
+.text-chart-red {
+  color: var(--chart-red);
 }

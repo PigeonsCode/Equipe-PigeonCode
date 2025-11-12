@@ -55,10 +55,9 @@ def relatorio(id_relatorio):
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
      flash("digite CONFIRMAR")
     
-    
-    
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+    projeto = Projetos.query.get(id_relatorio)
 
     if respostas_form:
         dados_pie = process_notas_pie(respostas_form)
@@ -66,12 +65,17 @@ def relatorio(id_relatorio):
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
+    return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
-   
+    
     form_avaliacao = FormUserAvalia()
+
+    projects = Projetos.query.order_by(Projetos.id).all()
+    projects_list = [(p.id, p.nome_projeto) for p in projects]
+    form_avaliacao.select_projeto.choices = projects_list
+
     if form_avaliacao.validate_on_submit():
         incremento_r1 = form_avaliacao.incremento_do_produto_p1.data
         incremento_r2 = form_avaliacao.incremento_do_produto_p2.data

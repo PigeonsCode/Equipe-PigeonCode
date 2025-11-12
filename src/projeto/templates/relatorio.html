@@ -3,7 +3,136 @@
   {% with class="w-auto gap-5" %} {% include"components/create-project-btn.html" %}
   {% endwith %}
 </div>
-<p class="text-dark-gray">Relatório {{relatorio}} em breve...🚧</p>
+
+{% if form_info != [] %}
+<section>
+  <h3 class="fw-bold mb-5">Relatório sobre {{projeto.nome_projeto}} </h3>
+  <h4 class="fw-bold text-muted mb-3">Informações gerais sobre a qualidade entregue no Projeto Um</h4>
+  <p class="text-dark-gray ">A nota de qualidade para o projeto selecionado é calculado a partir das médias e notas adquiridas com o envio dos formulários que, contém perguntas de quatro alternativas pontuadas de 1 a 4. Após envio do formulário, o peso de cada processo do SCRUM é definido e assim uma nota geral ao projeto como um todo é formada.</p>
+
+  <div class="info-chart-container d-flex justify-content-evenly p-4 mt-5 mb-5 rounded">
+    <div class="text-center align-items-end">
+      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <p class="small text-secondary fw-bold mb-0">Qualidade dos Processos do projeto</p>
+    </div>
+    <div class="text-center align-items-end">
+      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <p class="small text-secondary fw-bold mb-0">Nota Atribuída</p>
+    </div>
+    <div class="text-center align-items-end">
+      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <p class="small text-secondary fw-bold mb-0">Processo com maior nota</p>
+    </div>
+    <div class="text-center align-items-end">
+      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <p class="small text-secondary fw-bold mb-0">Processo com menor nota</p>
+    </div>
+  </div>
+</section>
+
+<section class="d-flex flex-column">
+  <h4 class="fw-bold text-muted mb-3">Qualidade das respostas por sessão</h4>
+  <div class="p-3 w-60 align-self-center">
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+   <div class="container border rounded p-4 mt-5 mb-5">
+    <div class="d-flex flex-column gap-1">
+      <b class="small mb-2">Legenda para o gráfico de qualidade das respostas por processo</b>
+      <p class="text-dark-gray small">
+        O gráfico separa as sessões por nível de qualidade a partir de sua média calculada em todos os formulários enviados por seus funcionários. Existem 12 sessões totais, as quais <span class="text-chart-green fw-bold">{{dados_pie.contagens.verde}}</span> demonstram qualidade alta, <span class="text-chart-yellow fw-bold">{{dados_pie.contagens.amarelo}}</span> qualidade média e <span class="text-chart-red fw-bold">{{dados_pie.contagens.vermelho}}</span> qualidade baixa.
+      </p>
+      <i class="small text-dark-gray mb-5">As alternativas das questões respondidas registram notas de 1 (a mais baixo) a 4 (a mais alta)</i>
+      <div class="qualidade-container d-flex {% if dados_pie.contagens.verde == 12 or dados_pie.contagens.amarelo == 12 or dados_pie.contagens.vermelho == 12 %} justify-content-start ps-5 {% else %} justify-content-evenly {% endif %}">
+
+        {% if dados_pie.contagens.verde != 0 %}
+        <div>
+          <div class="d-flex gap-2 align-items-center justify-content-center mb-3">
+            <span class="p-3 rounded-circle" style="background-color: #10B981;"></span>
+            <div>
+              <h6 class="text-uppercase small text-dark-gray mb-0" style="font-weight: 800;">Qualidade Alta</h6>
+              <p class="small text-light-gray mb-0">Notas maiores que 3</p>
+            </div>
+          </div>
+          
+          <ul class="list-group list-group-flush list-group-bullet custom-list">
+            {% for sessao in dados_pie.sessoes.verde %}
+              <li class="list-group-item text-muted p-1 small border-0 text-dark-gray">
+                {{sessao}}
+              </li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if dados_pie.contagens.verde and dados_pie.contagens.amarelo %}
+          <span class="vertical-divider"></span>
+        {% endif %}
+
+        {% if dados_pie.contagens.amarelo != 0 %}
+        <div>
+          <div class="d-flex gap-2 align-items-center justify-content-center mb-3">
+            <span class="p-3 rounded-circle" style="background-color: #FCD34D;"></span>
+            <div>
+              <h6 class="text-uppercase small text-dark-gray mb-0" style="font-weight: 800;">Qualidade Média</h6>
+              <p class="small text-light-gray mb-0">Notas entre 2 e 3</p>
+            </div>
+          </div>
+           <ul class="list-group list-group-flush list-group-bullet custom-list">
+            {% for sessao in dados_pie.sessoes.amarelo %}
+              <li class="list-group-item text-muted p-1 small border-0 text-dark-gray">
+                {{sessao}}
+              </li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if dados_pie.contagens.amarelo and dados_pie.contagens.vermelho %}
+          <span class="vertical-divider"></span>
+        {% endif %}
+        
+        {% if dados_pie.contagens.vermelho != 0 %}
+        <div>
+          <div class="d-flex gap-2 align-items-center justify-content-center mb-3">
+            <span class="p-3 rounded-circle" style="background-color: #EF4444;"></span>
+            <div>
+              <h6 class="text-uppercase small text-dark-gray mb-0" style="font-weight: 800;">Qualidade Baixa</h6>
+              <p class="small text-light-gray mb-0">Notas menores que 2</p>
+            </div>
+          </div>
+           <ul class="list-group list-group-flush list-group-bullet custom-list">
+            {% for sessao in dados_pie.sessoes.vermelho %}
+              <li class="list-group-item text-muted p-1 small border-0 text-dark-gray">
+                {{sessao}}
+              </li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section>
+  <h4 class="fw-bold text-muted mb-3">Notas de cada sessão avaliada</h4>
+  <i class="small text-dark-gray">As alternativas das questões respondidas registram notas de 1 (a mais baixo) a 4 (a mais alta)</i>
+</section>
+
+<section>
+  <h4 class="fw-bold text-muted mb-3">Informações gerais sobre cada formulário enviado</h4>
+</section>
+
+{% else %}
+<div>
+  <h3 class="fw-bold mb-4">Relatório sobre {{projeto.nome_projeto}} </h3>
+  <p class="text-light-gray">Nenhum formulário foi enviado para este projeto.</p>
+</div>
+{% endif %}
 
 <div>
   <canvas id="myChart"></canvas>
@@ -16,11 +145,11 @@
   <br>
   {{form_del.submit_button_del}}
    <div>
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="text-center text-danger">{{message}}</div>
-        {% endfor %} {% endif %} {% endwith %}
-      </div>
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="text-center text-danger">{{message}}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
 
 
 </form>
@@ -49,9 +178,9 @@
         
         const data = {
             labels: [
-                'Verde (Nota > 3.0)', 
-                'Amarelo (2.0 < Nota ≤ 3.0)', 
-                'Vermelho (Nota ≤ 2.0)'
+                'Qualidade Alta', 
+                'Qualidade Média', 
+                'Qualidade Baixa'
             ],
             datasets: [{
                 label: 'Contagem de Notas',
@@ -76,10 +205,7 @@
             data: data
         });
 
-    } else {
-        // Mensagem se não houver notas
-        document.getElementById('myChart').parentElement.innerHTML = '<p class="text-center text-xl text-gray-500 p-8">Nenhuma nota válida encontrada para gerar o gráfico.</p>';
-    }
+    } 
  
 </script>
 

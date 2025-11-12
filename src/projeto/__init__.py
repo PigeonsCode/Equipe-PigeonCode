@@ -68,6 +68,21 @@ def process_notas_pie(respostas_form):
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}
     }
 
+    regras_traducao = {
+        'm_inpr': 'Incremento do Produto',
+        'm_dasc': 'Daily Scrum',
+        'm_spretro': 'Sprint Retrospective',
+        'm_buup':  'Burnup Chart',
+        'm_spba': 'Sprint Backlog',
+        'm_dod': 'Definition of Done',
+        'm_spre': 'Sprint Review',
+        'm_budo': 'Burndown Chart',
+        'm_prba': 'Product Backlog',
+        'm_dor': 'Definition of Ready',
+        'm_sppl': 'Sprint Planning',
+        'm_stpo': 'Story Points'
+    }
+
     #essas duas são variáveis auxiliares para guardar informações
     #lista que vai conter o nome das colunas que são numéricas e armazenam médias (logo ela vai excluir o projeto_id, melhores e piores notas)  
     atributos_media = []
@@ -81,14 +96,18 @@ def process_notas_pie(respostas_form):
             valor_coluna = getattr(respostas_form[0], nome_coluna) #converte a string na coluna com nome_coluna para checar o tipo de seu valor
             if isinstance(valor_coluna, (int,float)): #checa se o valor da coluna é um int ou float mesmo
                 atributos_media.append(nome_coluna) #adiciona o nome da coluna a lista que contém as colunas válidas de médias
-                notas_por_coluna[nome_coluna] = [] #cria uma lista vazia dentro do dicionário para cada uma das colunas de média válidas
+                nome_coluna_traduzida = regras_traducao[nome_coluna]
+                notas_por_coluna[nome_coluna_traduzida] = [] #cria uma lista vazia dentro do dicionário para cada uma das colunas de média válidas
+
+            print(notas_por_coluna)
     
 
     for resposta in respostas_form: #percorre por todos os formulários cadastrados do projeto que estamos analisando
         for nome_coluna in atributos_media: #percorre nossa lista com os nomes de coluna
             nota = getattr(resposta, nome_coluna) #pega qual o valor armazenado na coluna especificada do objeto de resposta
             if nota is not None:
-                notas_por_coluna[nome_coluna].append(float(nota)) #se a nota não for vazia, preenche cada item do dicionário com a nota da coluna do objeto resposta equivalente
+                nome_coluna_traduzida = regras_traducao[nome_coluna]
+                notas_por_coluna[nome_coluna_traduzida].append(float(nota)) #se a nota não for vazia, preenche cada item do dicionário com a nota da coluna do objeto resposta equivalente
 
 
     for nome_coluna, lista_notas in notas_por_coluna.items(): #percorre o dicionário de notas_por_coluna (percorre o nome da coluna e a sua respectiva lista de notas)
