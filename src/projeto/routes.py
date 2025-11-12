@@ -29,7 +29,7 @@ def loginADM():
          user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
          if  user_login_attempt and bcrypt.check_password_hash(user_login_attempt.password_db , form_login_adm.password_adm.data) :
             login_user(user_login_attempt,remember=False)
-            return redirect (url_for("area_restrita")) #criar pagina de acesso restrito com o nome AcessoADM, usar @login_required
+            return redirect (url_for("area_restrita")) 
          else:
              flash("Usuário ou senha incorretos!")
              redirect (url_for("loginADM"))
