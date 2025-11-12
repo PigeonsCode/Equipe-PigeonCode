@@ -46,16 +46,12 @@ def logout():
 def relatorio(id_relatorio):
     formdelprojeto = FormDelProjeto()
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
-        print("post correct action")
-        print("correct action in validation")
         
         FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
         Projetos.query.filter_by(id=id_relatorio).delete()
-
-        #forms_del = FormsNotas.delete().where(FormsNotas.c.projeto_id==id_relatorio)
-        print("sucessful deletion")
         database.session.commit()
         return redirect(url_for("homepage"))
+    
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
      flash("digite CONFIRMAR")
     
