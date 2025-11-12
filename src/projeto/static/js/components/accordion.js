@@ -9,7 +9,7 @@ export class TAccordion extends HTMLElement {
     const soloLink = this.getAttribute("soloLink");
     const collapseId = `collapse-${title.replace(/\s+/g, "-")}`;
     const isSidebarAdm = this.getAttribute("isSidebarAdm");
-    const content = this.getAttribute("content")
+
 
     const children = [...this.children];
 
@@ -26,7 +26,7 @@ export class TAccordion extends HTMLElement {
         >
           ${title}
         </a>
-        ${isSidebarAdm ? content : ''}
+        
       </h2>
       `;
     } else {
