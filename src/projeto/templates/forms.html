@@ -6,46 +6,44 @@
     class="form-container d-flex flex-column bg-white p-4 pt-5 pb-5 p-sm-1 pb-sm-5 pt-sm-5 mb-5 gap-3 rounded-4 border border-1"
   >
     <section class="w-90 m-auto">
-      <div class="mb-3 d-flex flex-column p-4 gap-2">
-        <h3 class="fw-bold text-darkest-gray mb-4 text-center">
-          Avaliação sobre processos do SCRUM
-        </h3>
-        <p class="text-light-gray">
-          Responda as perguntas abaixo sinceramente e levando em conta o
-          desempenho e comportamento dos seus colaboradores de trabalho. Cada
-          questão permite apenas uma alternativa como escolha a fim de pontuar
-          mais claramente a qualidade dos processos e artefatos da metodologia
-          SCRUM a serem analisados.
-        </p>
-
-        <p class="small text-primary fw-bold mb-4">
-          Todas as perguntas devem ser respondidas*
-        </p>
-
-        <div class="form-floating mb-2">
-          <select class="form-select w-auto" aria-label="select-projeto">
-            <option selected>Abrir o menu de seleção</option>
-            <option value="1">Projeto Sprint Manager</option>
-            <option value="2">Projeto Product Vision</option>
-            <option value="3">Projeto Daily Sync</option>
-          </select>
-          <label>Selecionar Projeto</label>
-        </div>
-
-        {% with messages = get_flashed_messages(with_categories=true) %} {% if
-        messages %} {% for category, message in messages %} {% if category ==
-        'danger': %}
-        <div class="alert alert-danger mt-3" role="alert">{{ message }}</div>
-        {% endif %} {% endfor %} {% endif %} {% endwith %}
-      </div>
-
       <form
         method="POST"
         class="d-flex form-avaliation flex-column gap-3 mt-3 m-auto"
         onsubmit="console.log('form onsubmit fired', event)"
         novalidate
       >
+      
         {{form.csrf_token}} {{form.hidden_tag() }}
+
+        <div class="mb-3 d-flex flex-column p-4 gap-2">
+          <h3 class="fw-bold text-darkest-gray mb-4 text-center">
+            Avaliação sobre processos do SCRUM
+          </h3>
+          <p class="text-light-gray">
+            Responda as perguntas abaixo sinceramente e levando em conta o
+            desempenho e comportamento dos seus colaboradores de trabalho. Cada
+            questão permite apenas uma alternativa como escolha a fim de pontuar
+            mais claramente a qualidade dos processos e artefatos da metodologia
+            SCRUM a serem analisados.
+          </p>
+
+          <p class="small text-primary fw-bold mb-4">
+            Todas as perguntas devem ser respondidas*
+          </p>
+
+          <div class="form-floating mb-2 d-flex justify-content-center w-50 select-container">
+            {{form.select_projeto(class="form-select w-100")}}
+            {{form.select_projeto.label()}}
+          </div>
+
+
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %} {% if category ==
+          'danger': %}
+          <div class="alert alert-danger mt-3" role="alert">{{ message }}</div>
+          {% endif %} {% endfor %} {% endif %} {% endwith %}
+        </div>
+
 
         <h5 class="fw-bold text-center text-dark-gray">
           Incremento do Produto
@@ -525,7 +523,7 @@
   document.getElementById("toastMessageText").innerHTML = "{{message}}";
   var toastEl = document.getElementById("liveToast");
   var toast = new bootstrap.Toast(toastEl, { delay: 2500 });
-
+  
   toast.show();
 </script>
 {% endif %} {% endfor %} {% endif %} {% endwith %} {% endblock %}

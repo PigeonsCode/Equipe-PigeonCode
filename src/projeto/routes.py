@@ -4,7 +4,7 @@ from projeto.models import Adm_User
 from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
-from projeto import app
+from projeto import app, process_notas_pie
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
@@ -59,7 +59,14 @@ def relatorio(id_relatorio):
     
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form,form_del=formdelprojeto)
+
+    if respostas_form:
+        dados_pie = process_notas_pie(respostas_form)
+    else:
+        dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
+        'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
+
+    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -173,7 +180,7 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
-        formulario = FormsNotas (projeto_id = 1 ,pior_nota_sessao=menor, 
+        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data ,pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
                                  m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,
