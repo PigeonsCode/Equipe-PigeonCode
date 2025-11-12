@@ -4,7 +4,7 @@
   {% endwith %}
 </div>
 <p class="text-dark-gray">Relatório {{relatorio}} em breve...🚧</p>
-<form method="POST">
+<form autocomplete="off" method="POST">
   {{form_del.csrf_token}}
   {{form_del.hidden_tag()}}
   {{form_del.project_del_confirm.label}}
