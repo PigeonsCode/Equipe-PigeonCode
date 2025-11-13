@@ -9,6 +9,7 @@ from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaPr
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
 from sqlalchemy import delete
+from sqlalchemy.exc import IntegrityError
 @app.route("/")
 def homepage():
 
@@ -46,16 +47,19 @@ def logout():
 def relatorio(id_relatorio):
     formdelprojeto = FormDelProjeto()
     form_cria_projeto = FormCriaProjeto()
-    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+   
         
-        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
-        Projetos.query.filter_by(id=id_relatorio).delete()
-        database.session.commit()
-        return redirect(url_for("area_restrita"))
-    
+    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+            
+            FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+            Projetos.query.filter_by(id=id_relatorio).delete()
+            database.session.commit()
+            return redirect(url_for("area_restrita"))
+        
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
-     flash("digite CONFIRMAR")
+         flash("digite CONFIRMAR")
     
+        
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     projeto = Projetos.query.get(id_relatorio)
@@ -67,14 +71,18 @@ def relatorio(id_relatorio):
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
     if form_cria_projeto.validate_on_submit():
-       
-        nome_projeto = form_cria_projeto.project_name.data
-        novo_projeto = Projetos(nome_projeto = nome_projeto)
-        database.session.add(novo_projeto)
-        database.session.commit()
+          try:
+            nome_projeto = form_cria_projeto.project_name.data
+            novo_projeto = Projetos(nome_projeto = nome_projeto)
+            database.session.add(novo_projeto)
+            database.session.commit()
+            redirect (url_for("area_restrita"))
 
-        redirect (url_for("area_restrita"))
-
+          except IntegrityError:
+            database.session.rollback()
+            flash("Já existe um projeto com este nome!")
+            return redirect(url_for("area_restrita"))
+        
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
                            form_cria_projeto = form_cria_projeto)
@@ -221,13 +229,18 @@ def forms():
 @login_required
 def area_restrita():
     form_cria_projeto = FormCriaProjeto()
-
-    if form_cria_projeto.validate_on_submit():
-        nome_projeto = form_cria_projeto.project_name.data
-        novo_projeto = Projetos(nome_projeto = nome_projeto)
-        database.session.add(novo_projeto)
-        database.session.commit()
-        redirect (url_for("area_restrita"))
+    try:    
+        if form_cria_projeto.validate_on_submit():  
+                nome_projeto = form_cria_projeto.project_name.data
+                novo_projeto = Projetos(nome_projeto = nome_projeto)
+                database.session.add(novo_projeto)
+                database.session.commit()
+                redirect (url_for("area_restrita"))
+    except IntegrityError:
+        database.session.rollback()
+        flash("Já existe um projeto com este nome!")
+        return redirect(url_for("area_restrita"))
+    
 
     return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 

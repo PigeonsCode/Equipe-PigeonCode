@@ -42,6 +42,13 @@
         </form>
       </div>
       
+      <div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="text-center text-danger">{{message}}</div>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
+      
      
     </div>
   </div>
