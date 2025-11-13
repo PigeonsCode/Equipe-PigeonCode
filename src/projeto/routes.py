@@ -208,7 +208,15 @@ def forms():
 @app.route("/area-restrita",methods = ["GET","POST"])
 @login_required
 def area_restrita():
-    return render_template("/area-restrita.html")
+    form_cria_projeto = FormCriaProjeto()
+    if form_cria_projeto.validate_on_submit():
+        print("---sucesso no modal!---")
+        nome_projeto = form_cria_projeto.project_name.data
+        novo_projeto = Projetos(nome_projeto = nome_projeto)
+        database.session.add(novo_projeto)
+        database.session.commit()
+        redirect (url_for("area_restrita"))
+    return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 
 @app.route("/scrum")
 def scrum():
