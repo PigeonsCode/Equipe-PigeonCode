@@ -4,11 +4,11 @@ from projeto.models import Adm_User
 from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
-from projeto import app
-from projeto.forms import FormLoginAdm, FormUserAvalia,FormCriaProjeto
+from projeto import app, process_notas_pie
+from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
-
+from sqlalchemy import delete
 @app.route("/")
 def homepage():
 
@@ -29,7 +29,7 @@ def loginADM():
          user_login_attempt = Adm_User.query.filter_by(user_db = form_login_adm.username_adm.data).first()
          if  user_login_attempt and bcrypt.check_password_hash(user_login_attempt.password_db , form_login_adm.password_adm.data) :
             login_user(user_login_attempt,remember=False)
-            return redirect (url_for("area_restrita")) #criar pagina de acesso restrito com o nome AcessoADM, usar @login_required
+            return redirect (url_for("area_restrita")) 
          else:
              flash("Usuário ou senha incorretos!")
              redirect (url_for("loginADM"))
@@ -41,25 +41,41 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/relatorio/<int:id_relatorio>", methods = ["GET", "POST"])
+@app.route("/relatorio/<int:id_relatorio>", methods = ["GET","POST"])
+@login_required
 def relatorio(id_relatorio):
-    form_cria_projeto = FormCriaProjeto()
-    
-    if form_cria_projeto.validate_on_submit():
-        print("---sucesso no modal!---")
-        nome_projeto = form_cria_projeto.project_name.data
-        novo_projeto = Projetos(nome_projeto = nome_projeto)
-        database.session.add(novo_projeto)
+    formdelprojeto = FormDelProjeto()
+    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+        
+        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+        Projetos.query.filter_by(id=id_relatorio).delete()
         database.session.commit()
-        redirect (url_for("area_restrita"))
-
+        return redirect(url_for("homepage"))
+    
+    elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
+     flash("digite CONFIRMAR")
+    
+    #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form,form_cria_projeto = form_cria_projeto)
+    projeto = Projetos.query.get(id_relatorio)
+
+    if respostas_form:
+        dados_pie = process_notas_pie(respostas_form)
+    else:
+        dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
+        'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
+
+    return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
-   
+    
     form_avaliacao = FormUserAvalia()
+
+    projects = Projetos.query.order_by(Projetos.id).all()
+    projects_list = [(p.id, p.nome_projeto) for p in projects]
+    form_avaliacao.select_projeto.choices = projects_list
+
     if form_avaliacao.validate_on_submit():
         incremento_r1 = form_avaliacao.incremento_do_produto_p1.data
         incremento_r2 = form_avaliacao.incremento_do_produto_p2.data
@@ -168,7 +184,7 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
-        formulario = FormsNotas (projeto_id = 1 ,pior_nota_sessao=menor, 
+        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data ,pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
                                  m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,
@@ -189,7 +205,7 @@ def forms():
 # Páginas de conteúdo
  
 #Visão Geral e papéis
-@app.route("/area-restrita", methods = ["GET","POST"])
+@app.route("/area-restrita",methods = ["GET","POST"])
 @login_required
 def area_restrita():
     form_cria_projeto = FormCriaProjeto()

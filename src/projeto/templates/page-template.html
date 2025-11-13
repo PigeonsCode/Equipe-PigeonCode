@@ -61,7 +61,7 @@
       </aside>
       {% endif %}
       <div
-        class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}{% if projetos == [] and (request.path.startswith('/relatorio/') or request.path == '/area-restrita') %} m-auto col-xl-9{% endif %}"
+        class="{% if navigation | selectattr('show_aside') | list %}col-xl-7{% else %}col-xl-8{% endif %}{% if projetos == [] and (request.path.startswith('/relatorio/') or request.path == '/area-restrita') %} m-auto col-xl-9{% endif %} {% if request.path.startswith('/relatorio/') %} d-flex flex-column gap-5 {%endif%}"
       >
         {%block content %} {% endblock %}
       </div>
@@ -82,7 +82,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% block body_end %} {% endblock %}
   </body>
   {% endblock %}

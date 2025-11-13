@@ -250,6 +250,20 @@ aside {
   position: relative;
 }
 
+/* Componente de informações gerais */
+.info-chart-container {
+  background-color: #F2F5F9;
+}
+
+.vertical-divider {
+  align-self: stretch;
+  width: 1px;
+  background-color: var(--border-color);
+  border-radius: 10rem;
+}
+
+
+
 .btn-remover-proj {
   position: absolute;
   border: none;
@@ -355,6 +369,11 @@ aside {
   .login-container {
     width: 70%;
   }
+
+  .select-container {
+    width: 100% !important;
+  }
+
 }
 
 @media screen and (max-width: 576px) {
