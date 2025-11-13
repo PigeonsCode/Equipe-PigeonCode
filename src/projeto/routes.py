@@ -44,7 +44,15 @@ def logout():
 @app.route("/relatorio/<int:id_relatorio>", methods = ["GET", "POST"])
 def relatorio(id_relatorio):
     form_cria_projeto = FormCriaProjeto()
-    #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
+    
+    if form_cria_projeto.validate_on_submit():
+        print("---sucesso no modal!---")
+        nome_projeto = form_cria_projeto.project_name.data
+        novo_projeto = Projetos(nome_projeto = nome_projeto)
+        database.session.add(novo_projeto)
+        database.session.commit()
+        redirect (url_for("area_restrita"))
+
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form,form_cria_projeto = form_cria_projeto)
 
