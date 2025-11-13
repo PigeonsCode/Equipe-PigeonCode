@@ -5,7 +5,7 @@ from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app, process_notas_pie
-from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto
+from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
 from sqlalchemy import delete
@@ -45,12 +45,13 @@ def logout():
 @login_required
 def relatorio(id_relatorio):
     formdelprojeto = FormDelProjeto()
+    form_cria_projeto = FormCriaProjeto()
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
         
         FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
         Projetos.query.filter_by(id=id_relatorio).delete()
         database.session.commit()
-        return redirect(url_for("homepage"))
+        return redirect(url_for("area_restrita"))
     
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
      flash("digite CONFIRMAR")
@@ -65,7 +66,18 @@ def relatorio(id_relatorio):
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
-    return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie)
+    if form_cria_projeto.validate_on_submit():
+       
+        nome_projeto = form_cria_projeto.project_name.data
+        novo_projeto = Projetos(nome_projeto = nome_projeto)
+        database.session.add(novo_projeto)
+        database.session.commit()
+
+        redirect (url_for("area_restrita"))
+
+    return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
+                           form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
+                           form_cria_projeto = form_cria_projeto)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -209,13 +221,14 @@ def forms():
 @login_required
 def area_restrita():
     form_cria_projeto = FormCriaProjeto()
+
     if form_cria_projeto.validate_on_submit():
-        print("---sucesso no modal!---")
         nome_projeto = form_cria_projeto.project_name.data
         novo_projeto = Projetos(nome_projeto = nome_projeto)
         database.session.add(novo_projeto)
         database.session.commit()
         redirect (url_for("area_restrita"))
+
     return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 
 @app.route("/scrum")
