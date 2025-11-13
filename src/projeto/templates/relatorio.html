@@ -4,4 +4,10 @@
   {% endwith %}
 </div>
 <p class="text-dark-gray">Relatório {{relatorio}} em breve...🚧</p>
+<div
+  class="{% if projetos != [] %}d-xl-none{% endif %} d-block d-flex justify-content-center mb-4"
+>
+  {% with class="w-auto gap-5" %} {% include"components/create-project-btn.html" %}
+  {% endwith %}
+</div>
 {% endblock %}

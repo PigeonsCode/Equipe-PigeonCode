@@ -41,16 +41,12 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-@app.route("/relatorio/<int:id_relatorio>")
+@app.route("/relatorio/<int:id_relatorio>", methods = ["GET", "POST"])
 def relatorio(id_relatorio):
-    try:
-        Projetos.query.get_or_404(id_relatorio)
-    except Exception as e:
-        print(f'Erro ao buscar projeto: {e}')
-        raise
+    form_cria_projeto = FormCriaProjeto()
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form)
+    return render_template("relatorio.html", relatorio=id_relatorio, form_info = respostas_form,form_cria_projeto = form_cria_projeto)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
