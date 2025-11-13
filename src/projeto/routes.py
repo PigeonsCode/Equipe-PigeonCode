@@ -51,37 +51,37 @@ def relatorio(id_relatorio):
         
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
             
-            FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
-            Projetos.query.filter_by(id=id_relatorio).delete()
-            database.session.commit()
-            return redirect(url_for("area_restrita"))
+        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+        Projetos.query.filter_by(id=id_relatorio).delete()
+        database.session.commit()
+        return redirect(url_for("area_restrita"))
         
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
          flash("digite CONFIRMAR")
     
-        
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     projeto = Projetos.query.get(id_relatorio)
 
     if respostas_form:
         dados_pie = process_notas_pie(respostas_form)
+
     else:
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
     if form_cria_projeto.validate_on_submit():
-          try:
-            nome_projeto = form_cria_projeto.project_name.data
-            novo_projeto = Projetos(nome_projeto = nome_projeto)
-            database.session.add(novo_projeto)
-            database.session.commit()
-            redirect (url_for("area_restrita"))
+        try:
+          nome_projeto = form_cria_projeto.project_name.data
+          novo_projeto = Projetos(nome_projeto = nome_projeto)
+          database.session.add(novo_projeto)
+          database.session.commit()
+          redirect (url_for("area_restrita"))
 
-          except IntegrityError:
-            database.session.rollback()
-            flash("Já existe um projeto com este nome!")
-            return redirect(url_for("area_restrita"))
+        except IntegrityError:
+          database.session.rollback()
+          flash("Já existe um projeto com este nome!")
+          return redirect(url_for("area_restrita"))
         
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
@@ -229,18 +229,20 @@ def forms():
 @login_required
 def area_restrita():
     form_cria_projeto = FormCriaProjeto()
-    try:    
-        if form_cria_projeto.validate_on_submit():  
-                nome_projeto = form_cria_projeto.project_name.data
-                novo_projeto = Projetos(nome_projeto = nome_projeto)
-                database.session.add(novo_projeto)
-                database.session.commit()
-                redirect (url_for("area_restrita"))
-    except IntegrityError:
-        database.session.rollback()
-        flash("Já existe um projeto com este nome!")
-        return redirect(url_for("area_restrita"))
-    
+
+    if form_cria_projeto.validate_on_submit(): 
+        try:    
+            nome_projeto = form_cria_projeto.project_name.data
+            novo_projeto = Projetos(nome_projeto = nome_projeto)
+            database.session.add(novo_projeto)
+            database.session.commit()
+            redirect (url_for("area_restrita"))
+
+        except IntegrityError:
+            database.session.rollback()
+            flash("Já existe um projeto com este nome!")
+            return redirect(url_for("area_restrita"))
+        
 
     return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 
