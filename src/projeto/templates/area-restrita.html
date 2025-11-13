@@ -24,18 +24,23 @@
       </div>
       
       <div class="modal-body">
-        <form id="createProjectForm">
+        <form method = "POST" id="createProjectForm">
+           {{form_cria_projeto.csrf_token}}
+           {{form_cria_projeto.hidden_tag()}}
           <div class="form-group">
-            <label for="projectName">Nome do Projeto</label>
-            <input type="text" class="form-control" id="projectName" placeholder="Ex: Projeto 1" required>
+            {{form_cria_projeto.project_name.label}}
+            {{form_cria_projeto.project_name}}
           </div>
+
+       
+     
+            <div class="modal-footer">
+          {{form_cria_projeto.submit_button}}
+           </div>
         </form>
       </div>
       
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" form="createProjectForm" class="btn btn-primary">Salvar Projeto</button>
-      </div>
+     
     </div>
   </div>
 </div>

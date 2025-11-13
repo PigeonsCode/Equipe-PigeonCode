@@ -5,7 +5,7 @@ from flask import Flask,render_template,url_for,redirect,flash,request
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto import app
-from projeto.forms import FormLoginAdm, FormUserAvalia
+from projeto.forms import FormLoginAdm, FormUserAvalia,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index
 
@@ -185,10 +185,18 @@ def forms():
 # Páginas de conteúdo
  
 #Visão Geral e papéis
-@app.route("/area-restrita")
+@app.route("/area-restrita", methods = ["GET","POST"])
 @login_required
 def area_restrita():
-    return render_template("/area-restrita.html")
+    form_cria_projeto = FormCriaProjeto()
+    if form_cria_projeto.validate_on_submit():
+        print("---sucesso no modal!---")
+        nome_projeto = form_cria_projeto.project_name.data
+        novo_projeto = Projetos(nome_projeto = nome_projeto)
+        database.session.add(novo_projeto)
+        database.session.commit()
+        redirect (url_for("area_restrita"))
+    return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 
 @app.route("/scrum")
 def scrum():
