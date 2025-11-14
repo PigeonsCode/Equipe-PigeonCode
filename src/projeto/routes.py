@@ -7,8 +7,12 @@ from projeto.navigation import navigation_items
 from projeto import app, process_notas_pie
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
-from projeto.function import calc_media,menor_index,maior_index
+from projeto.function import calc_media,menor_index,maior_index,criar_projetos
 from sqlalchemy import delete
+
+
+
+
 @app.route("/")
 def homepage():
 
@@ -46,15 +50,17 @@ def logout():
 def relatorio(id_relatorio):
     formdelprojeto = FormDelProjeto()
     form_cria_projeto = FormCriaProjeto()
-    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+   
         
+    if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
+            
         FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
         Projetos.query.filter_by(id=id_relatorio).delete()
         database.session.commit()
         return redirect(url_for("area_restrita"))
-    
+        
     elif  formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data !="Confirmar":
-     flash("digite CONFIRMAR")
+         flash("digite CONFIRMAR")
     
     #checagem para ver se o número sendo colocado após /relatorio/ é um id existente em Projetos, se não for, da erro 404
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
@@ -62,19 +68,18 @@ def relatorio(id_relatorio):
 
     if respostas_form:
         dados_pie = process_notas_pie(respostas_form)
+
     else:
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
     if form_cria_projeto.validate_on_submit():
-       
-        nome_projeto = form_cria_projeto.project_name.data
-        novo_projeto = Projetos(nome_projeto = nome_projeto)
-        database.session.add(novo_projeto)
-        database.session.commit()
-
-        redirect (url_for("area_restrita"))
-
+        if criar_projetos(form_cria_projeto.project_name.data):
+            return redirect(url_for("area_restrita"))
+        else: 
+            return redirect(url_for("area_restrita"))
+            flash("Já existe um projeto com este nome!")
+        
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
                            form_cria_projeto = form_cria_projeto)
@@ -222,12 +227,12 @@ def forms():
 def area_restrita():
     form_cria_projeto = FormCriaProjeto()
 
-    if form_cria_projeto.validate_on_submit():
-        nome_projeto = form_cria_projeto.project_name.data
-        novo_projeto = Projetos(nome_projeto = nome_projeto)
-        database.session.add(novo_projeto)
-        database.session.commit()
-        redirect (url_for("area_restrita"))
+    if form_cria_projeto.validate_on_submit(): 
+        if criar_projetos(form_cria_projeto.project_name.data):
+            return redirect(url_for("area_restrita"))
+        else: 
+            return redirect(url_for("area_restrita"))
+            flash("Já existe um projeto com este nome!")
 
     return render_template("/area-restrita.html",form_cria_projeto = form_cria_projeto)
 
@@ -247,12 +252,9 @@ def principiosAgeis():
 def valores():
     return render_template("/paginas-treinamento/valores.html", page_url="valores")
 
-
 @app.route("/papeis")
 def papeis():
     return render_template("/paginas-treinamento/papeis.html", page_url="papeis")
-
-#Eventos
  
 @app.route("/sprints")
 def sprints():
@@ -296,7 +298,6 @@ def definitionOfReady():
 def definitionOfDone():
     return render_template("/paginas-treinamento/dod.html", page_url="definitionOfDone")
  
-#Métricas Ágeis
 @app.route("/story-point")
 def storyPoint():
     return render_template("/paginas-treinamento/story-point.html", page_url="storyPoint")

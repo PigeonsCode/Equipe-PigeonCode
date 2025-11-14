@@ -1,3 +1,7 @@
+from projeto.models import Projetos
+from projeto import database
+from sqlalchemy.exc import IntegrityError
+
 def calc_media(lista_de_notas):
    total_notas=0
    n_elementos = len(lista_de_notas)
@@ -28,3 +32,16 @@ def maior_index(lista_de_notas):
          maior = lista_de_notas[i]
          m_index = i
    return m_index
+
+def criar_projetos (nome_forms):
+    try:
+        novo_projeto = Projetos(nome_projeto = nome_forms)
+        database.session.add(novo_projeto)
+        database.session.commit()   
+        return True
+       
+    except IntegrityError:
+        database.session.rollback()
+        return False
+       
+        
