@@ -252,12 +252,9 @@ def principiosAgeis():
 def valores():
     return render_template("/paginas-treinamento/valores.html", page_url="valores")
 
-
 @app.route("/papeis")
 def papeis():
     return render_template("/paginas-treinamento/papeis.html", page_url="papeis")
-
-#Eventos
  
 @app.route("/sprints")
 def sprints():
@@ -301,7 +298,6 @@ def definitionOfReady():
 def definitionOfDone():
     return render_template("/paginas-treinamento/dod.html", page_url="definitionOfDone")
  
-#Métricas Ágeis
 @app.route("/story-point")
 def storyPoint():
     return render_template("/paginas-treinamento/story-point.html", page_url="storyPoint")
