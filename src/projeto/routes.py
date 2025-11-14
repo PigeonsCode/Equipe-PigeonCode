@@ -10,6 +10,21 @@ from projeto.models import Adm_User,FormsNotas, Projetos
 from projeto.function import calc_media,menor_index,maior_index
 from sqlalchemy import delete
 from sqlalchemy.exc import IntegrityError
+
+
+
+def criar_projetos (nome_forms):
+    try:
+        nome_projeto = nome_forms.project_name.data
+        novo_projeto = Projetos(nome_projeto = nome_projeto)
+        database.session.add(novo_projeto)
+        database.session.commit()   
+        return redirect(url_for("area_restrita"))
+       
+    except IntegrityError:
+        database.session.rollback()
+        flash("Já existe um projeto com este nome!")
+        return redirect(url_for("area_restrita"))    
 @app.route("/")
 def homepage():
 
@@ -71,17 +86,7 @@ def relatorio(id_relatorio):
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
     if form_cria_projeto.validate_on_submit():
-        try:
-          nome_projeto = form_cria_projeto.project_name.data
-          novo_projeto = Projetos(nome_projeto = nome_projeto)
-          database.session.add(novo_projeto)
-          database.session.commit()
-          redirect (url_for("area_restrita"))
-
-        except IntegrityError:
-          database.session.rollback()
-          flash("Já existe um projeto com este nome!")
-          return redirect(url_for("area_restrita"))
+        criar_projetos(form_cria_projeto)
         
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,

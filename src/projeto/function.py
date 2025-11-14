@@ -1,3 +1,4 @@
+
 def calc_media(lista_de_notas):
    total_notas=0
    n_elementos = len(lista_de_notas)
@@ -28,3 +29,5 @@ def maior_index(lista_de_notas):
          maior = lista_de_notas[i]
          m_index = i
    return m_index
+
+        
