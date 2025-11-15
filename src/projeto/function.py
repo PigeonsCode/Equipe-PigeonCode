@@ -1,4 +1,4 @@
-from projeto.models import Projetos
+from projeto.models import Projetos, FormsNotas
 from projeto import database
 from sqlalchemy.exc import IntegrityError
 
@@ -43,5 +43,12 @@ def criar_projetos (nome_forms):
     except IntegrityError:
         database.session.rollback()
         return False
+
+def del_projetos(id_relatorio):
+        id_relatorio = int(id_relatorio)      
+        FormsNotas.query.filter_by(projeto_id=id_relatorio).delete()
+        Projetos.query.filter_by(id=id_relatorio).delete()
+        database.session.commit()
+
        
         
