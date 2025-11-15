@@ -8,8 +8,6 @@ from projeto import app, process_notas_pie
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos
-from sqlalchemy import delete
-
 
 
 
