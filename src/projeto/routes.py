@@ -60,12 +60,6 @@ def relatorio(id_relatorio):
          flash("digite CONFIRMAR")
          return redirect(url_for("area_restrita"))
     
-    if respostas_form:
-        dados_pie = process_notas_pie(respostas_form)
-
-    else:
-        dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
-        'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
 
     if form_cria_projeto.validate_on_submit():
 
@@ -74,6 +68,14 @@ def relatorio(id_relatorio):
         else: 
             flash("Já existe um projeto com este nome!")
             return redirect(url_for("area_restrita"))
+    
+
+    if respostas_form:
+        dados_pie = process_notas_pie(respostas_form)
+
+    else:
+        dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
+        'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
           
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
