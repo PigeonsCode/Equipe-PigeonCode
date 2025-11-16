@@ -209,7 +209,7 @@ def forms():
         flash("Formulário enviado com sucesso!", "success")
         return redirect (url_for("forms"))
 
-    if request.method == "POST" and form_avaliacao.errors:
+    if form_avaliacao.errors:
         flash("Você deve preencher todos os campos do formulário!", "danger")
 
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
