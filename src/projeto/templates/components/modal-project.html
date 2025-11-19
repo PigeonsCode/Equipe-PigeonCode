@@ -1,0 +1,38 @@
+{# Modal de criação de projeto - estilizado com Bootstrap 5 #}
+{% if form_cria_projeto is defined %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" style="max-width: 500px;">
+    <div class="modal-content">
+
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Criar Novo Projeto</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form method="POST" id="createProjectForm" autocomplete="off">
+          {{ form_cria_projeto.csrf_token }}
+          {{ form_cria_projeto.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form_cria_projeto.project_name.label(class_='form-label') }}
+            {{ form_cria_projeto.project_name(class_='form-control', placeholder='Ex: Projeto 1') }}
+            {% if form_cria_projeto.project_name.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form_cria_projeto.project_name.errors[0] }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            {{ form_cria_projeto.submit_button(class_='btn btn-primary') }}
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
