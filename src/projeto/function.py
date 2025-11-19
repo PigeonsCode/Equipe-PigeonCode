@@ -122,10 +122,11 @@ def process_notas_pie(respostas_form):
     return dados_processados
 
 def media_questionarios(id_projeto):
-    formularios = FormsNotas.query.filter_by(projeto_id= id_projeto)
+    formularios = FormsNotas.query.filter_by(projeto_id= id_projeto).all()
     soma,cont =0,0
+
     for i in formularios:
-        soma += int(formularios.media_lista)
+        soma += int(i.media_lista)
         cont+=1
     
     media_geral = soma/cont
