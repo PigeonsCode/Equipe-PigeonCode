@@ -245,10 +245,6 @@ aside {
   padding: 5px;
 }
 
-/* Botão de Apagar Projeto */
-.adm-accordion {
-  position: relative;
-}
 
 /* Componente de informações gerais */
 .info-chart-container {
@@ -260,32 +256,6 @@ aside {
   width: 1px;
   background-color: var(--border-color);
   border-radius: 10rem;
-}
-
-
-
-.btn-remover-proj {
-  position: absolute;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  font-size: 18px;
-  transform: translateY(-50%);
-  top: 50%;
-  right: 1rem;
-  color: var(--light-gray);
-  transition: 0.2s all ease;
-  z-index: 100;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  border-radius: 50%;
-}
-
-.btn-remover-proj:hover {
-  color: var(--bs-primary);
-  background-color: rgba(255, 255, 255, 0.5);
-
 }
 
 
