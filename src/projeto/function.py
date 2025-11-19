@@ -120,4 +120,13 @@ def process_notas_pie(respostas_form):
         #aqui acessamos a chave sessões do dicionário de dados_processados, após isso fazemos a mesma coisa do que no item anterior, mas dessa vez ao invés de aumentar um contador, adicionamos a coluna a qual média se refere na lista
 
     return dados_processados
-        
+
+def media_questionarios(id_projeto):
+    formularios = FormsNotas.query.filter_by(projeto_id= id_projeto)
+    soma,cont =0,0
+    for i in formularios:
+        soma += int(formularios.media_lista)
+        cont+=1
+    
+    media_geral = soma/cont
+    return media_geral
