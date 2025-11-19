@@ -6,9 +6,7 @@ from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
-from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie
-
-
+from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios
 
 @app.route("/")
 def homepage():
