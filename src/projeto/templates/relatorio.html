@@ -139,14 +139,7 @@
 <div>
   <canvas id="myChart"></canvas>
 </div>
-<form autocomplete="off" method="POST">
-  {{form_del.csrf_token}}
-  {{form_del.hidden_tag()}}
-  {{form_del.project_del_confirm.label}}
-  {{form_del.project_del_confirm}}
-  <br>
-  {{form_del.submit_button_del}}
-   <div>
+<div>
       {% with messages = get_flashed_messages() %} {% if messages %} {% for
       message in messages %}
       <div class="text-center text-danger">{{message}}</div>
@@ -160,6 +153,7 @@
 {% endblock %}
 {% block body_end %}
   {% include "components/modal-project.html" %}
+  {% include "components/modal-deleção.html" %}
 
 <script>
 
