@@ -131,8 +131,8 @@ def forms():
         dod_r2 = form_avaliacao.dod_p2.data
         dod_r3 = form_avaliacao.dod_p3.data
         
-        lista_dor = [dod_r1,dod_r2,dod_r3]
-        media_dod = calc_media(lista_dor)
+        lista_dod = [dod_r1,dod_r2,dod_r3]
+        media_dod = calc_media(lista_dod)
        
 
         sprint_rev_r1 = form_avaliacao.sprint_review_p1.data
@@ -191,6 +191,7 @@ def forms():
         lista_notas = [media_incremento_do_produto,media_daily_scrum,media_sprint_retro,burnu_r1
         ,media_sprint_back,media_dod,media_sprint_rev,media_burndown,media_backlog,media_dor,
         media_sprint_planning,media_story_point]
+        media_lista = calc_media(lista_notas)
         
         menor_pos= menor_index(lista_notas)
         menor = lista_de_sessoes[menor_pos]
@@ -198,7 +199,7 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
-        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data ,pior_nota_sessao=menor, 
+        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data , media_lista=media_lista, pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
                                  m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,
@@ -207,7 +208,7 @@ def forms():
                                  m_stpo = media_story_point)
         database.session.add(formulario)
         database.session.commit()
-        
+
         flash("Formulário enviado com sucesso!", "success")
         return redirect (url_for("forms"))
 

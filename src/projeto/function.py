@@ -7,10 +7,11 @@ def calc_media(lista_de_notas):
    n_elementos = len(lista_de_notas)
    
    for i in lista_de_notas:
-      total_notas+=float(i)
+      total_notas+=int(i)
 
-   media = total_notas/n_elementos
+   media = total_notas
    return round(media, 2)
+
 
 def menor_index(lista_de_notas):
    menor = lista_de_notas[0]
@@ -21,7 +22,6 @@ def menor_index(lista_de_notas):
          m_index=i
 
    return m_index
-
 
 
 def maior_index(lista_de_notas):
