@@ -1,7 +1,9 @@
 import bcrypt
+import sqlite3
+import os
 from projeto import database,app,bcrypt, login_manager
 from projeto.models import Adm_User
-from flask import Flask,render_template,url_for,redirect,flash,request
+from flask import Flask,render_template,url_for,redirect,flash,request,jsonify
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
@@ -9,6 +11,100 @@ from projeto.models import Adm_User,FormsNotas, Projetos
 from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie
 
 
+DB_PATH = os.path.join(app.instance_path, "banco.db")
+def classificar_qualidade(media):
+    if media >= 85:
+        return "Alta"
+    elif media >= 75:
+        return "Média Alta"
+    elif media >= 60:
+        return "Média"
+    else:
+        return "Baixa"
+
+def gerar_tabela_relatorio():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT 
+            id,
+            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
+            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo,
+            melhor_nota_sessao, pior_nota_sessao
+        FROM forms_notas
+    """)
+
+    linhas = cursor.fetchall()
+    tabela = []
+
+    for linha in linhas:
+        (
+            form_id,
+            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
+            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo,
+            melhor, pior
+        ) = linha
+
+        notas = [
+            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
+            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
+        ]
+
+        notas = [n for n in notas if n is not None]
+        media = sum(notas) / len(notas)
+
+        tabela.append({
+            "formulario": f"Formulário {form_id}",
+            "nota": round(media),
+            "qualidade": classificar_qualidade(media),
+            "melhor": melhor,
+            "pior": pior
+        })
+
+    conn.close()
+    return tabela
+
+def gerar_dados_grafico():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT 
+            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
+            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
+        FROM forms_notas
+    """)
+    rows = cursor.fetchall()
+    conn.close()
+
+    if not rows:
+        return []
+    notas = rows[-1]
+    return [float(n) for n in notas]
+  
+    
+
+@app.route("/relatorio")
+def relatorio_grafico():
+    tabela = gerar_tabela_relatorio()
+    return render_template("relatorio.html", tabela=tabela)
+
+
+@app.route("/grafico")
+def grafico():
+    dados = gerar_dados_grafico()
+    return render_template("grafico.html", dados=dados)
+
+@app.route("/relatorio-json")
+def relatorio_json():
+    tabela = gerar_tabela_relatorio()
+    grafico = gerar_dados_grafico()
+
+    return jsonify({
+        "tabela": tabela,
+        "grafico": grafico
+    })
 
 @app.route("/")
 def homepage():
