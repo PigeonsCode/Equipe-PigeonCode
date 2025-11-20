@@ -131,3 +131,12 @@ def media_questionarios(id_projeto):
     
     media_geral = soma/cont
     return media_geral
+
+def pont_refinada(media_geral):
+    M = media_geral
+    M =((M - 38)/(152 - 38))*100
+    return M
+
+
+
+#def proc_maior_nota(id_projeto):

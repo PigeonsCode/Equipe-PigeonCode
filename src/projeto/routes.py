@@ -6,7 +6,7 @@ from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
-from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios
+from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios,pont_refinada, proc_maior_nota
 
 @app.route("/")
 def homepage():
@@ -47,7 +47,20 @@ def relatorio(id_relatorio):
     form_cria_projeto = FormCriaProjeto()
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     projeto = Projetos.query.get(id_relatorio)
-   
+    
+    print ("MÉDIA CRUA:", media_questionarios(id_relatorio))
+    media_projeto = media_questionarios(id_relatorio)
+    qualidade = ""
+    pont_final = f'{pont_refinada(media_projeto):.0f}'
+    maior_nota = proc_maior_nota(id_relatorio)
+    if media_projeto < 76:
+        qualidade = "Baixa"
+    elif 76 <= media_projeto <= 114:
+        qualidade = "Média"
+    else:
+        qualidade = "Alta"
+    print (f'{pont_refinada(media_projeto):.0f} Pts.')
+    print (f'{proc_maior_nota(id_relatorio)}')
         
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
        
@@ -77,7 +90,7 @@ def relatorio(id_relatorio):
           
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
-                           form_cria_projeto = form_cria_projeto)
+                           form_cria_projeto = form_cria_projeto, qualidade = qualidade, media_projeto = media_projeto, pont_final= pont_final)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -197,6 +210,8 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
+
+
         formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data , media_lista=media_lista, pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
@@ -206,7 +221,7 @@ def forms():
                                  m_stpo = media_story_point)
         database.session.add(formulario)
         database.session.commit()
-
+        
         flash("Formulário enviado com sucesso!", "success")
         return redirect (url_for("forms"))
 
