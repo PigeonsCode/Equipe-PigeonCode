@@ -14,41 +14,41 @@ from projeto.function import calc_media,menor_index,maior_index,criar_projetos,d
 DB_PATH = os.path.join(app.instance_path, "banco.db")
   
 def gerar_dados_graficos_por_projeto(id_relatorio):
+    sessoes = [
+        "Incremento do Produto",
+        "Daily Scrum",
+        "Sprint Retrospective",
+        "Burndown Chart",
+        "Burnup Chart",
+        "Sprint Backlog",
+        "Product Backlog",
+        "Definition of Ready",
+        "Definition of Done",
+        "Sprint Planning",
+        "Sprint Review",
+        "Story Point"
+    ]
 
-    rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+    forms = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
 
-    dados = {
-        "Incremento do Produto": [],
-        "Daily Scrum": [],
-        "Sprint Retrospective": [],
-        "Burnup Chart": [],
-        "Sprint Backlog": [],
-        "Definition of Done": [],
-        "Sprint Review": [], 
-        "Burndown Chart": [],
-        "Product Backlog": [],
-        "Definition of Ready": [],
-        "Sprint Planning": [],
-        "Story Point": []
-    }
+    notas = {sessao: [] for sessao in sessoes}
 
-    for r in rows:
-        dados["Incremento do Produto"].append(r.m_inpr)
-        dados["Daily Scrum"].append(r.m_dasc)
-        dados["Sprint Retrospective"].append(r.m_spretro)
-        dados["Burnup Chart"].append(r.m_buup)
-        dados["Sprint Backlog"].append(r.m_spba)
-        dados["Definition of Done"].append(r.m_dod)
-        dados["Sprint Review"].append(r.m_spre)
-        dados["Burndown Chart"].append(r.m_budo)
-        dados["Product Backlog"].append(r.m_prba)
-        dados["Definition of Ready"].append(r.m_dor)
-        dados["Sprint Planning"].append(r.m_sppl)
-        dados["Story Point"].append(r.m_stpo)
+    for form in forms:
+        for sessao in sessoes:
+            coluna = sessao.lower().replace(" ", "_") 
+            valor = getattr(form, coluna, None)
+            if valor is not None:
+                notas[sessao].append(valor)
 
-    return dados
+    medias = {}
+    for sessao, valores in notas.items():
+        if valores:
+            medias[sessao] = sum(valores) / len(valores)
+        else:
+            medias[sessao] = 0  # caso não tenha notas
 
-
+    return medias
+   
 def gerar_tabela_por_projeto(id_relatorio):
 
     rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
