@@ -12,123 +12,81 @@ from projeto.function import calc_media,menor_index,maior_index,criar_projetos,d
 
 
 DB_PATH = os.path.join(app.instance_path, "banco.db")
-def classificar_qualidade(media):
-    if media >= 85:
-        return "Alta"
-    elif media >= 75:
-        return "Média Alta"
-    elif media >= 60:
-        return "Média"
-    else:
-        return "Baixa"
+  
+def gerar_dados_graficos_por_projeto(id_relatorio):
 
-def gerar_tabela_relatorio():
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
+    rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
 
-    cursor.execute("""
-        SELECT 
-            id,
-            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
-            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo,
-            melhor_nota_sessao, pior_nota_sessao
-        FROM forms_notas
-    """)
+    dados = {
+        "Incremento do Produto": [],
+        "Daily Scrum": [],
+        "Sprint Retrospective": [],
+        "Burnup Chart": [],
+        "Sprint Backlog": [],
+        "Definition of Done": [],
+        "Sprint Review": [], 
+        "Burndown Chart": [],
+        "Product Backlog": [],
+        "Definition of Ready": [],
+        "Sprint Planning": [],
+        "Story Point": []
+    }
 
-    linhas = cursor.fetchall()
+    for r in rows:
+        dados["Incremento do Produto"].append(r.m_inpr)
+        dados["Daily Scrum"].append(r.m_dasc)
+        dados["Sprint Retrospective"].append(r.m_spretro)
+        dados["Burnup Chart"].append(r.m_buup)
+        dados["Sprint Backlog"].append(r.m_spba)
+        dados["Definition of Done"].append(r.m_dod)
+        dados["Sprint Review"].append(r.m_spre)
+        dados["Burndown Chart"].append(r.m_budo)
+        dados["Product Backlog"].append(r.m_prba)
+        dados["Definition of Ready"].append(r.m_dor)
+        dados["Sprint Planning"].append(r.m_sppl)
+        dados["Story Point"].append(r.m_stpo)
+
+    return dados
+
+
+def gerar_tabela_por_projeto(id_relatorio):
+
+    rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+
     tabela = []
 
-    for linha in linhas:
-        (
-            form_id,
-            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
-            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo,
-            melhor, pior
-        ) = linha
-
-        notas = [
-            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
-            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
-        ]
-
-        notas = [n for n in notas if n is not None]
-        media = sum(notas) / len(notas)
+    for r in rows:
+        media_geral = sum([
+            r.m_inpr, r.m_dasc, r.m_spretro, r.m_buup, r.m_spba,
+            r.m_dod, r.m_spre, r.m_budo, r.m_prba, r.m_dor,
+            r.m_sppl, r.m_stpo
+        ]) / 12
 
         tabela.append({
-            "formulario": f"Formulário {form_id}",
-            "nota": round(media),
-            "qualidade": classificar_qualidade(media),
-            "melhor": melhor,
-            "pior": pior
+            "nota_final": round(media_geral, 2),
+            "qualidade_processos": "Alta" if media_geral >= 3 else "Média",
+            "melhor": r.melhor_nota_sessao,
+            "pior": r.pior_nota_sessao
         })
 
-    conn.close()
     return tabela
-
-def gerar_dados_grafico():
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT 
-            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
-            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
-        FROM forms_notas
-    """)
-    rows = cursor.fetchall()
-    conn.close()
-
-    if not rows:
-        return []
-    notas = rows[-1]
-    return [float(n) for n in notas]
-  
-def gerar_medias_por_formulario():
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT 
-            id,
-            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
-            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
-        FROM forms_notas
-    """)
-
-    rows = cursor.fetchall()
-    conn.close()
-
-    resultados = []
-
-    for row in rows:
-        form_id = row[0]
-        valores = row[1:]  # as 12 notas do formulário
-
-        medias = [float(v) for v in valores]
-
-        resultados.append({
-            "formulario": form_id,
-            "medias": medias
-        })
-
-    return resultados
 
 
 @app.route("/relatorio")
 def relatorio_grafico():
-    tabela = gerar_tabela_relatorio()
+    tabela = gerar_tabela_por_projeto()
     return render_template("relatorio.html", tabela=tabela)
 
 
 @app.route("/grafico")
 def grafico():
-    dados = gerar_dados_grafico()
+    dados = gerar_dados_graficos_por_projeto()
     return render_template("grafico.html", dados=dados)
 
 @app.route("/relatorio-json")
 def relatorio_json():
-    tabela = gerar_tabela_relatorio()
-    grafico = gerar_dados_grafico()
+    tabela = gerar_tabela_por_projeto()
+    grafico = gerar_dados_graficos_por_projeto()
 
     return jsonify({
         "tabela": tabela,
@@ -174,6 +132,12 @@ def relatorio(id_relatorio):
     form_cria_projeto = FormCriaProjeto()
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     projeto = Projetos.query.get(id_relatorio)
+    tabela = gerar_tabela_por_projeto(id_relatorio)
+    grafico = gerar_dados_graficos_por_projeto(id_relatorio)
+
+    print("TABELA:", tabela)
+    print("GRAFICO:", grafico)
+    
    
         
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
@@ -431,3 +395,4 @@ def burnDownChart():
 @app.route("/burn-up-chart")
 def burnUpChart():
     return render_template("/paginas-treinamento/burnup.html", page_url="burnUpChart")
+
