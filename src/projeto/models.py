@@ -34,3 +34,4 @@ class Projetos(database.Model):
      id = database.Column(database.Integer, primary_key=True, nullable=False, unique=True)
      nome_projeto = database.Column(database.String, unique=True, nullable=False)
      id_forms = database.relationship('FormsNotas', backref = 'projetos', lazy=True)
+     

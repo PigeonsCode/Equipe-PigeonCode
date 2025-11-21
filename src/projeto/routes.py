@@ -83,7 +83,36 @@ def gerar_dados_grafico():
     notas = rows[-1]
     return [float(n) for n in notas]
   
-    
+def gerar_medias_por_formulario():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT 
+            id,
+            m_inpr, m_dasc, m_spretro, m_buup, m_spba, m_dod,
+            m_spre, m_budo, m_prba, m_dor, m_sppl, m_stpo
+        FROM forms_notas
+    """)
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    resultados = []
+
+    for row in rows:
+        form_id = row[0]
+        valores = row[1:]  # as 12 notas do formulário
+
+        medias = [float(v) for v in valores]
+
+        resultados.append({
+            "formulario": form_id,
+            "medias": medias
+        })
+
+    return resultados
+
 
 @app.route("/relatorio")
 def relatorio_grafico():
