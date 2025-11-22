@@ -7,10 +7,7 @@ from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
-from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie
-from projeto.function import gerar_tabela_por_projeto, gerar_dados_graficos_por_projeto
-
-
+from projeto.function import calc_media,calc_soma,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios,pont_refinada, maior_menor_nota, gerar_tabela_por_projeto, gerar_dados_graficos_por_projeto
 
 @app.route("/")
 def homepage():
@@ -54,7 +51,20 @@ def relatorio(id_relatorio):
     tabela = gerar_tabela_por_projeto(id_relatorio)
     grafico = gerar_dados_graficos_por_projeto(id_relatorio)
     
-   
+    
+    media_projeto = media_questionarios(id_relatorio)
+    qualidade = ""
+    pont_final = f'{pont_refinada(media_projeto):.0f}'
+    maior_med = maior_menor_nota(id_relatorio)
+    maior_resultado = maior_med['maior_pontuacao']
+    menor_med = maior_menor_nota(id_relatorio)
+    menor_resultado = menor_med['menor_pontuacao']
+    if media_projeto < 76:
+        qualidade = "Baixa"
+    elif 76 <= media_projeto <= 114:
+        qualidade = "Média"
+    else:
+        qualidade = "Alta"
         
     if formdelprojeto.validate_on_submit() and formdelprojeto.project_del_confirm.data=="CONFIRMAR":
        
@@ -83,8 +93,8 @@ def relatorio(id_relatorio):
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
           
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
-                           form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
-                           form_cria_projeto = form_cria_projeto, dados_bar = grafico, dados_table = tabela)
+                           form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie, form_cria_projeto = form_cria_projeto, qualidade = qualidade, media_projeto = media_projeto, pont_final= pont_final, maior_resultado= maior_resultado, menor_resultado= menor_resultado, dados_bar = grafico, dados_table = tabela)
+
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -103,14 +113,14 @@ def forms():
 
         lista_incremento_do_produto = [ incremento_r1, incremento_r2, incremento_r3, incremento_r4]
         media_incremento_do_produto = calc_media(lista_incremento_do_produto)
-        
+        soma_incremento_do_produto = calc_soma(lista_incremento_do_produto)
 
         daily_p1 = form_avaliacao.daily_scrum_p1.data
         daily_p2 = form_avaliacao.daily_scrum_p2.data
 
         lista_daily_scrum = [daily_p1,daily_p2]
         media_daily_scrum = calc_media(lista_daily_scrum)
-      
+        soma_daily_scrum = calc_soma(lista_daily_scrum)      
 
         sprint_retro_r1 = form_avaliacao.sprint_retrospective_p1.data
         sprint_retro_r2 = form_avaliacao.sprint_retrospective_p2.data
@@ -119,6 +129,7 @@ def forms():
 
         lista_sprint_retro=[sprint_retro_r1,sprint_retro_r2,sprint_retro_r3,sprint_retro_r4]
         media_sprint_retro = calc_media(lista_sprint_retro)
+        soma_sprint_retro = calc_soma(lista_sprint_retro)
        
 
         burnu_r1 = form_avaliacao.burnup_p1.data
@@ -130,14 +141,16 @@ def forms():
 
         lista_sprint_back = [sprint_back_r1,sprint_back_r2,sprint_back_r3,sprint_back_r4]
         media_sprint_back = calc_media(lista_sprint_back)
-       
+        soma_sprint_back = calc_soma(lista_sprint_back)
+        
 
         dod_r1 = form_avaliacao.dod_p1.data
         dod_r2 = form_avaliacao.dod_p2.data
         dod_r3 = form_avaliacao.dod_p3.data
         
-        lista_dor = [dod_r1,dod_r2,dod_r3]
-        media_dod = calc_media(lista_dor)
+        lista_dod = [dod_r1,dod_r2,dod_r3]
+        media_dod = calc_media(lista_dod)
+        soma_dod = calc_soma(lista_dod)
        
 
         sprint_rev_r1 = form_avaliacao.sprint_review_p1.data
@@ -147,6 +160,7 @@ def forms():
 
         lista_sprint_rev = [sprint_rev_r1,sprint_rev_r2,sprint_rev_r3,sprint_rev_r4]
         media_sprint_rev = calc_media(lista_sprint_rev)
+        soma_sprint_rev = calc_soma(lista_sprint_rev)
         
 
         burndown_r1 = form_avaliacao.burndown_p1.data
@@ -154,6 +168,7 @@ def forms():
 
         lista_burndown = [burndown_r1,burndown_r2]
         media_burndown = calc_media(lista_burndown)
+        soma_burndown = calc_soma(lista_burndown)
         
 
         product_backlog_r1 = form_avaliacao.product_backlog_p1.data
@@ -163,6 +178,7 @@ def forms():
 
         lista_backlog = [product_backlog_r1,product_backlog_r2,product_backlog_r3,product_backlog_r4]
         media_backlog = calc_media(lista_backlog)
+        soma_backlog = calc_soma(lista_backlog)
         
 
         dor_r1 = form_avaliacao.dor_p1.data
@@ -171,6 +187,7 @@ def forms():
 
         lista_dor = [dor_r1,dor_r2,dor_r3]
         media_dor = calc_media(lista_dor)
+        soma_dor = calc_soma(lista_dor)
       
 
         sprint_planning_r1 = form_avaliacao.sprint_planning_p1.data
@@ -181,6 +198,7 @@ def forms():
 
         lista_sprint_planning = [sprint_planning_r1,sprint_planning_r2,sprint_planning_r3,sprint_planning_r4,sprint_planning_r5]
         media_sprint_planning = calc_media(lista_sprint_planning)
+        soma_sprint_planning = calc_soma(lista_sprint_planning)
        
 
         story_point_r1 = form_avaliacao.story_point_p1.data
@@ -188,6 +206,7 @@ def forms():
 
         lista_story_point = [story_point_r1,story_point_r2]
         media_story_point = calc_media(lista_story_point)
+        soma_story_point = calc_soma(lista_story_point)
 
 
         lista_de_sessoes =['m_inpr','m_dasc','m_spretro',
@@ -196,6 +215,12 @@ def forms():
         lista_notas = [media_incremento_do_produto,media_daily_scrum,media_sprint_retro,burnu_r1
         ,media_sprint_back,media_dod,media_sprint_rev,media_burndown,media_backlog,media_dor,
         media_sprint_planning,media_story_point]
+
+        lista_notas2 = [soma_incremento_do_produto,soma_daily_scrum,soma_sprint_retro,burnu_r1
+        ,soma_sprint_back,soma_dod,soma_sprint_rev,soma_burndown,soma_backlog,soma_dor,
+        soma_sprint_planning,soma_story_point]
+
+        media_lista = calc_soma(lista_notas2)
         
         menor_pos= menor_index(lista_notas)
         menor = lista_de_sessoes[menor_pos]
@@ -203,7 +228,9 @@ def forms():
         maior_pos = maior_index(lista_notas)
         maior = lista_de_sessoes[maior_pos]
         
-        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data ,pior_nota_sessao=menor, 
+
+
+        formulario = FormsNotas (projeto_id = form_avaliacao.select_projeto.data , media_lista=media_lista, pior_nota_sessao=menor, 
                                  melhor_nota_sessao=maior, m_inpr= media_incremento_do_produto,
                                  m_dasc=media_daily_scrum,m_spretro=media_sprint_retro,
                                  m_buup=burnu_r1,m_spba=media_sprint_back,m_dod=media_dod,

@@ -245,10 +245,6 @@ aside {
   padding: 5px;
 }
 
-/* Botão de Apagar Projeto */
-.adm-accordion {
-  position: relative;
-}
 
 /* Componente de informações gerais */
 .info-chart-container {
@@ -276,6 +272,7 @@ aside {
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
 }
+
 
 /* Relatiorio */
 
@@ -320,8 +317,6 @@ aside {
   flex-wrap: wrap;
   max-height: 10rem;
 }
-
-
 
 
 @media screen and (max-width: 1200px) {

@@ -1,0 +1,38 @@
+{# Modal de deleção de projeto - estilizado com Bootstrap 5 #}
+{% if form_del is defined %}
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" style="max-width: 500px;">
+    <div class="modal-content">
+
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteModalLabel">Deletar Projeto</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form method="POST" id="deleteProjectForm" autocomplete="off">
+          {{ form_del.csrf_token }}
+          {{ form_del.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form_del.project_del_confirm.label(class_='form-label') }}
+            {{ form_del.project_del_confirm(class_='form-control', placeholder='Digite CONFIRMAR') }}
+            {% if form_del.project_del_confirm.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form_del.project_del_confirm.errors[0] }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            {{ form_del.submit_button_del(class_='btn btn-danger') }}
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}

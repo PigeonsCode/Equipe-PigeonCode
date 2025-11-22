@@ -12,19 +12,19 @@
 
   <div class="info-chart-container d-flex justify-content-evenly p-4 mt-5 rounded">
     <div class="text-center align-items-end">
-      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <h5 class="mb-0 fw-bold text-primary">Qualidade {{qualidade}}</h5>
       <p class="small text-secondary fw-bold mb-0">Qualidade dos Processos do projeto</p>
     </div>
     <div class="text-center align-items-end">
-      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <h5 class="mb-0 fw-bold text-primary">{{pont_final}}/100</h5>
       <p class="small text-secondary fw-bold mb-0">Nota Atribuída</p>
     </div>
     <div class="text-center align-items-end">
-      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <h5 class="mb-0 fw-bold text-primary">{{maior_resultado}}</h5>
       <p class="small text-secondary fw-bold mb-0">Processo com maior nota</p>
     </div>
     <div class="text-center align-items-end">
-      <h5 class="mb-0 fw-bold text-primary">Média Alta</h5>
+      <h5 class="mb-0 fw-bold text-primary">{{menor_resultado}}</h5>
       <p class="small text-secondary fw-bold mb-0">Processo com menor nota</p>
     </div>
   </div>
@@ -191,64 +191,11 @@
 </div>
 {% endif %}
 
-
-<form autocomplete="off" method="POST">
-  {{form_del.csrf_token}}
-  {{form_del.hidden_tag()}}
-  {{form_del.project_del_confirm.label}}
-  {{form_del.project_del_confirm}}
-  <br>
-  {{form_del.submit_button_del}}
-   <div>
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages %}
-      <div class="text-center text-danger">{{message}}</div>
-      {% endfor %} {% endif %} {% endwith %}
-    </div>
-
-
-</form>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Criar Novo Projeto</h5>
-      </div>
-      
-      <div class="modal-body">
-        <form method = "POST" id="createProjectForm">
-           {{form_cria_projeto.csrf_token}}
-           {{form_cria_projeto.hidden_tag()}}
-          <div class="form-group">
-            {{form_cria_projeto.project_name.label}}
-            {{form_cria_projeto.project_name}}
-          </div>
-
-       
-     
-            <div class="modal-footer">
-          {{form_cria_projeto.submit_button}}
-           </div>
-        </form>
-
-      </div>
-
-      <div>
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="text-center text-danger">{{message}}</div>
-        {% endfor %} {% endif %} {% endwith %}
-      </div>
-     
-    </div>
-  </div>
-</div>
+{% include"components/delete-project-btn.html" %}
 {% endblock %}
-
 {% block body_end %}
+  {% include "components/modal-project.html" %}
+  {% include "components/modal-deleção.html" %}
 
 <script>
 
