@@ -15,6 +15,7 @@ class Adm_User(database.Model,UserMixin):
 class FormsNotas(database.Model):
      id = database.Column(database.Integer, primary_key=True, nullable=False, unique=True)
      projeto_id = database.Column(database.Integer,database.ForeignKey('projetos.id'),nullable=False)
+     media_lista = database.Column(database.String, nullable=False)
      pior_nota_sessao = database.Column(database.String, nullable=False)
      melhor_nota_sessao = database.Column(database.String, nullable=False)
      m_inpr = database.Column(database.Float, nullable=False)
