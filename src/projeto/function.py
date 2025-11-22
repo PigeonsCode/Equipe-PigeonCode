@@ -1,6 +1,8 @@
 from projeto.models import Projetos, FormsNotas
 from projeto import database
 from sqlalchemy.exc import IntegrityError
+import os
+from projeto import app
 
 def calc_media(lista_de_notas):
    total_notas=0
@@ -120,4 +122,79 @@ def process_notas_pie(respostas_form):
         #aqui acessamos a chave sessões do dicionário de dados_processados, após isso fazemos a mesma coisa do que no item anterior, mas dessa vez ao invés de aumentar um contador, adicionamos a coluna a qual média se refere na lista
 
     return dados_processados
-        
+
+DB_PATH = os.path.join(app.instance_path, "banco.db")
+
+sessoes = [
+        "Incremento do Produto",
+        "Daily Scrum",
+        "Sprint Retrospective",
+        "Burndown Chart",
+        "Burnup Chart",
+        "Sprint Backlog",
+        "Product Backlog",
+        "Definition of Ready",
+        "Definition of Done",
+        "Sprint Planning",
+        "Sprint Review",
+        "Story Point"
+    ]
+
+mapeamento = {
+        "Incremento do Produto": "m_inpr",
+        "Daily Scrum": "m_dasc",
+        "Sprint Retrospective": "m_spretro",
+        "Burndown Chart": "m_budo",
+        "Burnup Chart": "m_buup",
+        "Sprint Backlog": "m_spba",
+        "Product Backlog": "m_prba",
+        "Definition of Ready": "m_dor",
+        "Definition of Done": "m_dod",
+        "Sprint Planning": "m_sppl",
+        "Sprint Review": "m_spre",
+        "Story Point": "m_stpo"
+    }
+mapeamento_invertido = {v: k for k, v in mapeamento.items()}
+
+  
+def gerar_dados_graficos_por_projeto(id_relatorio):
+
+
+    forms = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+
+    notas = {sessao: [] for sessao in sessoes}
+
+    for form in forms:
+        for sessao in sessoes:
+            coluna = mapeamento[sessao]
+            valor = getattr(form, coluna, None)
+            if valor is not None:
+                notas[sessao].append(valor)
+
+    medias = {}
+    for sessao, valores in notas.items():
+        medias[sessao] = sum(valores) / len(valores) if valores else 0
+
+    return medias
+
+def gerar_tabela_por_projeto(id_relatorio):
+
+    rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
+
+    tabela = []
+
+    for r in rows:
+        media_geral = sum([
+            r.m_inpr, r.m_dasc, r.m_spretro, r.m_buup, r.m_spba,
+            r.m_dod, r.m_spre, r.m_budo, r.m_prba, r.m_dor,
+            r.m_sppl, r.m_stpo
+        ]) / 12
+
+        tabela.append({
+            "nota_final": round(media_geral, 2),
+            "qualidade_processos": "Alta" if media_geral >= 3 else "Média",
+            "melhor": mapeamento_invertido.get(r.melhor_nota_sessao, "—"),
+            "pior": mapeamento_invertido.get(r.pior_nota_sessao, "—"),
+        })
+
+    return tabela

@@ -1,110 +1,16 @@
 import bcrypt
-import sqlite3
-import os
-from projeto import database,app,bcrypt, login_manager
+from projeto import database, app, bcrypt, login_manager
+from projeto import database,app,bcrypt
 from projeto.models import Adm_User
-from flask import Flask,render_template,url_for,redirect,flash,request,jsonify
+from flask import render_template,url_for,redirect,flash
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
 from projeto.function import calc_media,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie
+from projeto.function import gerar_tabela_por_projeto, gerar_dados_graficos_por_projeto
 
 
-DB_PATH = os.path.join(app.instance_path, "banco.db")
-  
-def gerar_dados_graficos_por_projeto(id_relatorio):
-
-    sessoes = [
-        "Incremento do Produto",
-        "Daily Scrum",
-        "Sprint Retrospective",
-        "Burndown Chart",
-        "Burnup Chart",
-        "Sprint Backlog",
-        "Product Backlog",
-        "Definition of Ready",
-        "Definition of Done",
-        "Sprint Planning",
-        "Sprint Review",
-        "Story Point"
-    ]
-
-    mapeamento = {
-        "Incremento do Produto": "m_inpr",
-        "Daily Scrum": "m_dasc",
-        "Sprint Retrospective": "m_spretro",
-        "Burndown Chart": "m_budo",
-        "Burnup Chart": "m_buup",
-        "Sprint Backlog": "m_spba",
-        "Product Backlog": "m_prba",
-        "Definition of Ready": "m_dor",
-        "Definition of Done": "m_dod",
-        "Sprint Planning": "m_sppl",
-        "Sprint Review": "m_spre",
-        "Story Point": "m_stpo"
-    }
-
-    forms = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-
-    notas = {sessao: [] for sessao in sessoes}
-
-    for form in forms:
-        for sessao in sessoes:
-            coluna = mapeamento[sessao]
-            valor = getattr(form, coluna, None)
-            if valor is not None:
-                notas[sessao].append(valor)
-
-    medias = {}
-    for sessao, valores in notas.items():
-        medias[sessao] = sum(valores) / len(valores) if valores else 0
-
-    return medias
-
-def gerar_tabela_por_projeto(id_relatorio):
-
-    rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
-
-    tabela = []
-
-    for r in rows:
-        media_geral = sum([
-            r.m_inpr, r.m_dasc, r.m_spretro, r.m_buup, r.m_spba,
-            r.m_dod, r.m_spre, r.m_budo, r.m_prba, r.m_dor,
-            r.m_sppl, r.m_stpo
-        ]) / 12
-
-        tabela.append({
-            "nota_final": round(media_geral, 2),
-            "qualidade_processos": "Alta" if media_geral >= 3 else "Média",
-            "melhor": r.melhor_nota_sessao,
-            "pior": r.pior_nota_sessao
-        })
-
-    return tabela
-
-
-@app.route("/relatorio")
-def relatorio_grafico():
-    tabela = gerar_tabela_por_projeto()
-    return render_template("relatorio.html", tabela=tabela)
-
-
-@app.route("/grafico")
-def grafico():
-    dados = gerar_dados_graficos_por_projeto()
-    return render_template("grafico.html", dados=dados)
-
-@app.route("/relatorio-json")
-def relatorio_json():
-    tabela = gerar_tabela_por_projeto()
-    grafico = gerar_dados_graficos_por_projeto()
-
-    return jsonify({
-        "tabela": tabela,
-        "grafico": grafico
-    })
 
 @app.route("/")
 def homepage():
@@ -147,9 +53,6 @@ def relatorio(id_relatorio):
     projeto = Projetos.query.get(id_relatorio)
     tabela = gerar_tabela_por_projeto(id_relatorio)
     grafico = gerar_dados_graficos_por_projeto(id_relatorio)
-
-    print("TABELA:", tabela)
-    print("GRAFICO:", grafico)
     
    
         
