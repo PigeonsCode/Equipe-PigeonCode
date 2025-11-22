@@ -1,12 +1,13 @@
 import bcrypt
-from projeto import database,app,bcrypt, login_manager
+from projeto import database, app, bcrypt, login_manager
+from projeto import database,app,bcrypt
 from projeto.models import Adm_User
-from flask import Flask,render_template,url_for,redirect,flash,request
+from flask import render_template,url_for,redirect,flash
 from flask_login import login_required,login_user,logout_user,current_user
 from projeto.navigation import navigation_items
 from projeto.forms import FormLoginAdm, FormUserAvalia,FormDelProjeto,FormCriaProjeto
 from projeto.models import Adm_User,FormsNotas, Projetos 
-from projeto.function import calc_media,calc_soma,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios,pont_refinada, maior_menor_nota
+from projeto.function import calc_media,calc_soma,menor_index,maior_index,criar_projetos,del_projetos,process_notas_pie,media_questionarios,pont_refinada, maior_menor_nota, gerar_tabela_por_projeto, gerar_dados_graficos_por_projeto
 
 @app.route("/")
 def homepage():
@@ -47,6 +48,9 @@ def relatorio(id_relatorio):
     form_cria_projeto = FormCriaProjeto()
     respostas_form = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
     projeto = Projetos.query.get(id_relatorio)
+    tabela = gerar_tabela_por_projeto(id_relatorio)
+    grafico = gerar_dados_graficos_por_projeto(id_relatorio)
+    
     
     media_projeto = media_questionarios(id_relatorio)
     qualidade = ""
@@ -89,8 +93,8 @@ def relatorio(id_relatorio):
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
           
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
-                           form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
-                           form_cria_projeto = form_cria_projeto, qualidade = qualidade, media_projeto = media_projeto, pont_final= pont_final, maior_resultado= maior_resultado, menor_resultado= menor_resultado)
+                           form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie, form_cria_projeto = form_cria_projeto, qualidade = qualidade, media_projeto = media_projeto, pont_final= pont_final, maior_resultado= maior_resultado, menor_resultado= menor_resultado, dados_bar = grafico, dados_table = tabela)
+
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
@@ -334,3 +338,4 @@ def burnDownChart():
 @app.route("/burn-up-chart")
 def burnUpChart():
     return render_template("/paginas-treinamento/burnup.html", page_url="burnUpChart")
+

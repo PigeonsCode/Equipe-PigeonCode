@@ -10,7 +10,7 @@
   <h4 class="fw-bold text-muted mb-3">Informações gerais sobre a qualidade entregue no Projeto Um</h4>
   <p class="text-dark-gray ">A nota de qualidade para o projeto selecionado é calculado a partir das médias e notas adquiridas com o envio dos formulários que, contém perguntas de quatro alternativas pontuadas de 1 a 4. Após envio do formulário, o peso de cada processo do SCRUM é definido e assim uma nota geral ao projeto como um todo é formada.</p>
 
-  <div class="info-chart-container d-flex justify-content-evenly p-4 mt-5 mb-5 rounded">
+  <div class="info-chart-container d-flex justify-content-evenly p-4 mt-5 rounded">
     <div class="text-center align-items-end">
       <h5 class="mb-0 fw-bold text-primary">Qualidade {{qualidade}}</h5>
       <p class="small text-secondary fw-bold mb-0">Qualidade dos Processos do projeto</p>
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-   <div class="container border rounded p-4 mt-5 mb-5">
+   <div class="container border rounded p-4 mt-5">
     <div class="d-flex flex-column gap-1">
       <b class="small mb-2">Legenda para o gráfico de qualidade das respostas por processo</b>
       <p class="text-dark-gray small">
@@ -121,10 +121,67 @@
 <section>
   <h4 class="fw-bold text-muted mb-3">Notas de cada sessão avaliada</h4>
   <i class="small text-dark-gray">As alternativas das questões respondidas registram notas de 1 (a mais baixo) a 4 (a mais alta)</i>
+
+  <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="first-tab" data-bs-toggle="tab" data-bs-target="#first-content" type="button" role="tab" aria-controls="first-content" aria-selected="true">Primeira Metade</button>
+    </li>
+        
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="second-tab" data-bs-toggle="tab" data-bs-target="#second-content" type="button" role="tab" aria-controls="second-content" aria-selected="false">Segunda Metade</button>
+    </li>
+  </ul>
+
+  <div class="tab-content bg-white p-3 border-end border-bottom border-start charts-container" id="myTabContent"> 
+    <div class="tab-pane fade show active" id="first-content" role="tabpanel" aria-labelledby="first-tab" tabindex="0">
+      <p class="mt-3 small text-center mb-5 text-muted fw-bold">Gráfico da Sessão de Incremento do Produto até Sprint Backlog</p>
+      <div class="w-80 m-auto">
+        <div class="bar-chart-container">
+          <canvas id="primeiraMetade"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="second-content" role="tabpanel" aria-labelledby="second-tab" tabindex="0">
+       <p class="mt-3 small text-center mb-5 text-muted fw-bold">Gráfico da Sessão de Product Backlog até Story Point</p>
+      <div class="w-80 m-auto">
+        <div class="bar-chart-container">
+          <canvas id="segundaMetade"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section>
-  <h4 class="fw-bold text-muted mb-3">Informações gerais sobre cada formulário enviado</h4>
+  <h4 class="fw-bold text-muted mb-5">Informações gerais sobre cada formulário enviado</h4>
+
+  <p class="small text-muted fw-bold">Tabela indicando informações gerais sobre cada formulário enviado</p>
+  <div class="table-responsive-md">
+    <table class="table table-bordered table-lg">
+    <thead>
+      <tr>
+        <th scope="col" class="text-dark-gray p-3">Formulário</th>
+        <th scope="col" class="text-dark-gray p-3 text-center">Nota Atríbuida</th>
+        <th scope="col" class="text-dark-gray p-3 text-center">Qualidade dos Processos</th>
+        <th scope="col" class="text-dark-gray p-3 text-center">Melhor Nota</th>
+        <th scope="col" class="text-dark-gray p-3 text-center">Pior Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for linha in dados_table %}
+      <tr>
+        <td class="p-3">Formulário {{loop.index}}</td>
+        <td class="text-center text-darkest-gray p-3">{{linha.nota_final}}</td>
+        <td class="text-center text-darkest-gray p-3">{{linha.qualidade_processos}}</td>
+        <td class="text-center text-darkest-gray p-3">{{linha.melhor}}</td>
+        <td class="text-center text-darkest-gray p-3">{{linha.pior}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+  
 </section>
 
 {% else %}
@@ -135,21 +192,6 @@
 {% endif %}
 
 {% include"components/delete-project-btn.html" %}
-
-<div>
-  <canvas id="myChart"></canvas>
-</div>
-<div>
-      {% with messages = get_flashed_messages() %} {% if messages %} {% for
-      message in messages %}
-      <div class="text-center text-danger">{{message}}</div>
-      {% endfor %} {% endif %} {% endwith %}
-    </div>
-
-
-</form>
-
-
 {% endblock %}
 {% block body_end %}
   {% include "components/modal-project.html" %}
@@ -167,7 +209,6 @@
     const corAmarelo = '#FCD34D';
     const corVermelho = '#EF4444';
 
-    // Calcular o total de notas
     const totalNotas = dados_graficos.verde + dados_graficos.amarelo + dados_graficos.vermelho;
 
     if (totalNotas > 0) {
@@ -203,6 +244,109 @@
         });
 
     } 
+
+    const labelsPrimeiraMetade = {{ (dados_bar | list)[:6] | tojson }};
+    const valoresPrimeiraMetade = {{ (dados_bar.values() | list)[:6] | tojson }};
+ 
+    const labelsSegundaMetade = {{ (dados_bar | list)[6:] | tojson }};
+    const valoresSegundaMetade = {{ (dados_bar.values() | list)[6:] | tojson }};
+
+
+    const dataPrimeira = {
+      labels: labelsPrimeiraMetade,
+      datasets: [{
+        label: 'Média das sessões de todos os formulários enviados',
+        data: valoresPrimeiraMetade,
+        backgroundColor: [
+          'rgba(82, 102, 236, 0.5)',
+        ],
+        borderColor: [
+          'rgb(82, 102, 236)',
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    const dataSegunda = {
+      labels: labelsSegundaMetade,
+      datasets: [{
+        label: 'Média das sessões de todos os formulários enviados',
+        data: valoresSegundaMetade,
+        backgroundColor: [
+          'rgba(82, 102, 236, 0.5)',
+        ],
+        borderColor: [
+          'rgb(82, 102, 236)',
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    const config2 = {
+      type: 'bar',
+      data: dataPrimeira,
+      options: {
+        layout: {
+              padding: {
+                  bottom: 40 
+              }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+                maxRotation: 50,
+                minRotation: 50,
+            }
+        },
+          y: {
+            min: 0,
+            max: 4,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      },
+    };
+
+    const config3 = {
+      type: 'bar',
+      data: dataSegunda,
+      options: {
+        layout: {
+              padding: {
+                  bottom: 40 
+              }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: {
+                maxRotation: 50, 
+                minRotation: 50,
+            }
+        },
+          y: {
+            min: 0,
+            max: 4,
+            ticks: {
+              stepSize: 1
+            }
+          }
+        }
+      },
+    };
+
+    const ctx2 = document.getElementById('primeiraMetade');
+    const ctx3 = document.getElementById('segundaMetade');
+
+    new Chart(ctx2, config2);
+    new Chart(ctx3, config3);
+    
+
  
 </script>
 
