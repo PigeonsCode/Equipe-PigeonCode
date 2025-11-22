@@ -181,7 +181,7 @@ def relatorio(id_relatorio):
           
     return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie,
-                           form_cria_projeto = form_cria_projeto)
+                           form_cria_projeto = form_cria_projeto, dados_bar = grafico, dados_table = tabela)
 
 @app.route("/formulario-avaliativo", methods = ["GET","POST"])
 def forms():
