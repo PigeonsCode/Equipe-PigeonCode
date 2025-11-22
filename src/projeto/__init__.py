@@ -1,6 +1,6 @@
 import re
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy #importação do banco de dados
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask import url_for, request
 from flask_bcrypt import Bcrypt
@@ -15,7 +15,6 @@ bcrypt = Bcrypt(app)
 login_manager= LoginManager(app)
 login_manager.login_view="loginADM"
 
-#filters
 def kebab_case(value):
     if not value:
         return ''
@@ -26,7 +25,6 @@ def kebab_case(value):
 app.jinja_env.filters['kebabify'] = kebab_case
 
 
-#variaveis passadas em todas as rotas
 def is_nav_open(nav_item, request_path):
     for sub in nav_item['subtopic']:
         if 'endpoint' in sub and request_path == url_for(sub['endpoint']):

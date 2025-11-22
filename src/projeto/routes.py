@@ -92,7 +92,7 @@ def relatorio(id_relatorio):
         dados_pie = {'contagens': {'verde': 0, 'amarelo': 0, 'vermelho': 0},
         'sessoes': {'verde': [], 'amarelo': [], 'vermelho': []}}
           
-    return render_template("relatorio.html", relatorio=id_relatorio, projeto = projeto, 
+    return render_template("relatorio.jinja2", relatorio=id_relatorio, projeto = projeto, 
                            form_info = respostas_form, form_del=formdelprojeto, dados_pie = dados_pie, form_cria_projeto = form_cria_projeto, qualidade = qualidade, media_projeto = media_projeto, pont_final= pont_final, maior_resultado= maior_resultado, menor_resultado= menor_resultado, dados_bar = grafico, dados_table = tabela)
 
 
@@ -249,8 +249,6 @@ def forms():
     return render_template("forms.html", page_url="formulario-avaliativo", form = form_avaliacao)
  
 # Páginas de conteúdo
- 
-#Visão Geral e papéis
 @app.route("/area-restrita",methods = ["GET","POST"])
 @login_required
 def area_restrita():
@@ -305,7 +303,6 @@ def sprintReview():
 def sprintRestrospective():
     return render_template("/paginas-treinamento/sprint-restrospective.html", page_url="sprintPlanning")
  
-#Artefatos
 @app.route("/product-backlog")
 def productBacklog():
     return render_template("/paginas-treinamento/product-backlog.html", page_url="productBacklog")
@@ -318,7 +315,6 @@ def sprintBacklog():
 def incrementoProduto():
     return render_template("/paginas-treinamento/incremento.html", page_url="incrementoProduto")
  
-#Itens solos
 @app.route("/definition-of-ready")
 def definitionOfReady():
     return render_template("/paginas-treinamento/dor.html", page_url="definitionOfReady")

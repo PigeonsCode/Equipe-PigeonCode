@@ -315,7 +315,7 @@ aside {
 
 .qualidade-container ul {
   flex-wrap: wrap;
-  max-height: 10rem;
+  max-height: 12rem;
 }
 
 
@@ -397,7 +397,7 @@ aside {
   .qualidade-container ul {
     align-items: center;
     flex-wrap: wrap;
-    max-height: 10rem;
+    max-height: 12rem;
   }
 
   .info-chart-container {

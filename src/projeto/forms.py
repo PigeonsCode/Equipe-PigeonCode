@@ -1,7 +1,6 @@
-from flask_wtf import FlaskForm #biblioteca que permite a criação de formulários de login
-from wtforms import StringField, PasswordField,SubmitField, RadioField, SelectField #importação dos campos dos formulários
-from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError #importação de funções que validam as informações inseridas 
-#pelo usuário
+from flask_wtf import FlaskForm 
+from wtforms import StringField, PasswordField,SubmitField, RadioField, SelectField 
+from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError 
 from projeto.models import Adm_User, Projetos
 from projeto import app
 
@@ -9,20 +8,16 @@ class FormLoginAdm(FlaskForm):
     username_adm = StringField("Nome de Usuário",validators=[DataRequired()])
     password_adm= PasswordField("Senha", validators=[DataRequired()])
     submit_button =  SubmitField("Entrar")
-#validação dos dados inseridos pelo usuário
 
 class FormDelProjeto(FlaskForm):
     project_del_confirm = StringField("Digite CONFIRMAR para deletar o projeto",validators=[DataRequired()])
-    submit_button_del = SubmitField("Deletar projeto para sempre")
+    submit_button_del = SubmitField("Deletar projeto")
     
 class FormCriaProjeto(FlaskForm):
     project_name = StringField("Nome do projeto",validators=[DataRequired(),Length(min=4,max=60)])
     submit_button =  SubmitField("Criar projeto")
 
-
 class FormUserAvalia(FlaskForm):
-    # Inserir a numeração correta das perguntas e inserir coerce=int em todas as perguntas,
-    #para que haja a conversão de string para int
     select_projeto = SelectField('Selecionar Projeto', choices = None)
 
     incremento_do_produto_p1 = RadioField("Como foi a satisfação do cliente em relação à entrega do incremento do produto ao final do Sprint?",

@@ -200,14 +200,11 @@
 <script>
 
   const dados_graficos = {
-    verde: parseInt('{{ dados_pie.contagens.verde|tojson|safe }}'),
-    amarelo:  parseInt('{{ dados_pie.contagens.amarelo|tojson|safe }}'),
-    vermelho:  parseInt('{{ dados_pie.contagens.vermelho|tojson|safe }}'),
+    verde: {{ dados_pie.contagens.verde|tojson|safe }},
+    amarelo: {{ dados_pie.contagens.amarelo|tojson|safe }},
+    vermelho: {{ dados_pie.contagens.vermelho|tojson|safe }},
   };  
 
-    const corVerde = '#10B981';
-    const corAmarelo = '#FCD34D';
-    const corVermelho = '#EF4444';
 
     const totalNotas = dados_graficos.verde + dados_graficos.amarelo + dados_graficos.vermelho;
 
@@ -228,9 +225,9 @@
                     dados_graficos.vermelho // Contagem de notas vermelhas
                 ],
                 backgroundColor: [
-                    corVerde, 
-                    corAmarelo, 
-                    corVermelho 
+                    '#10B981', 
+                    '#FCD34D', 
+                    '#EF4444'
                 ],
                 hoverOffset: 12,
                 borderWidth: 1,
@@ -282,7 +279,7 @@
       }]
     };
 
-    const config2 = {
+    const config_primeiraMet = {
       type: 'bar',
       data: dataPrimeira,
       options: {
@@ -311,7 +308,7 @@
       },
     };
 
-    const config3 = {
+    const config_segundaMet = {
       type: 'bar',
       data: dataSegunda,
       options: {
@@ -340,11 +337,11 @@
       },
     };
 
-    const ctx2 = document.getElementById('primeiraMetade');
-    const ctx3 = document.getElementById('segundaMetade');
+    const ctx_primeiraMet = document.getElementById('primeiraMetade');
+    const ctx_segundaMet = document.getElementById('segundaMetade');
 
-    new Chart(ctx2, config2);
-    new Chart(ctx3, config3);
+    new Chart(ctx_primeiraMet, config_primeiraMet);
+    new Chart(ctx_segundaMet, config_segundaMet);
     
 
  

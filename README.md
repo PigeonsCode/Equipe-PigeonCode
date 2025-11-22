@@ -122,7 +122,7 @@ Caso você não tenha o interpretador Python instalado em sua maquina, você ter
 Crie um pasta separa para o projeto e no terminal da sua IDE, digite o seguinte comando:
 
 ```bash
-git clone https://github.com/tat4Souza/Equipe-PigeonCode.git
+git clone https://github.com/PigeonsCode/Equipe-PigeonCode.git
 ```
 
 ---
@@ -202,12 +202,6 @@ Va até o arquivo "main.py" e aperte F5, ou inicialize o código a partir da set
       <td>Product Owner</td>
       <td><a href="https://github.com/tat4Souza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href="https://www.linkedin.com/in/tais-f-souza"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-     <tr>
-      <td>Manuela Santos</td>
-      <td>Desenvolvedor</td>
-      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Daniel Nathan</td>
