@@ -14,6 +14,7 @@ from projeto.function import calc_media,menor_index,maior_index,criar_projetos,d
 DB_PATH = os.path.join(app.instance_path, "banco.db")
   
 def gerar_dados_graficos_por_projeto(id_relatorio):
+
     sessoes = [
         "Incremento do Produto",
         "Daily Scrum",
@@ -29,26 +30,38 @@ def gerar_dados_graficos_por_projeto(id_relatorio):
         "Story Point"
     ]
 
+    mapeamento = {
+        "Incremento do Produto": "m_inpr",
+        "Daily Scrum": "m_dasc",
+        "Sprint Retrospective": "m_spretro",
+        "Burndown Chart": "m_budo",
+        "Burnup Chart": "m_buup",
+        "Sprint Backlog": "m_spba",
+        "Product Backlog": "m_prba",
+        "Definition of Ready": "m_dor",
+        "Definition of Done": "m_dod",
+        "Sprint Planning": "m_sppl",
+        "Sprint Review": "m_spre",
+        "Story Point": "m_stpo"
+    }
+
     forms = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
 
     notas = {sessao: [] for sessao in sessoes}
 
     for form in forms:
         for sessao in sessoes:
-            coluna = sessao.lower().replace(" ", "_") 
+            coluna = mapeamento[sessao]
             valor = getattr(form, coluna, None)
             if valor is not None:
                 notas[sessao].append(valor)
 
     medias = {}
     for sessao, valores in notas.items():
-        if valores:
-            medias[sessao] = sum(valores) / len(valores)
-        else:
-            medias[sessao] = 0  # caso não tenha notas
+        medias[sessao] = sum(valores) / len(valores) if valores else 0
 
     return medias
-   
+
 def gerar_tabela_por_projeto(id_relatorio):
 
     rows = FormsNotas.query.filter_by(projeto_id=id_relatorio).all()
