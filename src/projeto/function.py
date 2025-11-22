@@ -9,9 +9,17 @@ def calc_media(lista_de_notas):
    for i in lista_de_notas:
       total_notas+=int(i)
 
-   media = total_notas
+   media = total_notas/n_elementos
    return round(media, 2)
 
+def calc_soma(lista_de_notas):
+   total_notas=0
+   
+   for i in lista_de_notas:
+      total_notas+=int(i)
+
+   media = total_notas
+   return round(media, 2)
 
 def menor_index(lista_de_notas):
    menor = lista_de_notas[0]
@@ -91,7 +99,6 @@ def process_notas_pie(respostas_form):
                 nome_coluna_traduzida = regras_traducao[nome_coluna]
                 notas_por_coluna[nome_coluna_traduzida] = [] #cria uma lista vazia dentro do dicionário para cada uma das colunas de média válidas
 
-            print(notas_por_coluna)
     
 
     for resposta in respostas_form: #percorre por todos os formulários cadastrados do projeto que estamos analisando
@@ -118,7 +125,6 @@ def process_notas_pie(respostas_form):
         #aqui acessamos a chave contagens do dicionário de dados_processadors, após isso acessamos algum dos itens dentro do dicionário de contagens (faixa depende do valor definido pela média da sessão) e aumentamos um no contador
         dados_processados['sessoes'][faixa].append(nome_coluna)
         #aqui acessamos a chave sessões do dicionário de dados_processados, após isso fazemos a mesma coisa do que no item anterior, mas dessa vez ao invés de aumentar um contador, adicionamos a coluna a qual média se refere na lista
-
     return dados_processados
 
 def media_questionarios(id_projeto):
@@ -126,10 +132,12 @@ def media_questionarios(id_projeto):
     soma,cont =0,0
 
     for i in formularios:
-        soma += int(i.media_lista)
+        soma += float(i.media_lista)
         cont+=1
-    
-    media_geral = soma/cont
+    if formularios:
+        media_geral = soma/cont
+    else:
+        media_geral = 0
     return media_geral
 
 def pont_refinada(media_geral):
@@ -137,6 +145,71 @@ def pont_refinada(media_geral):
     M =((M - 38)/(152 - 38))*100
     return M
 
+def maior_menor_nota(id_projeto):
+    #essa função vai ta entupida de anotações porque estou PERDENDO A CABEÇA e quero QUE FUNCIONE AGORA EM UMA SÓ FUNÇÃO
+    
+    formularios = FormsNotas.query.filter_by(projeto_id=id_projeto).all()  
+    #FormsNotas.query = "Vá na tabela FormsNotas do banco de dados"
+    #filter_by(projeto_id=id_projeto) = "Filtre apenas os que têm este projeto_id"
+    #.all() = "Pegue TODOS os resultados"
+    regras_traducao = {
+        'm_inpr': 'Incremento do Produto',
+        'm_dasc': 'Daily Scrum',
+        'm_spretro': 'Sprint Retrospective',
+        'm_buup':  'Burnup Chart',
+        'm_spba': 'Sprint Backlog',
+        'm_dod': 'Definition of Done',
+        'm_spre': 'Sprint Review',
+        'm_budo': 'Burndown Chart',
+        'm_prba': 'Product Backlog',
+        'm_dor': 'Definition of Ready',
+        'm_sppl': 'Sprint Planning',
+        'm_stpo': 'Story Points'}
+    #lista com os nomes pra depois mostrar bonitinho
 
+    notas_por_categoria = {}
+    #dicionario vazio pra poder por as notas
+
+    for atributo in regras_traducao.keys():
+        # cada nome no dicionario... (.KEYS PARA PEGAR APENAS OS NOMES!)
+        notas_por_categoria[regras_traducao[atributo]] = []
+        # coloca o nome bonitinho por categoria em uma lista vazia
+
+    # Coleta todas as notas de cada formulário
+    for formulario in formularios:
+        # cada formulário dentro de formularios(ou no caso, o projeto)...
+        for atributo, categoria in regras_traducao.items():
+            # para cada par de nome (.ITEMS PEGA O NOME E O QUE FAZ! NO CASO PEGA O SEGUNDO NOME)
+            nota = getattr(formulario, atributo)
+            #  pega o valor da coluna respectiva
+            if nota is not None:
+                # se a nota não estiver vazia (se nao tiver nada dentro dela, ela vai fazer essa proxima linha)
+                notas_por_categoria[categoria].append(float(nota))
+                # passa a nota dos nome base para os nome bonitinho
+
+    # Calcula as médias e encontra maior/menor
+    medias = {}
+    maior_media = {'categoria': None, 'valor': 0}
+    menor_media = {'categoria': None, 'valor': 152}
+
+    for categoria, notas in notas_por_categoria.items():
+        if notas:  # Só calcula se houver notas
+            media = sum(notas) / len(notas)
+            medias[categoria] = media
+            
+            # Verifica se é a maior média
+            if media > maior_media['valor']:
+                maior_media = {'categoria': categoria, 'valor': media}
+            
+            # Verifica se é a menor média
+            if media < menor_media['valor']:
+                menor_media = {'categoria': categoria, 'valor': media}
+    # Inicializa as listas de notas para cada categoria
+
+
+    return {
+        'medias': medias,
+        'maior_pontuacao': maior_media['categoria'],
+        'menor_pontuacao': menor_media['categoria']}
 
 #def proc_maior_nota(id_projeto):
