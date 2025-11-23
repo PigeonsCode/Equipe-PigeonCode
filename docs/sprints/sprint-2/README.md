@@ -81,12 +81,6 @@
       <td><a href="https://www.linkedin.com/in/tais-f-souza"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
-      <td>Manuela Santos</td>
-      <td>Desenvolvedor</td>
-      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
       <td>Daniel Nathan</td>
       <td>Desenvolvedor</td>
       <td><a href="https://github.com/Danithan"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>

@@ -50,9 +50,9 @@
 
 | Sprint | Entregas Principais                                                      | Status |
 | ------ | ------------------------------------------------------------------------ | ------ |
-| 03     | Visualização das notas e informações releventes em formato de relatório. |        |
-| 03     | Informações armazenadas previamente exibidas em gráficos.                |        |
-| 03     | Lógica matemática por trás do cálculo da qualidade.                      |        |
+| 03     | Visualização das notas e informações releventes em formato de relatório. |   ✅     |
+| 03     | Informações armazenadas previamente exibidas em gráficos.                |    ✅    |
+| 03     | Lógica matemática por trás do cálculo da qualidade.                      |    ✅    |
 
 ---
 

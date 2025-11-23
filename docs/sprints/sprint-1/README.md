@@ -61,23 +61,17 @@
       <th>Github</th>
       <th>Linkedin</th>
     </tr>
-    <tr>
-      <td>Manuela Santos</td>
-      <td>Scrum Master</td>
-      <td><a href="https://github.com/manuoops"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/manuela-santos-098797351/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
+     <tr>
+      <td>Adler Rocha</td>
+      <td>Desenvolvedor</td>
+      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
+      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Taís Souza</td>
       <td>Product Owner</td>
       <td><a href="https://github.com/tat4Souza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
       <td><a href="https://www.linkedin.com/in/tais-f-souza"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-    <tr>
-      <td>Adler Rocha</td>
-      <td>Desenvolvedor</td>
-      <td><a href="https://github.com/AdlerR101"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/adler-rocha-a98480216"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
     <tr>
       <td>Daniel Nathan</td>
