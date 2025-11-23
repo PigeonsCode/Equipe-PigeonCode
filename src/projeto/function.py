@@ -186,9 +186,18 @@ def gerar_tabela_por_projeto(id_relatorio):
             r.m_sppl, r.m_stpo
         ]) / 12
 
+        media = pont_refinada(float(r.media_lista))
+        qualidade = ''
+        if float(r.media_lista) < 85:
+            qualidade = "Baixa"
+        elif 85 <= float(r.media_lista) <= 114:
+            qualidade = "Média"
+        else:
+            qualidade = "Alta"
+
         tabela.append({
-            "nota_final": round(media_geral, 2),
-            "qualidade_processos": "Alta" if media_geral >= 3 else "Média",
+            "nota_final": f'{media:.0f}',
+            "qualidade_processos": qualidade,
             "melhor": mapeamento_invertido.get(r.melhor_nota_sessao, "—"),
             "pior": mapeamento_invertido.get(r.pior_nota_sessao, "—"),
         })

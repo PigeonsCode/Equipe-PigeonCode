@@ -59,9 +59,10 @@ def relatorio(id_relatorio):
     maior_resultado = maior_med['maior_pontuacao']
     menor_med = maior_menor_nota(id_relatorio)
     menor_resultado = menor_med['menor_pontuacao']
-    if media_projeto < 76:
+    print(media_projeto)
+    if media_projeto < 85:
         qualidade = "Baixa"
-    elif 76 <= media_projeto <= 114:
+    elif 85 <= media_projeto <= 114:
         qualidade = "Média"
     else:
         qualidade = "Alta"

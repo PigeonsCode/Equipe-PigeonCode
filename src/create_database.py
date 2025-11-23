@@ -18,11 +18,7 @@ with app.app_context():
     password_db=senha_cripto
     )
     
-    projeto=Projetos(nome_projeto="Projeto teste 1")
-    projeto2 = Projetos(nome_projeto="Projeto teste 2")
 
     database.session.add(user)
-    database.session.add(projeto)
-    database.session.add(projeto2)
     database.session.commit()
  
