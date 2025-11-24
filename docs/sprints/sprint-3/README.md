@@ -81,12 +81,6 @@
       <td><a href="https://www.linkedin.com/in/daniel-leite-28220b384/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
     </tr>
      <tr>
-      <td>Giovana Machado</td>
-      <td>Desenvolvedor</td>
-      <td><a href="https://github.com/giovana777"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
-      <td><a href="https://www.linkedin.com/in/giovana-machado-49b017384/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a></td>
-    </tr>
-     <tr>
       <td>Matheus Borges</td>
       <td>Desenvolvedor</td>
       <td><a href="https://github.com/MGBorgess"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a></td>
