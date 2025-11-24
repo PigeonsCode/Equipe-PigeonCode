@@ -84,6 +84,10 @@ O PigeonCode vai expor de forma didática o funcionamento da metodologia SCRUM, 
  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/></a>
  <a href="https://sqlite.org/"><img src="https://img.shields.io/badge/SQLITE-blue?style=for-the-badge&logo=sqlite&logoColor=white&labelColor=%23003B57&color=%23003B57"/></a>
  <a href="https://getbootstrap.com"><img src="https://img.shields.io/badge/BOOTSTRAP-blue?style=for-the-badge&logo=bootstrap&logoColor=white&labelColor=%237952B3&color=%237952B3"/></a>
+ <a href="https://www.chartjs.org/"><img alt="Static Badge" src="https://img.shields.io/badge/chart.js-%23FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white">
+ <a href="https://aws.amazon.com/pt/free/"><img alt="Static Badge" src="https://img.shields.io/badge/amazon%20web%20service-orange?style=for-the-badge">
+</a>
+</a>
 </h4>
 
 ## 📖 Manual de Instalação <a id="manual"></a>
