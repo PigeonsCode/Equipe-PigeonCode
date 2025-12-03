@@ -59,6 +59,7 @@ def relatorio(id_relatorio):
     maior_resultado = maior_med['maior_pontuacao']
     menor_med = maior_menor_nota(id_relatorio)
     menor_resultado = menor_med['menor_pontuacao']
+
     print(media_projeto)
     if media_projeto < 85:
         qualidade = "Baixa"
@@ -256,6 +257,11 @@ def area_restrita():
     form_cria_projeto = FormCriaProjeto()
 
     if form_cria_projeto.validate_on_submit(): 
+        projeto_existente = Projetos.query.filter_by(nome_projeto = form_cria_projeto.project_name.data).first()
+        if projeto_existente:
+            flash("Já existe um projeto com este nome! Delete o atual ou insira outro nome.")
+            return redirect(url_for("area_restrita"))
+        
         if criar_projetos(form_cria_projeto.project_name.data):
             return redirect(url_for("area_restrita"))
         else: 
