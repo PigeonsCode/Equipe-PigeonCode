@@ -14,6 +14,12 @@
   formulário avaliativo. {% endif %}
 </p>
 
+      <div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="text-center text-danger">{{message}}</div>
+        {% endfor %} {% endif %} {% endwith %}
+      </div>
 {% endblock %}
 {% block body_end %}
   {% include "components/modal-project.html" %}
